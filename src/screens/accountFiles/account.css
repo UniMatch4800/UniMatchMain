@@ -1,0 +1,26 @@
+
+
+/* Styling for the button */
+.account-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  background: linear-gradient(
+    to right,
+    #faa805,
+    #d47f00
+  ); /* Gradient using #faa805 and its darker version */
+  color: white; /* White text color */
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.account-button:hover {
+  background: linear-gradient(
+    to right,
+    #d47f00,
+    #faa805
+  ); /* Reversed gradient on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}

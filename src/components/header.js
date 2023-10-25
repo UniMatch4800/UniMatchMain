@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import UniMatchLogo from "../images/UniMatchLogo.png";
-
+import "../App.css";
 
 function Header() {
   return (
@@ -38,4 +38,3 @@ function Header() {
 }
 
 export default Header;
-

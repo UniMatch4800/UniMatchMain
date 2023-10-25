@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import Account from "./screens/account";
+import Account from "./screens/accountFiles/account";
 import Dating from "./screens/datingFiles/dating";
 import Events from "./screens/eventsFiles/events";
 import Auth from "./components/auth";

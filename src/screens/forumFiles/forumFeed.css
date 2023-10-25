@@ -1,36 +1,39 @@
 .forum-feed {
-  overflow-y: auto; /* Enable vertical scrolling when necessary */
+  overflow-y: auto;
   max-height: calc(100vh - 200px);
   padding: 20px;
-  background-color: #f8f8f8; /* Light background for the whole feed */
+  background-color: black;
 }
 
 .forum-post {
-  border: 1px solid #ddd;
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Increased padding */
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 20px;
   margin-bottom: 20px;
-  background-color: #fff; /* White background for each post */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 'lifted' effect */
-  position: relative; /* To position post actions absolutely within */
+  background-color: #111;
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+  position: relative;
+  border: none;
 }
 
 .post-title {
   font-weight: bold;
-  font-size: 18px; /* Increase font size for better readability */
+  font-size: 18px;
+  color: white;
 }
 
 .post-content {
   margin-top: 10px;
-  font-size: 16px; /* Slightly larger base font size */
+  font-size: 16px;
+  color: white;
 }
 
 .post-image {
   max-height: 250px;
   width: auto;
   display: block;
-  margin: 10px 0; /* Top and bottom margin */
-  border: 1px solid #ddd; /* Lighter border color */
+  margin: 10px 0;
+  border: 1px solid #333;
 }
 
 .images-container {
@@ -42,10 +45,10 @@
 
 .post-actions {
   position: absolute;
-  bottom: 20px; /* Added more spacing between the buttons and the post content */
-  right: 20px; /* Adjust as needed, Moves the buttons to the right */
+  bottom: 20px;
+  right: 20px;
   display: flex;
-  justify-content: space-between; /* Distribute space evenly between elements */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -53,24 +56,22 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px; /* Larger icons */
-  color: #0557fa; /* Blue color for the icons */
-  margin-left: 10px; /* Space between buttons */
-}
-
-.action-button:focus {
-  outline: none;
+  font-size: 18px;
+  color: lightgray;
+  margin-left: 10px;
 }
 
 .comments-screen {
   max-width: 600px;
   margin: auto;
   padding: 20px;
+  background-color: black;
 }
 
 .comments-list {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #333;
   margin-bottom: 20px;
+  color: white;
 }
 
 .comment-input {
@@ -82,12 +83,17 @@
   flex: 1;
   padding: 10px;
   margin-right: 20px;
+  background-color: #222;
+  color: white;
+  border: 1px solid #333;
 }
 
 .comment-input button {
   padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
 }
-/* Add to forumFeed.css */
 
 .comments-modal {
   position: fixed;
@@ -96,41 +102,40 @@
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 500px;
-  background-color: #fff;
+  background-color: #111;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
   z-index: 1000;
 }
 
 .close-btn {
-  background-color: #ccc;
+  background-color: #333;
   border: none;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  float: right;
+  color: white;
 }
 
-.close-btn:hover {
-  background-color: #bbb;
-}
 .no-posts-message {
   padding: 20px;
   font-size: 1.2em;
   text-align: center;
-  color: gray;
+  color: lightgray;
 }
+
 .upvoted {
-  color: green; /* or any color you want to represent upvote */
+  color: green;
 }
 
 .downvoted {
-  color: red; /* or any color you want to represent downvote */
+  color: red;
 }
+
 .time-ago {
   font-size: 0.8em;
-  color: #aaa;
+  color: #777;
   position: absolute;
   top: 10px;
   right: 10px;

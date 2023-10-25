@@ -1,5 +1,6 @@
 .forum {
-  background-color: white;
+  background-color: black;
+  color: white;
   position: relative;
 }
 
@@ -12,13 +13,18 @@
 .side-menu {
   flex: 0 0 20%;
   height: 100vh;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  background-color: #111; /* Dark gray background for the sidebar */
+  color: white;
 }
 
 .right-side-section {
   flex: 0 0 25%;
   height: 100vh;
   overflow-y: auto;
+  background-color: #111; /* Dark gray background for the right side section */
+  color: white;
+  border-left: 1px solid #333; /* Slight border for separation */
 }
 
 .forum-content {
@@ -26,21 +32,17 @@
   padding: 20px;
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
+  scrollbar-color: #777 #111; /* Light gray thumb on dark gray track */
   padding-top: 0;
   height: calc(100vh - 145px);
+  background-color: #111; /* Dark gray background */
 }
 
-/* Customize the appearance of the scrollbar thumb */
 .forum-content::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  /* Scrollbar thumb color */
+  background-color: #777; /* Lighter gray scrollbar thumb */
   border-radius: 10px;
-  /* Rounded scrollbar thumb */
 }
 
-/* Customize the appearance of the scrollbar track */
 .forum-content::-webkit-scrollbar-track {
-  background-color: transparent;
-  /* Scrollbar track color */
+  background-color: #111; /* Dark gray scrollbar track */
 }

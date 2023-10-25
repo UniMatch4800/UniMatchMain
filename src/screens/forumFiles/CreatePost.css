@@ -1,74 +1,73 @@
 .create-post-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    overflow-y: auto; 
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #111;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+  overflow-y: auto;
+  height: 100vh;
 }
 
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    margin-top: 0;
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  color: white;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
-label {
-    font-size: 18px;
-    margin-bottom: 8px;
+.post-label {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: white;
 }
 
 .input-field {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #777;
+  background-color: #222;
+  color: white;
+  border-radius: 4px;
 }
 
-.submit-button {
-    background-color: #007bff;
-    border: 2px solid #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 20px;
-    /* Add space between the button and the input fields */
+.submit-button,
+.back-button {
+  background: linear-gradient(45deg, #ffc700, #ffa000); /* Gold gradient */
+  color: #000; /* Black text */
+  border: 2px solid #faa805; /* Gold border */
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s; /* Smooth transition */
 }
 
-.submit-button:hover {
-    background-color: #0056b3;
-    border: 2px solid black;
+.submit-button:hover,
+.back-button:hover {
+  background: linear-gradient(
+    45deg,
+    #ffa000,
+    #ffc700
+  ); /* Reverse gold gradient on hover */
+  border: 2px solid #faa805; /* Gold border */
 }
 
 .back-button {
-    padding: 8px 30px;
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #007bff;
-    border-radius: 4px;
-    align-self: flex-start;
-    margin-top: 20px;
-}
-
-.back-button:hover {
-    border: 2px solid black;
-    background-color: #0056b3;
+  align-self: flex-start;
 }
 
 .description {
-    height: fit-content;
+  height: fit-content;
+  color: white;
 }

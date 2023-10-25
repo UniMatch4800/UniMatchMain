@@ -38,27 +38,27 @@ const Auth = () => {
   const getUserInfoFromFirestore = async (uid) => {
     try {
       const userRef = doc(db, "users", uid);
-    console.log(`Fetching data for path: users/${uid}`);
+      console.log(`Fetching data for path: users/${uid}`);
 
-    const userDoc = await getDoc(userRef);
-    console.log(userDoc.data());
-    
-    if (userDoc.exists()) {
-      console.log("Manually fetched data:", userDoc.data());
-      const userData = userDoc.data();
-      console.log("User data fetched:", userData);
-      return userData;
-    } else {
-      console.error("Manual fetch failed.");
+      const userDoc = await getDoc(userRef);
+      console.log(userDoc.data());
+
+      if (userDoc.exists()) {
+        console.log("Manually fetched data:", userDoc.data());
+        const userData = userDoc.data();
+        console.log("User data fetched:", userData);
+        return userData;
+      } else {
+        console.error("Manual fetch failed.");
+      }
+
+      console.log("No additional info found for user:", uid);
+      return null;
+    } catch (error) {
+      console.error("Error fetching user data: ", error);
+      return null;
     }
-
-    console.log("No additional info found for user:", uid);
-    return null;
-  } catch (error) {
-    console.error("Error fetching user data: ", error);
-    return null;
-  }
-};
+  };
 
   const handleAuthAttempt = async (e) => {
     e.preventDefault(); // <-- Prevent the default form behavior
@@ -97,11 +97,11 @@ const Auth = () => {
 
   return (
     <div className={styles.container}>
-      <h1>{isLogin ? "Login" : "Signup"}</h1>
+      {/* <h1>{isLogin ? "Login" : "Signup"}</h1> */}
       <div className={styles["auth-container"]}>
         <form onSubmit={handleAuthAttempt}>
           <div>
-            <label>Email:</label>
+            <label className="auth-label">Email:</label>
             <input
               type="email"
               value={email}
@@ -112,7 +112,7 @@ const Auth = () => {
             />
           </div>
           <div>
-            <label>Password:</label>
+            <label className="auth-label">Password:</label>
             <input
               type="password"
               value={password}
@@ -124,7 +124,7 @@ const Auth = () => {
           </div>
           {!isLogin && (
             <div>
-              <label>Confirm Password:</label>
+              <label className="auth-label">Confirm Password:</label>
               <input
                 type="password"
                 value={confirmPassword}

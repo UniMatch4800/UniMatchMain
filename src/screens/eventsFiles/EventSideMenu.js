@@ -39,11 +39,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
         <h3>Price</h3>
         <ul>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="price"
                 value="Free"
+                
                 onChange={() => handleFilterChange("price", "Free")}
                 checked={selectedFilters.price.includes("Free")}
               />
@@ -51,11 +52,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="price"
                 value="1-15"
+               
                 onChange={() => handleFilterChange("price", "1-15")}
                 checked={selectedFilters.price.includes("1-15")}
               />
@@ -63,11 +65,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="price"
                 value="16-25"
+              
                 onChange={() => handleFilterChange("price", "16-25")}
                 checked={selectedFilters.price.includes("16-25")}
               />
@@ -75,11 +78,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="price"
                 value="26+"
+               
                 onChange={() => handleFilterChange("price", "26+")}
                 checked={selectedFilters.price.includes("26+")}
               />
@@ -98,6 +102,7 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
                 type="checkbox"
                 name="location"
                 value="on campus"
+              
                 onChange={() => handleFilterChange("location", "on campus")}
                 checked={selectedFilters.location.includes("on campus")}
               />
@@ -105,11 +110,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="location"
                 value="off campus"
+               
                 onChange={() => handleFilterChange("location", "off campus")}
                 checked={selectedFilters.location.includes("off campus")}
               />
@@ -123,7 +129,7 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
         <h3>Event Type</h3>
         <ul>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="eventType"
@@ -135,11 +141,12 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="eventType"
                 value="clubs"
+
                 onChange={() => handleFilterChange("eventType", "clubs")}
                 checked={selectedFilters.eventType.includes("clubs")}
               />
@@ -147,7 +154,7 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="eventType"
@@ -159,7 +166,7 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
             </label>
           </li>
           <li>
-            <label>
+            <label >
               <input
                 type="checkbox"
                 name="eventType"

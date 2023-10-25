@@ -1,11 +1,12 @@
 /* Auth.module.css */
 
+/* Styles for the container */
 .container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0557fa;
-  color: white;
+  background-color: black; /* changed to black */
+  color: white; /* changed to white */
   margin: 0;
-  width: 100%; /* added this */
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -14,26 +15,20 @@
 
 /* Auth Container */
 .auth-container {
-  background: white;
-  color: #0557fa;
+  background: white; /* changed to black */
+  color: #faa805; /* changed to white */
   padding: 3em;
   border-radius: 8px;
   width: 350px;
-  box-shadow: 0px 10px 25px -5px rgba(5, 87, 250, 0.1);
-  transition: transform 0.2s;
-}
-
-.auth-container:hover {
-  transform: translateY(-5px);
+  box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.1); /* Adjusted for black theme */
 }
 
 /* Form elements */
 h1,
-label,
 input,
 button {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #0557fa;
+  color: white;
 }
 
 h1 {
@@ -43,31 +38,37 @@ h1 {
   font-weight: 600;
 }
 
-label {
+.auth-label {
   display: block;
   margin-bottom: 0.3em;
   font-weight: 600;
   font-size: 0.9em;
+  color: #faa805;
 }
 
 .inputBox {
   width: 100%;
   padding: 12px 10px;
   margin-bottom: 1.5em;
-  border: 1px solid #e2e2e2;
+  border: 1px solid #faa805;
   border-radius: 5px;
   transition: border 0.2s;
+  color: black;
 }
 
 .inputBox:focus {
-  border: 1px solid #0557fa;
+  border: 1px solid #faa805; /* changed to #faa805 */
   outline: none;
 }
 
 .login {
   width: 100%;
-  background-color: #0557fa;
-  color: white;
+  background: linear-gradient(
+    to right,
+    #faa805,
+    #d47f00
+  ); /* Gradient using #faa805 and a darker version */
+  color: white; /* changed to white */
   border: none;
   padding: 12px 0;
   border-radius: 5px;
@@ -75,16 +76,24 @@ label {
   transition: background-color 0.3s, transform 0.2s;
   font-size: 1em;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login:hover {
-  background-color: #0342c0;
-  transform: translateY(-1px);
+  background: linear-gradient(
+    to right,
+    #d47f00,
+    #faa805
+  ); /* Reversed gradient on hover */
+  transform: none; /* Removed the hover effect that makes it move */
 }
 
 .login + .login {
   margin-top: 15px;
 }
+
 .error {
-  border: 1px solid red;
+  border: 2px solid red;
 }

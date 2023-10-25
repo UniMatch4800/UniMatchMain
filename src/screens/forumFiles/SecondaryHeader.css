@@ -3,14 +3,16 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: white;
+  background-color: black; /* Kept as black */
   width: 100%;
-  /* border-top: 2px solid #0557fa; */
 }
 
 .Forumlogo {
   width: 130px;
   height: auto;
+  filter: invert(
+    1
+  ); /* Keeps the logo as a white version on a black background */
 }
 
 .search-bar {
@@ -23,25 +25,29 @@
   padding: 7px;
   font-size: 17px;
   width: 80%;
-  border: thin solid #0557fa;
-  background-color: white;
+  border: thin solid white; /* Remains white */
+  background-color: black; /* Kept as black */
+  color: white; /* Text color remains white */
 }
 
 .search-bar input::placeholder {
-  color: #0557fa;
+  color: #ffc57b; /* A lighter version of #faa805 for better visibility against black background */
   font-weight: 100;
 }
 
-/* Style for the input when it is focused (clicked) */
 .search-bar input:focus {
-  border-color: #0557fa;
-  color: #0557fa;
+  border-color: white; /* Remains white */
+  color: white; /* Text color remains white */
   outline: none;
 }
 
 .my-posts-button,
 .create-post-button {
-  background: linear-gradient(to right, #0557fa, #0575fa);
+  background: linear-gradient(
+    to right,
+    #faa805,
+    #d47f00
+  ); /* Gradient using #faa805 and a darker version */
   color: white;
   padding: 10px 25px;
   border-radius: 25px;
@@ -56,5 +62,13 @@
 
 .create-post-button:hover,
 .my-posts-button:hover {
-  background: linear-gradient(to right, #0575fa, #0557fa);
+  background: linear-gradient(
+    to right,
+    #d47f00,
+    #faa805
+  ); /* Reversed gradient on hover */
+}
+
+.create-post-button {
+  margin-right: 20px;
 }

@@ -1,13 +1,19 @@
 .events-page {
   display: flex;
   align-items: flex-start;
+  background-color: black; /* Dark background */
 }
 
 .main-content {
   flex-grow: 1;
   padding: 20px;
+  background-color: #1a1a1a; /* Same dark background as parent to make it seamless */
+  color: white; /* Text color for dark background */
 }
+
 .events-container {
   height: 82vh;
   overflow-y: auto;
+  background-color: black; /* Keeping the container's background consistent with the page */
+  color: white; /* Text color */
 }

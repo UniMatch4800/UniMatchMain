@@ -4,6 +4,8 @@
 
 body {
   overflow: hidden;
+  background-color: black; /* Set body background to black */
+  color: white; /* Set body text color to white */
 }
 
 ::-webkit-scrollbar {
@@ -22,14 +24,14 @@ body {
 }
 
 .App-header {
-  background-color: white;
+  background-color: black; /* Changed to black */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: white; /* Ensure text remains white */
 }
 
 .App-link {
@@ -49,19 +51,19 @@ body {
 #APIResponse {
   font-weight: bolder;
   font-size: larger;
+  color: white; /* Set to white */
 }
 
 header {
-  background-color: white;
-  color: #0557fa;
+  background-color: black; /* Changed to black */
+  color: white; /* Changed to white */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  border-bottom: 2px solid #0557fa;
+  border-bottom: 2px solid #faa805; /* Adjusted to a visible color against black */
 }
 
-/* Styles for the left section (logo and page options) */
 .header-left {
   display: flex;
   align-items: center;
@@ -69,9 +71,7 @@ header {
 
 .logo {
   max-width: 240px;
-  /* Set the maximum width of your logo */
   margin-right: 20px;
-  /* Adjust the margin as needed */
 }
 
 nav ul {
@@ -87,32 +87,33 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #0557fa;
+  color: white; /* Changed to white */
   font-size: larger;
 }
 
-/* Styles for the right section (account button) */
 .header-right {
   position: relative;
 }
 
 .account-button {
   width: 40px;
-  /* Adjust the width and height for the circular button */
   height: 40px;
-  background-color: #0557fa;
-  /* Button background color */
+  background-color: #61dafb; /* Adjusted to a visible color against black */
   border-radius: 50%;
-  /* Make it circular */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-/* Add styles for the user photo (optional) */
 .account-button img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 50%;
+}
+.account-button {
+  background-color: #faa805;
+}
+.logo {
+  filter: invert(1);
 }

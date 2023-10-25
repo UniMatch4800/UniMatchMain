@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 60px; /* Increased right padding */
-  background: linear-gradient(135deg, #e0e7ff, #f4f4f4);
+  padding: 40px 60px;
+  background: linear-gradient(135deg, #333, #1a1a1a); /* Dark gradient */
   border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Increased shadow intensity for depth */
   max-height: calc(100vh - 200px);
   width: 70%;
   height: 90vh;
@@ -21,71 +21,57 @@
   max-height: 100%;
   width: 55%;
   border-radius: 8px;
-  background-color: #ffffff;
-  padding: 20px 40px; /* Increased right padding to 40px */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #2a2a2a; /* Darker background */
+  padding: 20px 40px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Light shadow for contrast */
 }
 
 h2 {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 25px;
-  color: #333;
+  color: #fff; /* White text for contrast */
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px; /* Slightly reduce space between input groups for better grouping */
+  margin-bottom: 20px;
 }
 
-label {
+.events-label {
   font-size: 18px;
-  margin-bottom: 5px; /* Reduced margin for tighter grouping */
-  color: #555;
+  margin-bottom: 5px;
+  color: #ddd; /* Lighter gray for better readability against dark background */
 }
 
 .input-field {
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #d0d0d0; /* Lighter border for softer feel */
+  border: 1px solid #555; /* Darker border */
   border-radius: 5px;
+  color: #faa805; /* Lighter gray text */
+  background-color: #333; /* Dark background for the input */
   transition: border 0.2s, box-shadow 0.2s;
 }
 
 .input-field:focus {
-  border: 1px solid #007bff;
-  box-shadow: 0px 0px 15px rgba(0, 120, 255, 0.2); /* Enhanced shadow for clearer focus */
+  border: 1px solid #faa805;
+  box-shadow: 0px 0px 15px #faa805;
 }
 
-.submit-button {
-  background-color: #0557fa; /* Slightly changed color for vibrance */
-  border: none;
-  color: #fff;
-  border-radius: 5px;
-  padding: 14px 28px; /* Slightly increased padding for a fuller button */
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 30px;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
+.submit-button,
 .back-button {
-  padding: 10px 30px;
-  background-color: #0557fa; /* Consistent with the submit button */
-  color: white;
-  border: none;
+  background-color: #1a1a1a; /* Dark button */
+  border: 1px solid #555; /* Darker border for button */
+  color: #fff; /* White text */
   border-radius: 5px;
-  align-self: flex-start;
-  margin-top: 30px;
   transition: background-color 0.2s, transform 0.1s;
 }
 
 .submit-button:hover,
 .back-button:hover {
-  background-color: #0344c0; /* Darker shade on hover */
-  transform: translateY(
-    -2px
-  ); /* Elevate button a bit on hover for depth effect */
-  box-shadow: 0px 5px 15px rgba(5, 87, 250, 0.2); /* Add shadow for elevated effect */
+  background-color: #333; /* Slightly lighter shade on hover */
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2); /* Inverse shadow color for dark theme */
 }

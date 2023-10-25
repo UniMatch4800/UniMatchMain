@@ -1,68 +1,75 @@
 .swiping {
-    padding: 30px;
-    border-radius: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(207,207,207,1) 95%, rgba(157,157,157,1) 100%);
-    height: 460px;
+  padding: 30px;
+  border-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: rgb(0, 0, 0); /* Switched to black */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(48, 48, 48, 1) 95%,
+    rgba(98, 98, 98, 1) 100%
+  ); /* Dark gradient */
+  height: 460px;
 }
 
-.person-name{
-    text-transform: capitalize;
-    font-size: 1.9rem;
-    font-weight: 600;
-    font-family: "Monaco";
-    margin-top: -4rem;
-    margin-left: 2rem;
-    color: white;
-    text-shadow: 2px 2px black;
+.person-name {
+  text-transform: capitalize;
+  font-size: 1.9rem;
+  font-weight: 600;
+  font-family: "Monaco";
+  margin-top: -4rem;
+  margin-left: 2rem;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
 .profile-image {
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
 }
 
 .button-container {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .button-container button {
-    background: none;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: transform 0.2s;
-    border: none;
+  background: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: none;
+  color: #ddd; /* Added a general light color for button icons */
 }
 
 .button-container button:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+  color: white; /* Brighten the color slightly on hover */
 }
 
-.reverse{
-    color: yellow;
+.reverse {
+  color: yellow;
 }
 
 .dislike {
-    color:#FF0000;
+  color: #ff0000;
 }
 
-.superlike{
-    color: blue;
+.superlike {
+  color: blue;
 }
 
 .like {
-    color: rgb(39, 214, 39);
+  color: rgb(39, 214, 39);
 }
 
 .message {
-    color: purple;
+  color: purple;
 }
 
 .none-left {
-    color: white;
+  color: white;
 }

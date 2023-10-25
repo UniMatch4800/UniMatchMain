@@ -3,9 +3,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px 30px;
-  background-color: white;
+  background-color: #111; /* Dark background */
   width: 100%;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for contrast */
+  color: white; /* White text color */
 }
 
 .search-bar {
@@ -19,13 +20,23 @@
   padding: 10px 20px;
   font-size: 16px;
   width: 80%;
-  border: 2px solid #0557fa;
+  border: 2px solid #eee; /* Lighter border for dark background */
+  color: white; /* White input text */
+  background-color: #333; /* Darker input background */
   transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+  border-color: #555; /* Change color on focus */
 }
 
 .my-events-button,
 .create-event-button {
-  background: linear-gradient(to right, #0557fa, #0575fa);
+  background: linear-gradient(
+    to right,
+    #faa805,
+    #d47f00
+  ); /* Using #faa805 and a darker version */
   color: white;
   padding: 10px 25px;
   border-radius: 25px;
@@ -40,5 +51,13 @@
 
 .create-event-button:hover,
 .my-events-button:hover {
-  background: linear-gradient(to right, #0575fa, #0557fa);
+  background: linear-gradient(
+    to right,
+    #d47f00,
+    #faa805
+  ); /* Reversed gradient on hover */
+}
+
+.create-event-button {
+  margin-right: 20px;
 }

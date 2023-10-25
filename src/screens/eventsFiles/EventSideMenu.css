@@ -1,9 +1,10 @@
 .event-side-menu {
-  background-color: #f0f0f0;
+  background-color: black;
   padding: 20px;
   width: 15%;
   height: 100vh;
   min-width: 150px;
+  color: white;
 }
 
 .filter-category {
@@ -12,6 +13,7 @@
 
 .filter-category h3 {
   font-weight: bold;
+  color: #e0e0e0; /* Light gray for heading */
 }
 
 .filter-category ul {
@@ -21,12 +23,18 @@
 
 .filter-category li {
   margin: 5px 0;
+  color: #ccc; /* Slightly dimmer color for list items */
 }
+
 .event-side-menu button {
   padding: 10px 20px;
   border: none;
-  background-color: #007bff;
-  color: white !important; /* Using !important to ensure this style takes precedence */
+  background: linear-gradient(
+    to right,
+    #faa805,
+    #d47f00
+  ); /* Gradient using #faa805 and its darker version */
+  color: white !important; /* White text, with !important to ensure the style takes precedence */
   border-radius: 5px;
   cursor: pointer;
   display: flex;
@@ -36,9 +44,14 @@
 }
 
 .event-side-menu button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(
+    to right,
+    #d47f00,
+    #faa805
+  ); /* Reversed gradient on hover */
 }
 
 .event-side-menu button i {
   margin-right: 5px;
+  color: white; /* White color for the icon */
 }

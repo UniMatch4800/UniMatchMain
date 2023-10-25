@@ -5,7 +5,7 @@
   overflow-y: auto;
   min-width: 300px;
   padding: 20px 0;
-  background-color: #f6f6f6;
+  background-color: black; /* Dark background */
 }
 
 .event-card-container .event-card {
@@ -14,62 +14,67 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 5px;
-  padding: 20px;
-  background-color: white;
+  padding: 15px;
+  background-color: #2a2a2a; /* Darker card background for contrast */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-out;
+  color: white; /* White text color for contrast */
 }
 
 .event-card-container .event-card:hover {
-  border: 1px solid #0557fa;
-  box-shadow: 0 5px 15px rgba(5, 87, 250, 0.2);
-  background-color: #e8f0ff;
+  border: 1px solid #fff;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Inverse shadow color for dark theme */
+  background-color: #333; /* Darker on hover */
   transform: translateY(-5px);
 }
 
 .event-card-container .event-thumbnail {
-  flex-shrink: 0; /* Prevents the thumbnail container from shrinking */
+  flex-shrink: 0;
 }
 
 .event-card-container .event-thumbnail img {
-  width: 180px; /* Adjusted width for square */
-  height: 180px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   margin-right: 10px;
   border-radius: 5px;
 }
 
 .event-card-container .event-card-details {
-  flex: 1; /* Allows details to occupy remaining space */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between;  */
+  justify-content: center;
+  gap: 3px;
 }
 
 .event-card-container .event-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  /* margin-bottom: 10px; */
-  color: #333;
+  color: white; /* Text color for dark background */
+  margin: 0;
 }
 
 .event-card-container .event-date,
 .event-card-container .event-price,
 .event-card-container .event-location,
 .event-card-container .event-time {
-  margin-bottom: 0px;
   font-size: 16px;
-  color: #777;
+  color: #aaa; /* Lighter gray for better readability against dark background */
+  margin: 0;
 }
 
 .event-card-container .event-price::before {
   content: "💵 ";
+  color: white; /* Text color for dark background */
 }
 
 .event-card-container .event-location::before {
   content: "📍 ";
+  color: white; /* Text color for dark background */
 }
 
 .event-card-container .event-time::before {
   content: "⏰ ";
+  color: white; /* Text color for dark background */
 }

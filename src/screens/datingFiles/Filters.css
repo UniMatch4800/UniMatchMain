@@ -1,16 +1,16 @@
 .filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .select-box {
-    padding: 5px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: white;
-    border: 1px solid blue;
-    font-size: 18px;
-    color: black;
+  padding: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: black; /* Switched to black */
+  border: 1px solid white; /* Border changed to white for contrast */
+  font-size: 18px;
+  color: white; /* Text color switched to white for better visibility */
 }

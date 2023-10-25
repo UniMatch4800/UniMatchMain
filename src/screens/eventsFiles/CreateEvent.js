@@ -3,6 +3,8 @@ import "./CreateEvent.css";
 import { addEvent } from "../../firebaseFunctions";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+
 const CreateEvent = ({ onCancel }) => {
   const [formData, setFormData] = useState({
     title: "",
@@ -95,13 +97,24 @@ const CreateEvent = ({ onCancel }) => {
     }
   };
 
+  const handleBackClick = () => {
+    if (onCancel) {
+      onCancel();
+    } else {
+      navigate("/screens/events");
+    }
+  };
+
   return (
     <div className="create-event-container">
+      <button onClick={handleBackClick} className="back-button">
+        <FaRegArrowAltCircleLeft />
+      </button>
       <h2>Create New Event</h2>
       <div className="create-event-content">
         <form onSubmit={handleSubmit} className="event-form">
           <div className="input-group">
-            <label>Title:</label>
+            <label className="events-label">Title:</label>
             <input
               type="text"
               name="title"
@@ -112,7 +125,7 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Description:</label>
+            <label className="events-label">Description:</label>
             <textarea
               name="description"
               value={formData.description}
@@ -122,7 +135,7 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Date:</label>
+            <label className="events-label">Date:</label>
             <input
               type="date"
               name="date"
@@ -133,7 +146,7 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Time:</label>
+            <label className="events-label">Time:</label>
             <input
               type="time"
               name="time"
@@ -144,7 +157,7 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Price:</label>
+            <label className="events-label">Price:</label>
             <input
               type="number" // Change type to number
               name="price"
@@ -156,12 +169,12 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Location:</label>
+            <label className="events-label">Location:</label>
             <select
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className="input-field"
+              className="input-field dropdown"
               required
             >
               <option value="">Select a location</option>
@@ -170,12 +183,12 @@ const CreateEvent = ({ onCancel }) => {
             </select>
           </div>
           <div className="input-group">
-            <label>Type:</label>
+            <label className="events-label">Type:</label>
             <select
               name="type"
               value={formData.type} // Ensure you add 'type' to your formData state
               onChange={handleChange}
-              className="input-field"
+              className="input-field dropdown"
               required
             >
               <option value="">Select an event type</option>
@@ -186,7 +199,7 @@ const CreateEvent = ({ onCancel }) => {
             </select>
           </div>
           <div className="input-group">
-            <label>Thumbnail Image:</label>
+            <label className="events-label">Thumbnail Image:</label>
             <input
               type="file"
               name="thumbnail"
@@ -196,7 +209,7 @@ const CreateEvent = ({ onCancel }) => {
             />
           </div>
           <div className="input-group">
-            <label>Images:</label>
+            <label className="events-label">Images:</label>
             <input
               type="file"
               name="images"
