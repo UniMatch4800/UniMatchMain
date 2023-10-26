@@ -29,9 +29,7 @@ function Header() {
       {/* Right Section */}
       <div className="header-right">
         {/* Circular Account Button */}
-        <Link to="/screens/account" className="account-button">
-          {/* Place user photo here (e.g., <img src="user-photo.jpg" alt="User" />) */}
-        </Link>
+        <Link to="/screens/account" className="account-button">My Account</Link>
       </div>
     </header>
   );

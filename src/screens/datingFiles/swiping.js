@@ -114,9 +114,28 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     }
   }, [currentIndex, profiles, setCurrentProfileUid]);
 
+  const createMatch = async (currentUserId, likedUserId) => {
+    const userActionsRef = doc(db, 'userActions', currentUserId);
+  
+    try {
+      const docSnapshot = await getDoc(userActionsRef);
+      const userActionsData = docSnapshot.exists() ? docSnapshot.data() : { likes: [], dislikes: [], superlikes: [] };
+  
+      if (userActionsData.likes.includes(likedUserId)) {
+        userActionsData.matches = userActionsData.matches || [];
+        userActionsData.matches.push(likedUserId);
+  
+        await setDoc(userActionsRef, userActionsData);
+      }
+    } catch (error) {
+      console.error('Error creating match:', error);
+    }
+  };
+
   const handleSwipe = (direction) => {
     if (direction === 'right') {
       const likedProfileUid = profiles[currentIndex].uid;
+
       // Assuming `auth.currentUser` is available and contains the user's information
       const userActionsRef = doc(db, 'userActions', auth.currentUser.uid);
 
@@ -128,6 +147,7 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
 
           // Update the document with the new 'likes' array
           setDoc(userActionsRef, userActionsData);
+          createMatch(auth.currentUser.uid, likedProfileUid);
         } else {
           // Document doesn't exist, create a new document
           setDoc(userActionsRef, { likes: [likedProfileUid], dislikes: [], superlikes: [] });
@@ -205,7 +225,6 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     }
   };  
   
-
   const handleInstantMessage = () => {
     console.log("IM has been clicked");
   };

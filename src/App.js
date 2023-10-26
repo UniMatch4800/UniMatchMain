@@ -7,6 +7,7 @@ import CreatePost from "./screens/forumFiles/CreatePost";
 import Forum from "./screens/forumFiles/forum";
 import Header from "./components/header";
 import AdditionalInfo from "./components/additional-info";
+import ChatsMatches from "./screens/datingFiles/chatsMatches/ChatsMatches";
 
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -43,6 +44,7 @@ function ScreensRoutes() {
         <Route path="forum" element={<Forum />} />
         <Route path="events" element={<Events />} />
         <Route path="additional-info" element={<AdditionalInfo />} />
+        <Route path="dating/chats-matches" element={<ChatsMatches />} />
       </Routes>
     </div>
   );

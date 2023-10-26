@@ -8,6 +8,8 @@ import ProfileInfo from './ProfileInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faHeart, faCrown } from '@fortawesome/free-solid-svg-icons';
 import Filters from "./Filters";
+import { Link } from 'react-router-dom';
+
 
 
 const Dating = () => {
@@ -75,17 +77,20 @@ const Dating = () => {
   return (
     <div className="full-box">
       <div className="top-buttons">
-        <button className="button chat-icon">
+        <Link to="/screens/dating/chats-matches" className="button chat-icon">
+          <FontAwesomeIcon icon={faComment} />        
+        </Link>
+        {/* <button className="button chat-icon">
           <FontAwesomeIcon icon={faComment} />
-        </button>
+        </button> */}
         <button className="button heart-icon">
           <FontAwesomeIcon icon={faHeart} />
         </button>
-
         <button className="button crown-icon">
           <FontAwesomeIcon icon={faCrown} />
         </button>
       </div>
+
       <div className="filters">
         <Filters applyFilters={applyFilters} />
       </div>

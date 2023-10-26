@@ -96,21 +96,15 @@ nav ul li a {
 }
 
 .account-button {
-  width: 40px;
-  height: 40px;
   background-color: #61dafb; /* Adjusted to a visible color against black */
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.account-button img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 50%;
-}
+
 .account-button {
   background-color: #faa805;
 }

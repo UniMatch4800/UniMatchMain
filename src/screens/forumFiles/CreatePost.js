@@ -4,7 +4,7 @@ import { addForumPost } from "../../firebaseFunctions";
 import { useNavigate } from "react-router-dom";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { auth } from "../../firebase";
-import Select, { css } from "react-select";
+import Select from "react-select";
 
 const CreatePost = ({ onCancel }) => {
   const [formData, setFormData] = useState({

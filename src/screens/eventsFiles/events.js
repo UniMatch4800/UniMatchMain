@@ -61,35 +61,6 @@ function Events() {
         );
       });
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const querySnapshot = await getDocs(collection(db, "events"));
-  //       const eventsData = [];
-  //       querySnapshot.forEach((doc) => {
-  //         const data = doc.data();
-  //         eventsData.push({
-  //           id: doc.id,
-  //           title: data.title,
-  //           date: data.date,
-  //           price: data.price,
-  //           location: data.location,
-  //           thumbnail: data.thumbnail,
-  //           description: data.description,
-  //           images: data.images,
-  //           time: data.time,
-  //           type: data.type,
-  //         });
-  //       });
-  //       eventsData.sort((a, b) => new Date(a.date) - new Date(b.date));
-  //       setEvents(eventsData);
-  //     } catch (error) {
-  //       console.error("Error fetching events: ", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -1,0 +1,39 @@
+.matches-component {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+}
+
+.matches-component h2 {
+    color: #ffc57b;
+    /* Gold accent for headings */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.match-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.match-card {
+    background: #222;
+    /* Dark gray background for match cards */
+    border: 1px solid #444;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.match-card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.match-card h3 {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 18px;
+}
+

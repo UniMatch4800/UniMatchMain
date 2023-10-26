@@ -1,0 +1,13 @@
+.chats-matches-container {
+    display: flex;
+    gap: 2.5%;
+    background-color: #111;
+}
+
+.matches-column {
+    flex: 0 0 25%; /* Set flex-basis to 25% */
+}
+
+.messaging-column {
+    flex: 0 0 40%;
+}
