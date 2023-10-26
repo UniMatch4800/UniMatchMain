@@ -4,7 +4,7 @@ import { addForumPost } from "../../firebaseFunctions";
 import { useNavigate } from "react-router-dom";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { auth } from "../../firebase";
-import Select from "react-select";
+import Select, { css } from "react-select";
 
 const CreatePost = ({ onCancel }) => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,26 @@ const CreatePost = ({ onCancel }) => {
     description: "",
     tags: [],
   });
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: "#222",
+      color: "white",
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      backgroundColor: "#222", // Set background color for the dropdown menu
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: "white", // Set text color for dropdown options to white
+      backgroundColor: state.isSelected ? "#faa805" : "#222", // Set background color for selected and unselected options
+      "&:hover": {
+        backgroundColor: "#faa805", // Change background color on hover
+      },
+    }),
+  };
 
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
@@ -186,6 +206,7 @@ const CreatePost = ({ onCancel }) => {
               isMulti
               className="input-field"
               menuPosition="fixed"
+              styles={customStyles}
             />
           </div>
         </div>
