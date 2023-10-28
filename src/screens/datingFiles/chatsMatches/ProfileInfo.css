@@ -1,0 +1,38 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 80px);
+    overflow-y: scroll;
+    background-color: black;
+    color: #fff;
+    align-items: center;
+    padding: 20px;
+}
+
+.picture-box {
+    width: 388px;
+    height: 388px;
+    overflow: hidden;
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.basic-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid #faa805;
+}
+
+.basic-info p {
+    font-size: 1.05rem;
+}
+
+.profile-info {
+    width: 100%;
+}

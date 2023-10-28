@@ -3,7 +3,7 @@ import './MatchesMessagesContainer.css';
 import MatchesComponent from './MatchesComponent';
 import MessagesComponent from './MessagesComponent';
 
-const MatchesMessagesContainer = () => {
+const MatchesMessagesContainer = ({ onSelectUser }) => {
   const [selectedTab, setSelectedTab] = useState('Matches');
   const [selectedUser, setSelectedUser] = useState(0);
 
@@ -11,9 +11,8 @@ const MatchesMessagesContainer = () => {
     setSelectedTab(tab);
   };
 
-  const handleUserSelection = (userId) => {
-    setSelectedUser(userId);
-    console.log(userId);
+  const handleUserSelection = (clickedProfile) => {
+    onSelectUser(clickedProfile);
   };
 
   return (
