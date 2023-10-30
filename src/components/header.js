@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UniMatchLogo from "../images/UniMatchLogo.png";
+import ULyfeLogo from "../images/ULyfelogo-PhotoRoom.png";
 import "../App.css";
 
 function Header() {
@@ -9,7 +9,7 @@ function Header() {
       {/* Left Section */}
       <div className="header-left">
         {/* Add your logo here */}
-        <img src={UniMatchLogo} alt="UniMatch Logo" className="logo" />
+        <img src={ULyfeLogo} alt="ULyfe Logo" className="logo" />
         {/* Page Options */}
         <nav>
           <ul>

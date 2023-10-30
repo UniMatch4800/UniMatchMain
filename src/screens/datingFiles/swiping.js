@@ -9,8 +9,8 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
   const [profiles, setProfiles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0); 
-  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,22 +23,22 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
         const dislikes = userActionsData.dislikes || [];
         const superlikes = userActionsData.superlikes || [];
         const userInteractions = [...likes, ...dislikes, ...superlikes];
-  
+
         // Query all dating profiles excluding user interactions and current user's own profile
         const datingProfilesQuery = query(
           collection(db, 'datingProfiles'),
           where('uid', 'not-in', [...userInteractions, auth.currentUser.uid])
         );
         const datingProfilesSnapshot = await getDocs(datingProfilesQuery);
-  
+
         if (datingProfilesSnapshot.empty) {
           // Handle the case when there are no more profiles
           console.log('All out of profiles from your school. Check back soon.');
           return;
         }
-  
+
         const datingProfilesData = datingProfilesSnapshot.docs.map((doc) => doc.data());
-  
+
         // Fetch user data for the remaining profiles
         const userIds = datingProfilesData.map((profile) => profile.uid);
         const usersQuery = query(collection(db, 'users'), where('uid', 'in', userIds));
@@ -47,7 +47,7 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
           acc[doc.data().uid] = doc.data();
           return acc;
         }, {});
-  
+
         // Combine profiles and user data
         const combinedProfiles = datingProfilesData
           .filter((profile) => profile.uid !== auth.currentUser.uid)
@@ -55,39 +55,39 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
             ...profile,
             ...usersData[profile.uid],
           }));
-  
-          const filteredProfiles = combinedProfiles.filter((profile) => {
-            if (
-              profile &&
-              (
-                (!filters.age) || // No age filter, return all profiles
-                (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
-                (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
-              ) &&
-              (!filters.race || filters.race === "Any" || profile.race === filters.race) &&
-              (!filters.gender || filters.gender === "Any" || profile.gender === filters.gender)
-            ) {
-              return true;
-            }
-            return false;
-          });
-          
-          function ageFilter(profile, ageRange) {
-            const [minAgeStr, maxAgeStr] = ageRange.split('-');
-            if (maxAgeStr === "+") {
-              const minAge = parseInt(minAgeStr);
-              return profile.age >= minAge;
-            } else {
-              const minAge = parseInt(minAgeStr);
-              const maxAge = parseInt(maxAgeStr);
-              return profile.age >= minAge && profile.age <= maxAge;
-            }
+
+        const filteredProfiles = combinedProfiles.filter((profile) => {
+          if (
+            profile &&
+            (
+              (!filters.age) || // No age filter, return all profiles
+              (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
+              (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
+            ) &&
+            (!filters.race || filters.race === "Any" || profile.race === filters.race) &&
+            (!filters.gender || filters.gender === "Any" || profile.gender === filters.gender)
+          ) {
+            return true;
           }
-          
-          
+          return false;
+        });
+
+        function ageFilter(profile, ageRange) {
+          const [minAgeStr, maxAgeStr] = ageRange.split('-');
+          if (maxAgeStr === "+") {
+            const minAge = parseInt(minAgeStr);
+            return profile.age >= minAge;
+          } else {
+            const minAge = parseInt(minAgeStr);
+            const maxAge = parseInt(maxAgeStr);
+            return profile.age >= minAge && profile.age <= maxAge;
+          }
+        }
+
+
 
         setProfiles(filteredProfiles);
-  
+
         if (filteredProfiles.length > 0) {
           setCurrentProfileUid(filteredProfiles[0].uid);
           setProfilesAvailable(true); // Update profilesAvailable state here
@@ -98,7 +98,7 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
         console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
   }, [filters]);
 
@@ -116,15 +116,15 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
 
   const createMatch = async (currentUserId, likedUserId) => {
     const userActionsRef = doc(db, 'userActions', currentUserId);
-  
+
     try {
       const docSnapshot = await getDoc(userActionsRef);
       const userActionsData = docSnapshot.exists() ? docSnapshot.data() : { likes: [], dislikes: [], superlikes: [] };
-  
+
       if (userActionsData.likes.includes(likedUserId)) {
         userActionsData.matches = userActionsData.matches || [];
         userActionsData.matches.push(likedUserId);
-  
+
         await setDoc(userActionsRef, userActionsData);
       }
     } catch (error) {
@@ -195,17 +195,17 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     if (prevIndex !== null) {
       const likedProfileUid = profiles[prevIndex].uid; // Get the UID of the profile to be removed
       const userActionsRef = doc(db, 'userActions', auth.currentUser.uid);
-  
+
       getDoc(userActionsRef)
         .then((docSnapshot) => {
           if (docSnapshot.exists()) {
             // Document exists, update the corresponding action array
             const userActionsData = docSnapshot.data();
-  
+
             userActionsData.likes = userActionsData.likes.filter(uid => uid !== likedProfileUid);
             userActionsData.dislikes = userActionsData.dislikes.filter(uid => uid !== likedProfileUid);
             userActionsData.superlikes = userActionsData.superlikes.filter(uid => uid !== likedProfileUid);
-  
+
             // Update the document with the modified action arrays
             setDoc(userActionsRef, userActionsData);
           } else {
@@ -216,15 +216,15 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
         .catch((error) => {
           console.error('Error handling reverse:', error);
         });
-  
+
       // Set the previous index and current index
       setCurrentIndex(prevIndex);
       setPrevIndex(null);
       setCurrentProfileUid(profiles[prevIndex].uid);
       setCurrentImageIndex(0);
     }
-  };  
-  
+  };
+
   const handleInstantMessage = () => {
     console.log("IM has been clicked");
   };

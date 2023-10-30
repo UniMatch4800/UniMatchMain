@@ -22,10 +22,14 @@
 }
 
 .event-card-container .event-card:hover {
-  border: 1px solid #fff;
+  border: 1px solid #faa805;
   box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* Inverse shadow color for dark theme */
   background-color: #333; /* Darker on hover */
-  transform: translateY(-5px);
+  /* transform: translateY(-5px); */
+}
+
+.event-card-container.active {
+  border: 1px solid #faa805;
 }
 
 .event-card-container .event-thumbnail {

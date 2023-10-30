@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './MatchesMessagesContainer.css';
 import MatchesComponent from './MatchesComponent';
-import MessagesComponent from './MessagesComponent';
 
 const MatchesMessagesContainer = ({ onSelectUser }) => {
-  const [selectedTab, setSelectedTab] = useState('Matches');
+  const [selectedTab, setSelectedTab] = useState('Lynks');
   const [selectedUser, setSelectedUser] = useState(0);
 
   const handleTabChange = (tab) => {
@@ -19,24 +18,21 @@ const MatchesMessagesContainer = ({ onSelectUser }) => {
     <div className="matches-messages-container">
       <div className="tabs">
         <div
-          className={`tab ${selectedTab === 'Matches' ? 'active' : ''}`}
-          onClick={() => handleTabChange('Matches')}
+          className={`tab ${selectedTab === 'Lynks' ? 'active' : ''}`}
+          onClick={() => handleTabChange('Lynks')}
         >
-          Matches
+          Lynks
         </div>
+
         <div
-          className={`tab ${selectedTab === 'Messages' ? 'active' : ''}`}
-          onClick={() => handleTabChange('Messages')}
+          className={`tab ${selectedTab === 'Likes' ? 'active' : ''}`}
+          onClick={() => handleTabChange('Likes')}
         >
-          Messages
+          Likes
         </div>
       </div>
       <div className="content">
-        {/* Render the content based on the selected tab */
-        selectedTab === 'Matches' && (
-          <MatchesComponent onSelectUser={handleUserSelection} />
-        )}
-        {selectedTab === 'Messages' && <MessagesComponent selectedUser={selectedUser} />}
+        {selectedTab === 'Lynks' && (<MatchesComponent onSelectUser={handleUserSelection} />)}
       </div>
     </div>
   );

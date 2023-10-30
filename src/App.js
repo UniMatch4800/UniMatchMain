@@ -3,7 +3,6 @@ import Account from "./screens/accountFiles/account";
 import Dating from "./screens/datingFiles/dating";
 import Events from "./screens/eventsFiles/events";
 import Auth from "./components/auth";
-import CreatePost from "./screens/forumFiles/CreatePost";
 import Forum from "./screens/forumFiles/forum";
 import Header from "./components/header";
 import AdditionalInfo from "./components/additional-info";
@@ -22,7 +21,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="screens/*" element={<ScreensRoutes />} />
-        <Route path="createpost" element={<CreatePost />} />
       </Routes>
     </Router>
   );

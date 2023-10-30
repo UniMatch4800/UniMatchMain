@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { db, auth } from '../../../firebase';
 import './Messages.css';
@@ -7,6 +7,8 @@ const Messages = ({ selectedUser }) => {
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState('');
   const [currentUserUid, setCurrentUserUid] = useState(null);
+  const chatMessagesRef = useRef(null);
+  const lastMessageRef = useRef(null);
 
   // Extract the first name from the selectedUser's name
   const firstName = selectedUser ? selectedUser.name.split(' ')[0] : '';
@@ -30,30 +32,38 @@ const Messages = ({ selectedUser }) => {
   }, [selectedUser]);
 
   const startListeningForMessages = (userId) => {
-    if (!selectedUser) {
+    if (!selectedUser || !chatMessagesRef.current) {
       return;
     }
-
+  
     const chatRoomId = generateChatRoomId(userId, selectedUser.uid);
-
     const chatRoomRef = collection(db, 'chatRooms', chatRoomId, 'messages');
-
+  
     onSnapshot(chatRoomRef, (snapshot) => {
       const messagesData = [];
       snapshot.forEach((doc) => {
         const message = doc.data();
         messagesData.push(message);
       });
-
-    // Sort messages by timestamp in descending order (most recent first)
-    messagesData.sort((a, b) => {
-      const timestampA = a.timestamp.toDate();
-      const timestampB = b.timestamp.toDate();
-      return timestampA - timestampB;
-    });
+  
+      // Sort messages by timestamp in descending order (most recent first)
+      messagesData.sort((a, b) => {
+        const timestampA = a.timestamp.toDate();
+        const timestampB = b.timestamp.toDate();
+        return timestampA - timestampB;
+      });
+  
       setMessages(messagesData);
     });
   };
+  
+  // Add this useEffect to scroll to the bottom when new messages are loaded
+  useEffect(() => {
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+    }
+  }, [messages]);
+  
 
   const generateChatRoomId = (user1Id, user2Id) => {
     if (user1Id < user2Id) {
@@ -93,11 +103,12 @@ const Messages = ({ selectedUser }) => {
       ) : (
         <h2>Messages</h2>
       )}
-      <div className="chat-messages">
+      <div className="chat-messages" ref={chatMessagesRef}>
         {messages.map((message, index) => (
           <div
             key={index}
             className={`message ${message.sender === currentUserUid ? 'sent' : 'received'}`}
+            ref={index === messages.length - 1 ? lastMessageRef : null} // Add a ref to the last message
           >
             {message.text}
           </div>

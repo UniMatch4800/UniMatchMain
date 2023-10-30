@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProfileInfo.css";
 
 const ProfileInfo = ({ selectedUser, currentImageIndex, setCurrentImageIndex }) => {
@@ -33,7 +33,7 @@ const ProfileInfo = ({ selectedUser, currentImageIndex, setCurrentImageIndex }) 
               ? selectedUser.profileImages[currentImageIndex]
               : ''
           }
-          alt="Profile Picture"
+          alt="Profile"
           className="profile-pic"
           onClick={handleImageClick}
         />
