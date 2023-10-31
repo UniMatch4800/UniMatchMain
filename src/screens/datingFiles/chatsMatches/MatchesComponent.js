@@ -40,7 +40,7 @@ const MatchesComponent = ({ onSelectUser }) => {
 
                     // Fetch profile data for matched users
                     fetchMatchedProfiles(matches);
-                    if (matches.length > 0) {
+                    if (matches && matches.length > 0) {
                         const firstMatch = matches[0];
                         const selectedUserData = matchedProfiles.find((profile) => profile.uid === firstMatch);
                         onSelectUser(selectedUserData);
@@ -58,35 +58,39 @@ const MatchesComponent = ({ onSelectUser }) => {
 
     const fetchMatchedProfiles = async (matches) => {
         const matchedProfilesData = [];
-
-        for (const uid of matches) {
-            const userRef = doc(db, 'users', uid);
-            const userDoc = await getDoc(userRef);
-
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-                matchedProfilesData.push(userData);
-
-                // Fetch dating profile data and merge it into userData
-                const datingProfileQuery = query(collection(db, 'datingProfiles'), where('uid', '==', uid));
-                const datingProfileQuerySnapshot = await getDocs(datingProfileQuery);
-
-                datingProfileQuerySnapshot.forEach((doc) => {
-                    const datingProfileData = doc.data();
-                    // Merge dating profile data into userData
-                    Object.assign(userData, datingProfileData);
-                });
+    
+        if (Array.isArray(matches)) {
+            for (const uid of matches) {
+                const userRef = doc(db, 'users', uid);
+                const userDoc = await getDoc(userRef);
+    
+                if (userDoc.exists()) {
+                    const userData = userDoc.data();
+                    matchedProfilesData.push(userData);
+    
+                    // Fetch dating profile data and merge it into userData
+                    const datingProfileQuery = query(collection(db, 'datingProfiles'), where('uid', '==', uid));
+                    const datingProfileQuerySnapshot = await getDocs(datingProfileQuery);
+    
+                    datingProfileQuerySnapshot.forEach((doc) => {
+                        const datingProfileData = doc.data();
+                        // Merge dating profile data into userData
+                        Object.assign(userData, datingProfileData);
+                    });
+                }
             }
         }
+    
         // Update the state with matched profiles
         setMatchedProfiles(matchedProfilesData);
-
-        if (matches.length > 0) {
-            const firstMatch = matches[0];
-            const selectedUserData = matchedProfilesData.find((profile) => profile.uid === firstMatch);
+    
+        if (matchedProfilesData.length > 0) {
+            const firstMatch = matchedProfilesData[0];
+            const selectedUserData = matchedProfilesData.find((profile) => profile.uid === firstMatch.uid);
             onSelectUser(selectedUserData);
         }
     };
+    
 
     const handleProfileClick = (clickedProfile) => {
         onSelectUser(clickedProfile);
@@ -94,13 +98,18 @@ const MatchesComponent = ({ onSelectUser }) => {
 
     return (
         <div className="matches-component">
-            {matchedProfiles.map((profile, index) => (
+        {matchedProfiles.length === 0 ? (
+            <h2 className='no-lynks'>No Lynks yet. Start liking profiles to make Lynks!</h2>
+        ) : (
+            matchedProfiles.map((profile, index) => (
                 <MatchCard
                     key={index}
                     profile={profile}
                     onProfileClick={handleProfileClick}
-                />))}
-        </div>
+                />
+            ))
+        )}
+    </div>
     );
 };
 

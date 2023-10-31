@@ -114,24 +114,62 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     }
   }, [currentIndex, profiles, setCurrentProfileUid]);
 
+  // const createMatch = async (currentUserId, likedUserId) => {
+  //   const userActionsRef = doc(db, 'userActions', currentUserId);
+
+  //   try {
+  //     const docSnapshot = await getDoc(userActionsRef);
+  //     const userActionsData = docSnapshot.exists() ? docSnapshot.data() : { likes: [], dislikes: [], superlikes: [] };
+
+  //     if (userActionsData.likes.includes(likedUserId)) {
+  //       userActionsData.matches = userActionsData.matches || [];
+  //       userActionsData.matches.push(likedUserId);
+
+  //       await setDoc(userActionsRef, userActionsData);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error creating match:', error);
+  //   }
+  // };
+
   const createMatch = async (currentUserId, likedUserId) => {
-    const userActionsRef = doc(db, 'userActions', currentUserId);
-
+    const currentUserIdRef = doc(db, 'userActions', currentUserId);
+    const likedUserIdRef = doc(db, 'userActions', likedUserId);
+  
     try {
-      const docSnapshot = await getDoc(userActionsRef);
-      const userActionsData = docSnapshot.exists() ? docSnapshot.data() : { likes: [], dislikes: [], superlikes: [] };
-
-      if (userActionsData.likes.includes(likedUserId)) {
-        userActionsData.matches = userActionsData.matches || [];
-        userActionsData.matches.push(likedUserId);
-
-        await setDoc(userActionsRef, userActionsData);
+      const currentDocSnapshot = await getDoc(currentUserIdRef);
+      const likedDocSnapshot = await getDoc(likedUserIdRef);
+  
+      const currentData = currentDocSnapshot.exists ? currentDocSnapshot.data() : null;
+      const likedData = likedDocSnapshot.exists ? likedDocSnapshot.data() : null;
+  
+      if (currentData && likedData) {
+        if (currentData.likes.includes(likedUserId) && likedData.likes.includes(currentUserId)) {
+          currentData.matches = currentData.matches || [];
+          likedData.matches = likedData.matches || [];
+  
+          // Add the liked user to the current user's matches
+          if (!currentData.matches.includes(likedUserId)) {
+            currentData.matches.push(likedUserId);
+          }
+  
+          // Add the current user to the liked user's matches
+          if (!likedData.matches.includes(currentUserId)) {
+            likedData.matches.push(currentUserId);
+          }
+  
+          // Update the current user's document
+          await setDoc(currentUserIdRef, currentData);
+  
+          // Update the liked user's document
+          await setDoc(likedUserIdRef, likedData);
+        }
       }
     } catch (error) {
       console.error('Error creating match:', error);
     }
   };
-
+  
   const handleSwipe = (direction) => {
     if (direction === 'right') {
       const likedProfileUid = profiles[currentIndex].uid;

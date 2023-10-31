@@ -42,12 +42,11 @@
   cursor: pointer;
   transition: transform 0.2s;
   border: none;
-  color: #ddd; /* Added a general light color for button icons */
 }
 
 .button-container button:hover {
   transform: scale(1.1);
-  color: white; /* Brighten the color slightly on hover */
+  filter: brightness(0.8);
 }
 
 .reverse {

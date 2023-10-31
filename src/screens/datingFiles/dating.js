@@ -80,15 +80,13 @@ const Dating = () => {
         <Link to="/screens/dating/chats-matches" className="button chat-icon">
           <FontAwesomeIcon icon={faComment} />        
         </Link>
-        {/* <button className="button chat-icon">
-          <FontAwesomeIcon icon={faComment} />
-        </button> */}
-        <button className="button heart-icon">
+        <Link to="/screens/dating/chats-matches" className="button heart-icon">
           <FontAwesomeIcon icon={faHeart} />
-        </button>
-        <button className="button crown-icon">
+        </Link>
+
+        <Link className="button crown-icon">
           <FontAwesomeIcon icon={faCrown} />
-        </button>
+        </Link>
       </div>
 
       <div className="filters">

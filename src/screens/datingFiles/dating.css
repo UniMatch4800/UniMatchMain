@@ -14,11 +14,13 @@
 .button {
   background: none;
   border: none;
-  color: white; /* Kept color white as background is dark */
   font-size: 40px;
   margin: 0 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-radius: 5px;
+
+  padding: 0 6px;
 }
 
 .button:hover {
