@@ -15,7 +15,7 @@ import {
   faCaretLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-function SideMenu({ setSelectedTag, selectedTag, closePosts  }) {
+function SideMenu({ setSelectedTag, selectedTag, closePosts, closeSideMenu, onMyPostsClick }) {
   const [categories] = useState([
     {
       name: "General",
@@ -113,8 +113,10 @@ function SideMenu({ setSelectedTag, selectedTag, closePosts  }) {
 
   const handleTagClick = (tag) => {
     setSelectedTag(tag);
-    closePosts()
+    closePosts();
+    closeSideMenu();
   };
+
   return (
     <div className="side-menu-box">
       <div className="home" onClick={() => handleTagClick(null)}>
@@ -160,6 +162,7 @@ function SideMenu({ setSelectedTag, selectedTag, closePosts  }) {
           )}
         </div>
       ))}
+      <button className="mypost-btn" onClick={onMyPostsClick}>My Posts</button>
     </div>
   );
 }

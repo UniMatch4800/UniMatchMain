@@ -12,7 +12,7 @@ function SecondaryHeader({ onCreateEventClick, onMyEventsClick }) {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
       <div className="search-bar">
-        <input type="text" placeholder="Search Forums"></input>
+        <input type="text" placeholder="Search Events"></input>
       </div>
       <Link to="#" className="my-events-button" onClick={onMyEventsClick}>
         My Events

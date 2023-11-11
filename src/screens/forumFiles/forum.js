@@ -13,7 +13,12 @@ function Forum() {
   const [showCreatePost, setShowCreatePost] = useState(false);
   const [showMyPosts, setShowMyPosts] = useState(false);
   const [selectedTag, setSelectedTag] = useState(null);
-  const [userId, setUserId] = useState(null); // State to store the user's ID
+  const [userId, setUserId] = useState(null);
+  const [isSideMenuVisible, setIsSideMenuVisible] = useState(false);
+
+  const handleToggleSideMenu = (isVisible) => {
+    setIsSideMenuVisible(isVisible);
+  };
 
   useEffect(() => {
     // Set up Firebase Authentication listener to get user data
@@ -22,17 +27,14 @@ function Forum() {
         setUserId(user.uid); // Store the user's ID
       }
     });
-    return () => unsubscribe(); // Unsubscribe from the listener when component unmounts
+    return () => unsubscribe(); // Unsubscribe from the listener when the component unmounts
   }, []);
 
   const handleCreatePostClick = () => {
-    if (showCreatePost) {
-      setShowCreatePost(false);
-      setShowMyPosts(false);
-    } else {
-      setShowCreatePost(true);
-      setShowMyPosts(false);
-    }
+    setShowCreatePost(!showCreatePost);
+    setShowMyPosts(false);
+    closeSideMenu();
+
   };
 
   const closePosts = () => {
@@ -41,39 +43,44 @@ function Forum() {
   };
 
   const handleMyPostsClick = () => {
-    if (showMyPosts) {
-      setShowCreatePost(false);
-      setShowMyPosts(false);
-    } else {
-      setShowCreatePost(false);
-      setShowMyPosts(true);
-    }
+    setShowCreatePost(false);
+    setShowMyPosts(!showMyPosts);
+    closeSideMenu();
+  };
 
+  const closeSideMenu = () => {
+    setIsSideMenuVisible(false);
   };
 
   return (
-    <div className="forum">
+    <div className={`forum ${isSideMenuVisible ? 'side-menu-visible' : ''}`}>
       <SecondaryHeader
         onCreatePostClick={handleCreatePostClick}
-        onMyPostsClick={handleMyPostsClick}
+        onToggleSideMenu={handleToggleSideMenu}
+        isSideMenuVisible={isSideMenuVisible}
       />
-
       <div className="forum-main-content">
         <div className="side-menu">
-          <SideMenu setSelectedTag={setSelectedTag} selectedTag={selectedTag} closePosts={closePosts} />
-        </div>
+          <SideMenu
+            setSelectedTag={setSelectedTag}
+            selectedTag={selectedTag}
+            closePosts={closePosts}
+            closeSideMenu={closeSideMenu}
+            onMyPostsClick={handleMyPostsClick}
+          />        
+          </div>
         <div className="forum-content">
           {showCreatePost ? (
             <CreatePost onCancel={() => setShowCreatePost(false)} />
           ) : showMyPosts ? (
-            <MyPosts userId={userId} /> // Pass the user's ID to MyPosts
+            <MyPosts userId={userId} />
           ) : (
             <ForumFeed selectedTag={selectedTag} />
           )}
         </div>
         <div className="right-side-section">
           <RightSideSection />
-        </div> 
+        </div>
       </div>
     </div>
   );

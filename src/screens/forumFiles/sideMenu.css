@@ -2,19 +2,23 @@
   padding-bottom: 60px;
   height: calc(100vh + 145px);
   padding-left: 60px;
-  background-color: black; /* Set to black */
-  color: white; /* Set text color to white */
+  background-color: black;
+  /* Set to black */
+  color: white;
+  /* Set text color to white */
   outline: none;
   box-shadow: none;
   background-image: none;
-  overflow: hidden; /* This will hide any overflowing child elements */
+  overflow: hidden;
+  /* This will hide any overflowing child elements */
 }
 
 .category-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white; /* Changed to white */
+  color: white;
+  /* Changed to white */
   cursor: pointer;
   text-decoration: none;
   font-weight: 600;
@@ -23,7 +27,8 @@
 }
 
 .home {
-  color: white; /* Changed to white */
+  color: white;
+  /* Changed to white */
   cursor: pointer;
   font-weight: bold;
   font-size: 1.5rem;
@@ -31,11 +36,13 @@
 }
 
 .category-content:hover {
-  color: lightgray; /* Adjusted for visibility on black */
+  color: lightgray;
+  /* Adjusted for visibility on black */
 }
 
 .category.active .category-content {
-  color: #faa805; /* Adjusted for visibility on black */
+  color: #faa805;
+  /* Adjusted for visibility on black */
 }
 
 /* Add this new style for the arrow icon */
@@ -43,7 +50,8 @@
   transition: transform 0.2s;
   position: absolute;
   right: 10px;
-  color: white; /* Changed to white */
+  color: white;
+  /* Changed to white */
 }
 
 /* Rotate the arrow icon when the category is active */
@@ -57,7 +65,8 @@
   padding: 0;
   margin: 0 0 0 10px;
   display: none;
-  color: white; /* Set text color to white */
+  color: white;
+  /* Set text color to white */
 }
 
 /* Display subcategories when the category is active */
@@ -70,13 +79,15 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: 400;
-  color: white; /* Changed to white */
+  color: white;
+  /* Changed to white */
   margin-top: 5px;
 }
 
 .sub-tag:hover,
 .sub-tag.active {
-  color: #faa805; /* Adjusted for visibility on black */
+  color: #faa805;
+  /* Adjusted for visibility on black */
 }
 
 .tags-container {
@@ -89,13 +100,16 @@
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
-  color: #faa805; /* Set text color to white */
+  color: #faa805;
+  /* Set text color to white */
 }
 
 .category-title {
   text-align: left;
-  color: white; /* Set text color to white */
+  color: white;
+  /* Set text color to white */
 }
+
 .category.active .category-title {
   color: #faa805;
 }
@@ -105,10 +119,36 @@
 }
 
 .sub-tag.active {
-  color: #faa805; /* Adjusted for visibility on black */
+  color: #faa805;
+  /* Adjusted for visibility on black */
   font-weight: 600;
 }
 
 .side-menu {
   border: none;
+}
+
+@media (max-width: 600px) {
+  .side-menu-box {
+    padding: 15px;
+  }
+}
+
+.mypost-btn {
+  color: black;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  border: none;
+  outline: none;
+  font-size: 22px;
+  background: linear-gradient( to right, #faa805, #d47f00 );
+  border-radius: 25px;
+  margin-top: 20px;
+  padding: 8px;
+  font-weight: 600;
+}
+
+.mypost-btn:hover {
+  background: linear-gradient( to right, #d47f00, #faa805);
 }

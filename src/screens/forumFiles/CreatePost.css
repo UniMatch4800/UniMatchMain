@@ -46,11 +46,12 @@ h2 {
   color: #000; /* Black text */
   border: 2px solid #faa805; /* Gold border */
   border-radius: 4px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 18px;
   cursor: pointer;
   margin-top: 20px;
   transition: 0.3s; /* Smooth transition */
+  display: flex;
 }
 
 .submit-button:hover,

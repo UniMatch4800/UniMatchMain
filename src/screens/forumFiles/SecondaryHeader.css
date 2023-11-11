@@ -72,3 +72,23 @@
 .create-post-button {
   margin-right: 20px;
 }
+
+.mobile-menu-icon {
+  visibility: hidden;
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .my-posts-button{
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    visibility: visible;
+  }
+
+  .search-bar {
+    margin: 0;
+  }
+}

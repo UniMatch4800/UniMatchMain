@@ -108,3 +108,81 @@ nav ul li a {
 .account-button {
   background-color: #faa805;
 }
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%); /* Initially off-screen */
+  transition: transform 0.5s ease-in-out; /* Use transform for the sliding effect */
+}
+
+.mobile-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.mobile-menu ul li {
+  margin-bottom: 20px;
+}
+
+.mobile-menu a {
+  font-size: 22px;
+  text-decoration: none;
+  color: #faa805;
+  font-weight: 700;
+}
+
+.mobile-icon {
+  visibility: hidden;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.desktop-menu {
+  position: absolute;
+  right: 20px;
+}
+
+/* Show the mobile menu when it's visible */
+@media only screen and (max-width: 600px) {
+  .mobile-icon {
+    display: block;
+    visibility: visible;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: flex;
+    transform: translateY(0); /* Slide in by changing translateY to 0 */
+  }
+
+  .logo {
+    width: 150px;
+  }
+}
+
+.close-btn {
+  display: block;
+  top: 20px;
+  position: absolute;
+  right: 30px;
+  color: #faa805;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 25px;
+}
