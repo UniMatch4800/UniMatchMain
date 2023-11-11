@@ -47,7 +47,7 @@
   background-color: #111; /* Dark gray scrollbar track */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .forum-main-content {
     flex-direction: column;
   }

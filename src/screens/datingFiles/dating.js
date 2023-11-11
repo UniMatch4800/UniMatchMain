@@ -83,10 +83,6 @@ const Dating = () => {
         <Link to="/screens/dating/chats-matches" className="button heart-icon">
           <FontAwesomeIcon icon={faHeart} />
         </Link>
-
-        <Link className="button crown-icon">
-          <FontAwesomeIcon icon={faCrown} />
-        </Link>
       </div>
 
       <div className="filters">
