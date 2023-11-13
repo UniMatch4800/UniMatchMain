@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SecondaryHeader.css";
 import { Link } from "react-router-dom";
 import { FaPlus, FaHashtag } from "react-icons/fa";
@@ -6,7 +6,6 @@ import { FaPlus, FaHashtag } from "react-icons/fa";
 function SecondaryHeader({ onCreatePostClick, onMyPostsClick, onToggleSideMenu, isSideMenuVisible }) {
   const handleToggleSideMenu = () => {
     onToggleSideMenu(!isSideMenuVisible);
-    console.log("toggled", {isSideMenuVisible})
   };
 
   return (

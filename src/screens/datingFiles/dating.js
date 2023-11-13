@@ -6,7 +6,7 @@ import Swiping from './swiping';
 import "./dating.css";
 import ProfileInfo from './ProfileInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faHeart, faCrown } from '@fortawesome/free-solid-svg-icons';
+import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Filters from "./Filters";
 import { Link } from 'react-router-dom';
 

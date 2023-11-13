@@ -3,9 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 108px);
     padding-top: 20px;
     background-color: black;
+    position: relative;
 }
 
 .chat-messages {
@@ -24,6 +25,8 @@
     align-items: center;
     border-top: 2px solid #faa805;
     border-radius: 0 0 5px 5px;
+    position: sticky;
+    bottom: 0;
 }
 
 .chat-input input {
@@ -62,4 +65,51 @@
     align-self: flex-start;
     background-color:  #2a2a2a;
     color: white;
+}
+
+.back-btn{
+    background: none;
+    color: #FAA805;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+.info-btn {
+    background: none;
+    color: #FAA805;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    visibility: hidden;
+}
+
+.msgs-name {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.msgs-header {
+    position: sticky;
+    top: 0;
+    background-color: black; /* Adjust the background color as needed */
+    z-index: 100; /* Adjust the z-index as needed */
+}
+
+@media (max-width: 768px) {
+    .messages-container {
+        padding-top: 0;
+    }
+
+    .back-btn,
+    .info-btn {
+        visibility: visible;
+    }
 }

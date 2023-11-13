@@ -13,11 +13,16 @@ const ProfileInfo = ({ selectedUser, currentImageIndex, setCurrentImageIndex }) 
 
     if (clickX < imageWidth / 2) {
       if (currentImageIndex !== 0) {
+        console.log(currentImageIndex);
         setCurrentImageIndex(currentImageIndex - 1);
+        console.log("clicked left");
       }
     } else {
       if (currentImageIndex < numPics - 1) {
+        console.log(currentImageIndex);
+
         setCurrentImageIndex(currentImageIndex + 1);
+        console.log("clicked right");
       } else {
         setCurrentImageIndex(0);
       }

@@ -155,7 +155,7 @@ nav ul li a {
 }
 
 /* Show the mobile menu when it's visible */
-@media only screen and (max-width: 768) {
+@media only screen and (max-width: 768px) {
   .mobile-icon {
     display: block;
     visibility: visible;

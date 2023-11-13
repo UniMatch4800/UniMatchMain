@@ -27,8 +27,8 @@
 }
 
 .tab.active {
-    border-bottom: 2px solid #ffc57b;
-    color: #ffc57b;
+    border-bottom: 2px solid #faa805;
+    color: #faa805;
 }
 
 .content {
@@ -43,6 +43,16 @@
     display: block;
     width: 0;
     height: 2px;
-    background: #ffc57b;
+    background: #faa805;
     transition: width 0.3s;
+}
+
+@media (max-width: 768px) {
+    .matches-messages-container {
+        width: 100%;
+    }
+
+    .content {
+        padding: 0;
+    }
 }

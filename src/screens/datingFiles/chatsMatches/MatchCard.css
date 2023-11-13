@@ -9,6 +9,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    position: relative;
 }
 
 .profile-picture {
@@ -38,5 +39,29 @@
 }
 
 .name {
-    font-size: 1.2rem;
+    color: white;
+    text-align: left;
+}
+
+.time-ago-message {
+    top: 0;
+    font-size: 0.6em;
+}
+
+.last-message {
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .matches-component {
+        padding: 20px;
+    }
+
+    .messages-component {
+        padding: 20px;
+    }
+
+    .time-ago-message {
+        font-size: 0.8em;
+    }
 }

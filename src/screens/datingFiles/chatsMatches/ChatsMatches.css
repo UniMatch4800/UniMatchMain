@@ -18,3 +18,16 @@
     overflow-y: scroll;
     height: calc(100vh - 80px);
 }
+
+@media (max-width: 768px) {
+    .chats-matches-container {
+        display: block;
+    }
+    /* .messaging-column,
+    .info-column {
+        visibility: hidden;
+        display: none;
+        margin: 0;
+        padding: 0;
+    } */
+}

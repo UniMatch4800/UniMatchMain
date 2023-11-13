@@ -1,16 +1,13 @@
 .side-menu-box {
   padding-bottom: 60px;
-  height: calc(100vh + 145px);
+  height: calc(100vh - 180px);
   padding-left: 60px;
   background-color: black;
-  /* Set to black */
   color: white;
-  /* Set text color to white */
   outline: none;
   box-shadow: none;
   background-image: none;
-  overflow: hidden;
-  /* This will hide any overflowing child elements */
+  overflow: scroll;
 }
 
 .category-content {

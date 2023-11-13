@@ -70,16 +70,24 @@ function ForumFeed({ selectedTag }) {
     const now = new Date();
     const differenceInSeconds = (now - date) / 1000;
 
-    if (differenceInSeconds < 3600) {
-      // less than an hour
-      return `${Math.round(differenceInSeconds / 60)} minutes ago`;
+    if (differenceInSeconds < 60) {
+        // less than a minute
+        const seconds = Math.round(differenceInSeconds);
+        return `${seconds === 1 ? '1 second' : `${seconds} seconds`} ago`;
+    } else if (differenceInSeconds < 3600) {
+        // less than an hour
+        const minutes = Math.round(differenceInSeconds / 60);
+        return `${minutes === 1 ? '1 minute' : `${minutes} minutes`} ago`;
     } else if (differenceInSeconds < 86400) {
-      // less than a day
-      return `${Math.round(differenceInSeconds / 3600)} hours ago`;
+        // less than a day
+        const hours = Math.round(differenceInSeconds / 3600);
+        return `${hours === 1 ? '1 hour' : `${hours} hours`} ago`;
     } else {
-      return `${Math.round(differenceInSeconds / 86400)} days ago`;
+        // days or more
+        const days = Math.round(differenceInSeconds / 86400);
+        return `${days === 1 ? '1 day' : `${days} days`} ago`;
     }
-  }
+}
 
   const vote = async (postId, change) => {
     const postRef = doc(db, "forumPosts", postId);
