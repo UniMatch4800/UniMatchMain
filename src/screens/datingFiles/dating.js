@@ -4,9 +4,8 @@ import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import Swiping from './swiping';
 import "./dating.css";
-import ProfileInfo from './ProfileInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
 import Filters from "./Filters";
 import { Link } from 'react-router-dom';
 
@@ -76,28 +75,21 @@ const Dating = () => {
   // If datingProfileSetup is true, render your dating component
   return (
     <div className="full-box">
-      <div className="top-buttons">
-        <Link to="/screens/dating/chats-matches" className="button chat-icon">
-          <FontAwesomeIcon icon={faComment} />        
-        </Link>
-        <Link to="/screens/dating/chats-matches" className="button heart-icon">
-          <FontAwesomeIcon icon={faHeart} />
-        </Link>
+      <div className="options">
+        <div className="top-buttons">
+          <Link to="/screens/dating/chats-matches" className="button chat-icon">
+            <FontAwesomeIcon icon={faComment} />
+          </Link>
+        </div>
+        <div className="filters">
+          <Filters applyFilters={applyFilters} />
+        </div>
       </div>
 
-      <div className="filters">
-        <Filters applyFilters={applyFilters} />
-      </div>
       <div className="dating-container">
-
         <div className="swiping-container">
           <Swiping currentProfileUid={currentProfileUid} setCurrentProfileUid={setCurrentProfileUid} filters={filters} profilesAvailable={profilesAvailable} setProfilesAvailable={setProfilesAvailable} />
         </div>
-        {profilesAvailable && (
-          <div className="info-container">
-            <ProfileInfo currentProfileUid={currentProfileUid} />
-          </div>
-        )}
       </div>
     </div>
   );

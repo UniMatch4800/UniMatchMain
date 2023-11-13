@@ -1,17 +1,26 @@
-.filters {
-  display: flex;
-  gap: 10px;
+.select-box {
+  min-width: fit-content;
+  width: 100%;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: #222;
+  cursor: pointer;
+  z-index: 1; 
   margin-top: 10px;
-  flex-direction: column;
 }
 
-.select-box {
-  padding: 5px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  background-color: black; /* Switched to black */
-  border: 1px solid white; /* Border changed to white for contrast */
-  font-size: 18px;
-  color: white; /* Text color switched to white for better visibility */
+/* Add this media query for smaller screens */
+@media (max-width: 768px) {
+  .filter-fields {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 6px;
+    z-index: 1; 
+  }
+
+  .select-box {
+    margin: 0 5px 10px 0;
+    z-index: 1;
+  }
 }

@@ -1,15 +1,17 @@
 .dating-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(42, 42, 42); /* Dark background maintained */
+  background: rgb(42, 42, 42);
+  overflow: scroll;
+  height: calc(100vh - 60px);
 }
 
 .top-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10px 0;
 }
 
 .button {
@@ -20,7 +22,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 5px;
-
   padding: 0 6px;
 }
 
@@ -35,16 +36,8 @@
   ); /* Slight highlight for hover effect */
 }
 
-.crown-icon {
-  color: gold; /* Kept the gold color for specificity */
-}
-
-.heart-icon {
-  color: red; /* Kept the red color for specificity */
-}
-
 .chat-icon {
-  color: blue; /* Kept the blue color for specificity */
+  color: #faa805; /* Kept the blue color for specificity */
 }
 
 .full-box {
@@ -53,4 +46,32 @@
   justify-content: center;
   background: rgb(42, 42, 42); /* Dark background maintained */
   height: calc(100vh - 60px);
+}
+
+.filters {
+  margin-right: 50px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+@media (max-width: 768px) {
+  .full-box {
+    flex-direction: column;
+    background-color: black;
+  }
+
+  .top-buttons {
+    flex-direction: row;
+  }
+  .filters {
+    margin: 0;
+  }
+
+  .options{
+    width: 100%;
+    overflow-x: scroll;
+  }
 }

@@ -18,6 +18,9 @@ const CreatePost = ({ onCancel }) => {
       ...provided,
       backgroundColor: "#222",
       color: "white",
+      border: state.isFocused ? "1px solid #faa805" : "1px solid white",
+      boxShadow: 'none',
+      borderRadius: "10px",
     }),
     menu: (provided, state) => ({
       ...provided,

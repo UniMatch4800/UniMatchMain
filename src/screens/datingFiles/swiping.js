@@ -4,6 +4,8 @@ import { db, auth } from '../../firebase';
 import "./swiping.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUndo, faHeart, faTimes, faStar, faComment } from '@fortawesome/free-solid-svg-icons';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAvailable, setProfilesAvailable }) => {
   const [profiles, setProfiles] = useState([]);
@@ -84,10 +86,8 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
           }
         }
 
-
-
         setProfiles(filteredProfiles);
-
+        console.log(filteredProfiles);
         if (filteredProfiles.length > 0) {
           setCurrentProfileUid(filteredProfiles[0].uid);
           setProfilesAvailable(true); // Update profilesAvailable state here
@@ -98,7 +98,6 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
         console.error('Error fetching data:', error);
       }
     };
-
     fetchData();
   }, [filters]);
 
@@ -114,53 +113,35 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     }
   }, [currentIndex, profiles, setCurrentProfileUid]);
 
-  // const createMatch = async (currentUserId, likedUserId) => {
-  //   const userActionsRef = doc(db, 'userActions', currentUserId);
-
-  //   try {
-  //     const docSnapshot = await getDoc(userActionsRef);
-  //     const userActionsData = docSnapshot.exists() ? docSnapshot.data() : { likes: [], dislikes: [], superlikes: [] };
-
-  //     if (userActionsData.likes.includes(likedUserId)) {
-  //       userActionsData.matches = userActionsData.matches || [];
-  //       userActionsData.matches.push(likedUserId);
-
-  //       await setDoc(userActionsRef, userActionsData);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error creating match:', error);
-  //   }
-  // };
-
   const createMatch = async (currentUserId, likedUserId) => {
     const currentUserIdRef = doc(db, 'userActions', currentUserId);
     const likedUserIdRef = doc(db, 'userActions', likedUserId);
-  
+
     try {
       const currentDocSnapshot = await getDoc(currentUserIdRef);
       const likedDocSnapshot = await getDoc(likedUserIdRef);
-  
+
       const currentData = currentDocSnapshot.exists ? currentDocSnapshot.data() : null;
       const likedData = likedDocSnapshot.exists ? likedDocSnapshot.data() : null;
-  
+
       if (currentData && likedData) {
         if (currentData.likes.includes(likedUserId) && likedData.likes.includes(currentUserId)) {
           currentData.matches = currentData.matches || [];
           likedData.matches = likedData.matches || [];
-  
+
           // Add the liked user to the current user's matches
           if (!currentData.matches.includes(likedUserId)) {
             currentData.matches.push(likedUserId);
           }
-  
+
           // Add the current user to the liked user's matches
           if (!likedData.matches.includes(currentUserId)) {
             likedData.matches.push(currentUserId);
           }
-  
+
           // Update the current user's document
           await setDoc(currentUserIdRef, currentData);
-  
+
           // Update the liked user's document
           await setDoc(likedUserIdRef, likedData);
         }
@@ -169,7 +150,7 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
       console.error('Error creating match:', error);
     }
   };
-  
+
   const handleSwipe = (direction) => {
     if (direction === 'right') {
       const likedProfileUid = profiles[currentIndex].uid;
@@ -287,17 +268,52 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     };
   };
   return (
-    <div>
+    <div className='dating-pieces'>
       {profiles.length > 0 && currentIndex < profiles.length ? (
-        <div className='swiping'>
-          <img
-            src={profiles[currentIndex].profileImages[currentImageIndex]}
-            alt={profiles[currentIndex].name}
-            className="profile-image"
-            id="profile-image"
-            onClick={handleImageClick}
-          />
-          <p className='person-name'>{profiles[currentIndex].name}, {profiles[currentIndex].age}</p>
+        <>
+          <div className="carousel-container">
+            <Carousel
+              showArrows={true}
+              showStatus={true}
+              showThumbs={false}
+              onClick={handleImageClick}
+            >
+              {profiles[currentIndex].profileImages.map((image, index) => (
+                <div key={index} className='profile-image-box'>
+                  <img src={image} alt={profiles[currentIndex].name} className="profile-image" />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+
+          <div className="profile-info-box">
+            <p className='person-name'>{profiles[currentIndex].name}, {profiles[currentIndex].age}</p>
+
+            <p>
+              <span className="info-label">Gender: </span>
+              {profiles[currentIndex].gender}
+            </p>
+            <p>
+              <span className="info-label">Race: </span>
+              {profiles[currentIndex].race}
+            </p>
+            <p>
+              <span className="info-label">Major: </span>
+              {profiles[currentIndex].major}
+            </p>
+            <p>
+              <span className="info-label">Graduation Year: </span>
+              {profiles[currentIndex].graduationYear}
+            </p>
+            <p>
+              <span className="info-label">Hobbies: </span>
+              {profiles[currentIndex].hobbies}
+            </p>
+            <p>
+              <span className="info-label">Bio: </span>
+              {profiles[currentIndex].bio}
+            </p>
+          </div>
           <div className="button-container">
             <button onClick={handleReverse} className='reverse'>
               <FontAwesomeIcon icon={faUndo} /> {/* Reverse */}
@@ -315,13 +331,12 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
               <FontAwesomeIcon icon={faComment} /> {/* Instant Message */}
             </button>
           </div>
-        </div>
+        </>
       ) : (
         <h3 className='none-left'>No more profiles left for your school! Check back soon.</h3>
       )}
     </div>
   );
-
 };
 
 export default Swiping; 

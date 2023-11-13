@@ -1,39 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.swiping-container {
+  height: 100%;
+}
+
 .swiping {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.profile-info-box {
   padding: 30px;
-  border-radius: 20px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  background: rgb(0, 0, 0); /* Switched to black */
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(48, 48, 48, 1) 95%,
-    rgba(98, 98, 98, 1) 100%
-  ); /* Dark gradient */
-  height: 460px;
-}
-
-.person-name {
-  text-transform: capitalize;
-  font-size: 1.9rem;
-  font-weight: 600;
-  font-family: "Monaco";
-  margin-top: -4rem;
-  margin-left: 2rem;
+  padding-top: 5px;
+  background: rgb(0, 0, 0);
   color: white;
-  text-shadow: 2px 2px black;
+  width: 340px;
 }
 
-.profile-image {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
+.profile-info-box h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-info-box p {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.info-label {
+  opacity: 0.7;
 }
 
 .button-container {
-  margin-top: 40px;
+  position: sticky;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  padding: 20px;
+  padding-top: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.5); /* Added a subtle box shadow at the bottom */
 }
 
 .button-container button {
@@ -42,6 +54,17 @@
   cursor: pointer;
   transition: transform 0.2s;
   border: none;
+}
+
+.person-name {
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Monaco";
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px black;
+  text-align: center;
 }
 
 .button-container button:hover {
@@ -71,4 +94,36 @@
 
 .none-left {
   color: white;
+}
+
+.dating-pieces {
+  background-color: black;
+}
+
+.carousel-container {
+  width: 400px;
+  height: 500px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-image-box {
+  width: 400px;
+  height: 500px;
+}
+
+.carousel .carousel-status {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  padding: 5px;
+  font-size: 14px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+  color: #fff;
 }
