@@ -75,7 +75,7 @@ const Dating = () => {
   // If datingProfileSetup is true, render your dating component
   return (
     <div className="full-box">
-      <div className="options">
+      {/* <div className="options">
         <div className="top-buttons">
           <Link to="/screens/dating/chats-matches" className="button chat-icon">
             <FontAwesomeIcon icon={faComment}/>
@@ -84,6 +84,13 @@ const Dating = () => {
         <div className="filters">
           <Filters applyFilters={applyFilters} />
         </div>
+      </div> */}
+
+      <div className="options">
+          <Link to="/screens/dating/chats-matches" className="button chat-icon">
+            <FontAwesomeIcon icon={faComment} />
+          </Link>
+          <Filters applyFilters={applyFilters} />
       </div>
 
       <div className="dating-container">

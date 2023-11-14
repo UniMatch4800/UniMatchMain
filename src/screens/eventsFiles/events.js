@@ -104,6 +104,7 @@ function Events() {
 
     fetchData();
   }, []);
+  
   const handleEventClick = (event) => {
     console.log("Event Clicked:", event);
     setSelectedEvent(event);

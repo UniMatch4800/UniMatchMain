@@ -63,3 +63,10 @@ h2 {
   text-align: center;
   color: white; /* Text color for dark background */
 }
+
+@media (max-width: 768px) {
+  .event-details-container {
+    display: none;
+    visibility: hidden;
+  }
+}

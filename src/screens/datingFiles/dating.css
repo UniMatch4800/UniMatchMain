@@ -53,10 +53,13 @@
 }
 
 .options {
-  display: grid;
-  grid-template-columns: auto 1fr;
   position: absolute;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
 }
 
 @media (max-width: 768px) {
@@ -77,5 +80,10 @@
     overflow-x: scroll;
     position: unset;
     overflow-y: clip;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
   }
 }
