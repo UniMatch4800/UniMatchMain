@@ -11,6 +11,10 @@
   margin-bottom: 20px;
 }
 
+.heart-icon {
+  color: red;
+}
+
 .trending-talks h2,
 .trending-tags h2 {
   font-size: 1.5rem;

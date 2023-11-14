@@ -78,7 +78,7 @@ const Dating = () => {
       <div className="options">
         <div className="top-buttons">
           <Link to="/screens/dating/chats-matches" className="button chat-icon">
-            <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faComment}/>
           </Link>
         </div>
         <div className="filters">

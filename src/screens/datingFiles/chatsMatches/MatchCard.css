@@ -52,6 +52,11 @@
     font-size: 0.9em;
 }
 
+.messages-component {
+    height: 100%;
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .matches-component {
         padding: 20px;

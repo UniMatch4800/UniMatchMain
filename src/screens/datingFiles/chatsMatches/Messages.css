@@ -106,6 +106,8 @@
 @media (max-width: 768px) {
     .messages-container {
         padding-top: 0;
+        justify-content: unset;
+        width: 100%;
     }
 
     .back-btn,

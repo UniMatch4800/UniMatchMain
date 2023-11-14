@@ -1,53 +1,33 @@
 import React from "react";
 import "./ProfileInfo.css";
+import { Carousel } from 'react-responsive-carousel';
 
-const ProfileInfo = ({ selectedUser, currentImageIndex, setCurrentImageIndex }) => {
-  const handleImageClick = (event) => {
-    const clickX = event.nativeEvent.offsetX;
-    const imageWidth = event.target.clientWidth;
-
-    let numPics = 0;
-    if (selectedUser && selectedUser.profileImages) {
-      numPics = selectedUser.profileImages.length;
-    }
-
-    if (clickX < imageWidth / 2) {
-      if (currentImageIndex !== 0) {
-        console.log(currentImageIndex);
-        setCurrentImageIndex(currentImageIndex - 1);
-        console.log("clicked left");
-      }
-    } else {
-      if (currentImageIndex < numPics - 1) {
-        console.log(currentImageIndex);
-
-        setCurrentImageIndex(currentImageIndex + 1);
-        console.log("clicked right");
-      } else {
-        setCurrentImageIndex(0);
-      }
-    }
-  };
+const ProfileInfo = ({ selectedUser }) => {
+  // Wait until selectedUser is available before rendering the component
+  if (!selectedUser) {
+    return <div className="loading-indicator"><h2 className="no-lynks">Select a profile to see user information.</h2></div>;
+  }
 
   return (
     <div className="profile-container">
-      <div className="picture-box">
-        <img
-          src={
-            selectedUser && selectedUser.profileImages
-              ? selectedUser.profileImages[currentImageIndex]
-              : ''
-          }
-          alt="Profile"
-          className="profile-pic"
-          onClick={handleImageClick}
-        />
+      <div className="info-carousel-container">
+        <Carousel
+          showArrows={true}
+          showStatus={true}
+          showThumbs={false}
+        >
+          {selectedUser.profileImages.map((image, index) => (
+            <div key={index} className='info-profile-image-box'>
+              <img src={image} alt={selectedUser.name} className="info-profile-image" />
+            </div>
+          ))}
+        </Carousel>
       </div>
       <div className="profile-info">
         <h2 className="name">
           {selectedUser ? selectedUser.name : 'No User Selected'}
         </h2>
-        
+
         <div className="basic-info">
           <p className="age">
             {selectedUser && selectedUser.age
@@ -66,7 +46,6 @@ const ProfileInfo = ({ selectedUser, currentImageIndex, setCurrentImageIndex }) 
               : ''}
           </p>
         </div>
-
         <p className="major">
           {selectedUser ? selectedUser.major : ''}
         </p>

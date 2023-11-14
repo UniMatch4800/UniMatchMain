@@ -58,31 +58,37 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
             ...usersData[profile.uid],
           }));
 
-        const filteredProfiles = combinedProfiles.filter((profile) => {
-          if (
-            profile &&
-            (
-              (!filters.age) || // No age filter, return all profiles
-              (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
-              (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
-            ) &&
-            (!filters.race || filters.race === "Any" || profile.race === filters.race) &&
-            (!filters.gender || filters.gender === "Any" || profile.gender === filters.gender)
-          ) {
-            return true;
-          }
-          return false;
-        });
+          const filteredProfiles = combinedProfiles.filter((profile) => {
+            console.log(filters)
+            if (
+              profile &&
+              (!filters.age || // No age filter, return all profiles
+                (filters.age.value === '') || // Age filter set to 'Age'
+                (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
+                (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
+              ) &&
+              (!filters.campus || filters.campus.value === "" || profile.campus === filters.campus) &&
+              (!filters.gender || filters.gender.value === "" || profile.gender === filters.gender.value) &&
+              (!filters.graduationYear || filters.graduationYear.value === "" || profile.graduationYear === filters.graduationYear.value) &&
+              (!filters.hobbies || filters.hobbies.value === "" || profile.hobbies.includes(filters.hobbies.value)) &&
+              (!filters.major || filters.major.value === "" || profile.major === filters.major.value) &&
+              (!filters.race || filters.race.value === "" || profile.race === filters.race.value)
+            ) {
+              return true;
+            }
+            return false;
+          });
 
         function ageFilter(profile, ageRange) {
-          const [minAgeStr, maxAgeStr] = ageRange.split('-');
-          if (maxAgeStr === "+") {
-            const minAge = parseInt(minAgeStr);
-            return profile.age >= minAge;
-          } else {
-            const minAge = parseInt(minAgeStr);
-            const maxAge = parseInt(maxAgeStr);
-            return profile.age >= minAge && profile.age <= maxAge;
+          if (profile && ageRange && ageRange.value) {
+            if (ageRange.value === "30+") {
+              return profile.age >= 30;
+            } else {
+              const [minAgeStr, maxAgeStr] = ageRange.value.split('-');
+              const minAge = parseInt(minAgeStr);
+              const maxAge = parseInt(maxAgeStr);
+              return profile.age >= minAge && profile.age <= maxAge;
+            }
           }
         }
 

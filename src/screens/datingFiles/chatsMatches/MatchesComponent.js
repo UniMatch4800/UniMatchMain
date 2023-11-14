@@ -3,10 +3,13 @@ import { collection, getDocs, getDoc, doc, where, query } from 'firebase/firesto
 import { db, auth } from '../../../firebase';
 import MatchCard from './MatchCard';
 import "./MatchCard.css"
+import { ClipLoader } from 'react-spinners';
 
 const MatchesComponent = ({ onSelectUser }) => {
     const [matchedProfiles, setMatchedProfiles] = useState([]);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         // Listen for authentication state changes
@@ -91,7 +94,7 @@ const MatchesComponent = ({ onSelectUser }) => {
 
         // Update the state with matched profiles
         setMatchedProfiles(matchedProfilesData);
-
+        setLoading(false);
         // Check if it's on mobile, and if not, select the first match by default
         if (!isMobile && matchedProfilesData.length > 0) {
             const firstMatch = matchedProfilesData[0];
@@ -106,16 +109,22 @@ const MatchesComponent = ({ onSelectUser }) => {
 
     return (
         <div className="matches-component">
-            {matchedProfiles.length === 0 ? (
-                <h2 className='no-lynks'>No Lynks yet. Start liking profiles to make Lynks!</h2>
+            {loading ? (
+                <div className='loading-indicator'><ClipLoader color="#ffffff" loading={loading} size={100} /></div>
             ) : (
-                matchedProfiles.map((profile, index) => (
-                    <MatchCard
-                        key={index}
-                        profile={profile}
-                        onProfileClick={handleProfileClick}
-                    />
-                ))
+                <>
+                    {matchedProfiles.length === 0 ? (
+                        <h2 className='no-lynks'>No Lynks yet. Start liking profiles to make Lynks!</h2>
+                    ) : (
+                        matchedProfiles.map((profile, index) => (
+                            <MatchCard
+                                key={index}
+                                profile={profile}
+                                onProfileClick={handleProfileClick}
+                            />
+                        ))
+                    )}
+                </>
             )}
         </div>
     );

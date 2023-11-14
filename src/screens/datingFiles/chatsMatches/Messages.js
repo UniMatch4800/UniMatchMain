@@ -109,8 +109,12 @@ const Messages = ({ selectedUser, onSelectUser }) => {
   };
 
   const handleBack = () => {
-    onSelectUser(null);
-    setShowProfileInfo(false); // Reset the state when going back
+    if (showProfileInfo) {
+      setShowProfileInfo(false);
+    } else {
+      onSelectUser(null);
+      setShowProfileInfo(false);
+    }
   };
 
   const handleInfoButtonClick = () => {
@@ -123,7 +127,7 @@ const Messages = ({ selectedUser, onSelectUser }) => {
         {selectedUser ? (
           <>
             <button onClick={handleBack} className='back-btn'><FaRegArrowAltCircleLeft /></button>
-            <h2 className='msgs-name'>{name}</h2>
+            <h2 className='msgs-name' onClick={handleInfoButtonClick}>{name}</h2>
             <button onClick={handleInfoButtonClick} className='info-btn'><FaInfoCircle /></button>
           </>
         ) : (

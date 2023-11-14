@@ -33,18 +33,18 @@
     255,
     255,
     0.1
-  ); /* Slight highlight for hover effect */
+  ); 
 }
 
 .chat-icon {
-  color: #faa805; /* Kept the blue color for specificity */
+  color: #faa805; 
 }
 
 .full-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(42, 42, 42); /* Dark background maintained */
+  background: rgb(42, 42, 42); 
   height: calc(100vh - 60px);
 }
 
@@ -55,6 +55,8 @@
 .options {
   display: grid;
   grid-template-columns: auto 1fr;
+  position: absolute;
+  left: 0;
 }
 
 @media (max-width: 768px) {
@@ -73,5 +75,7 @@
   .options{
     width: 100%;
     overflow-x: scroll;
+    position: unset;
+    overflow-y: clip;
   }
 }

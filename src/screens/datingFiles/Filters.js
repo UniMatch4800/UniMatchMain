@@ -148,7 +148,7 @@ const Filters = ({ applyFilters }) => {
         onChange={(selectedOption) => setMajorFilter(selectedOption)}
         options={[
           { value: '', label: 'Major' },
-          { value: 'Major 1', label: 'Major 1' },
+          { value: 'CS', label: 'CS' },
           { value: 'Major 2', label: 'Major 2' },
           // Add more options as needed
         ]}

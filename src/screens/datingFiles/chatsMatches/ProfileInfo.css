@@ -6,20 +6,6 @@
     background-color: black;
     color: #fff;
     align-items: center;
-    padding: 20px;
-}
-
-.picture-box {
-    width: 388px;
-    height: 388px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .basic-info {
@@ -36,4 +22,38 @@
 
 .profile-info {
     width: 100%;
+}
+
+.info-carousel-container {
+    width: 100%;
+    height: 388px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.info-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-profile-image-box {
+    width: 388px;
+    height: 388px;
+}
+
+.info-carousel .carousel-status {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    color: #fff;
+}
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

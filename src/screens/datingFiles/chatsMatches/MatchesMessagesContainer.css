@@ -32,10 +32,13 @@
 }
 
 .content {
-    flex: 1;
+    flex: 1 1;
     padding: 20px;
     background-color: black;
     overflow: scroll;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .tab.active:after {
