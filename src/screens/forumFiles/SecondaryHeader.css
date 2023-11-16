@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: black; /* Kept as black */
+  background-color: #111; /* Kept as black */
   width: 100%;
 }
 
@@ -26,7 +26,7 @@
   font-size: 17px;
   width: 80%;
   border: thin solid white; /* Remains white */
-  background-color: black; /* Kept as black */
+  background-color: #111; /* Kept as black */
   color: white; /* Text color remains white */
 }
 
@@ -90,5 +90,9 @@
 
   .search-bar {
     margin: 0;
+  }
+  
+  .secondary-header {
+    padding: 10px 0;
   }
 }

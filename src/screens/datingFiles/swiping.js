@@ -13,7 +13,6 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
   const [prevIndex, setPrevIndex] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -273,12 +272,15 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
       }
     };
   };
+  
   return (
     <div className='dating-pieces'>
       {profiles.length > 0 && currentIndex < profiles.length ? (
         <>
-          <div className="carousel-container">
+          <div className="carousel-container-swiping">
             <Carousel
+              selectedItem={currentImageIndex}
+              onChange={(index) => setCurrentImageIndex(index)}
               showArrows={true}
               showStatus={true}
               showThumbs={false}

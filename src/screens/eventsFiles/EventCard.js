@@ -1,12 +1,12 @@
 import React from "react";
 import "./EventCard.css";
 
-function EventCard({ event, onClick }) {
-  console.log(event);
+function EventCard({ event, onClick, isSelected }) {
+  const cardClassName = isSelected ? 'event-card selected' : 'event-card';
 
   return (
     <div className="event-card-container">
-      <div className="event-card" onClick={onClick}>
+      <div className={cardClassName} onClick={onClick}>
         <div className="event-thumbnail">
           <img src={event.thumbnail} alt={event.title} />
         </div>

@@ -2,7 +2,7 @@
   padding-right: 60px;
   border-radius: 5px;
   margin-top: 20px;
-  background-color: black;
+  background-color: #111;
 }
 
 .trending-talks,
@@ -61,5 +61,5 @@
 
 .right-side-section {
   border: none;
-  background-color: black;
+  background-color: #111;
 }

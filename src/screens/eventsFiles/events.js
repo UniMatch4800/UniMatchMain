@@ -21,6 +21,7 @@ function Events() {
   });
   const [showMyEvents, setShowMyEvents] = useState(false);
   const [userId, setUserId] = useState(null);
+  const isMobile = window.innerWidth <= 768;
 
   const myEvents = [];
   const handleMyEventsClick = () => {
@@ -49,17 +50,17 @@ function Events() {
   const filteredEvents = showMyEvents
     ? myEvents
     : events.filter((event) => {
-        return (
-          (selectedFilters.price.length === 0 ||
-            selectedFilters.price.some((price) =>
-              isPriceInRange(event.price, price)
-            )) &&
-          (selectedFilters.location.length === 0 ||
-            selectedFilters.location.includes(event.location)) &&
-          (selectedFilters.eventType.length === 0 ||
-            selectedFilters.eventType.includes(event.type))
-        );
-      });
+      return (
+        (selectedFilters.price.length === 0 ||
+          selectedFilters.price.some((price) =>
+            isPriceInRange(event.price, price)
+          )) &&
+        (selectedFilters.location.length === 0 ||
+          selectedFilters.location.includes(event.location)) &&
+        (selectedFilters.eventType.length === 0 ||
+          selectedFilters.eventType.includes(event.type))
+      );
+    });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,7 +95,7 @@ function Events() {
         eventsData.sort((a, b) => a.date - b.date); // Sort by date
 
         setEvents(eventsData);
-        if (eventsData.length > 0) {
+        if (!isMobile && eventsData.length > 0) {
           setSelectedEvent(eventsData[0]);
         }
       } catch (error) {
@@ -104,7 +105,7 @@ function Events() {
 
     fetchData();
   }, []);
-  
+
   const handleEventClick = (event) => {
     console.log("Event Clicked:", event);
     setSelectedEvent(event);
@@ -118,6 +119,7 @@ function Events() {
   const handleCreateEventClick = () => {
     setShowCreateEvent(!showCreateEvent);
   };
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -129,41 +131,75 @@ function Events() {
     });
     return () => unsubscribe();
   }, []);
+// ...
+// ...
 
-  return (
-    <div>
-      <SecondaryHeader
-        onCreateEventClick={handleCreateEventClick}
-        onMyEventsClick={handleMyEventsClick}
-      />
-      <div className="events-page">
+return (
+  <div>
+    <SecondaryHeader
+      onCreateEventClick={handleCreateEventClick}
+      onMyEventsClick={handleMyEventsClick}
+    />
+    <div className="events-page">
+      <div className="side-menu-container">
         <EventSideMenu
           selectedFilters={selectedFilters}
           setSelectedFilters={setSelectedFilters}
         />
+      </div>
+      {!isMobile ? (
+        <>
+          <div className="events-container">
+            {showMyEvents ? (
+              <MyEvents userId={userId} onEventClick={handleEventClick} />
+            ) : (
+              <div className="event-list">
+                {filteredEvents.map((event) => (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    onClick={() => handleEventClick(event)}
+                    isSelected={selectedEvent && selectedEvent.id === event.id}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="create-event-details-container">
+            {showCreateEvent ? (
+              <CreateEvent onCancel={() => setShowCreateEvent(false)} />
+            ) : (
+              <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
+            )}
+          </div>
+        </>
+      ) : (
         <div className="events-container">
-          {showMyEvents ? (
-            <MyEvents userId={userId} onEventClick={handleEventClick} />
+          {selectedEvent ? (
+            <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
           ) : (
-            <div className="event-list">
-              {filteredEvents.map((event) => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  onClick={() => handleEventClick(event)}
-                />
-              ))}
-            </div>
+            <>
+              {showMyEvents ? (
+                <MyEvents userId={userId} onEventClick={handleEventClick} />
+              ) : (
+                <div className="event-list">
+                  {filteredEvents.map((event) => (
+                    <EventCard
+                      key={event.id}
+                      event={event}
+                      onClick={() => handleEventClick(event)}
+                      isSelected={selectedEvent && selectedEvent.id === event.id}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
-        {showCreateEvent ? (
-          <CreateEvent onCancel={() => setShowCreateEvent(false)} />
-        ) : (
-          <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
-        )}
-      </div>
+      )}
     </div>
-  );
-}
+  </div>
+);
+};
 
 export default Events;

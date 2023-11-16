@@ -2,7 +2,7 @@
   overflow-y: auto;
   max-height: calc(100vh - 200px);
   padding: 20px;
-  background-color: black;
+  background-color: #111;
 }
 
 .forum-post {
@@ -65,7 +65,7 @@
   max-width: 600px;
   margin: auto;
   padding: 20px;
-  background-color: black;
+  background-color: #111;
 }
 
 .comments-list {

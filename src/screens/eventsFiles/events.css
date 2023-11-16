@@ -1,19 +1,44 @@
 .events-page {
   display: flex;
-  align-items: flex-start;
-  background-color: black; /* Dark background */
+  align-self: start;
+  background-color: #111;
 }
 
-.main-content {
-  flex-grow: 1;
-  padding: 20px;
-  background-color: #1a1a1a; /* Same dark background as parent to make it seamless */
-  color: white; /* Text color for dark background */
+.side-menu-container {
+  flex: 0 0 15%;
 }
 
 .events-container {
-  height: 82vh;
   overflow-y: auto;
-  background-color: black; /* Keeping the container's background consistent with the page */
-  color: white; /* Text color */
+  height: calc(100vh - 130px);
+  background-color: #111;
+  color: white;
+  flex: 0 0 30%;
+}
+
+.create-event-details-container {
+  flex: 0 0 55%;
+}
+
+.no-events-message {
+  text-align: center;
+}
+
+.no-events-header {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .side-menu-container {
+    visibility: hidden;
+    display: none;
+  }
+
+  .events-container {
+    flex: 0 0 100%;
+  }
+
+  .secondary-header-events {
+    padding: 5px 0;
+  }
 }

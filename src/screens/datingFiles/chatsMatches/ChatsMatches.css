@@ -14,7 +14,7 @@
 
 .info-column {
     flex: 0 0 30%;
-    background-color: black;
+    background-color: #111;
     overflow-y: scroll;
     height: calc(100vh - 80px);
 }

@@ -5,7 +5,7 @@
   overflow-y: auto;
   min-width: 300px;
   padding: 20px 0;
-  background-color: black; /* Dark background */
+  background-color: #111;
 }
 
 .event-card-container .event-card {
@@ -15,7 +15,7 @@
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 15px;
-  background-color: #2a2a2a; /* Darker card background for contrast */
+  background-color: #2a2a2a;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-out;
   color: white; /* White text color for contrast */
@@ -81,4 +81,8 @@
 .event-card-container .event-time::before {
   content: "⏰ ";
   color: white; /* Text color for dark background */
+}
+
+.event-card.selected {
+  border: 1px solid #faa805;
 }

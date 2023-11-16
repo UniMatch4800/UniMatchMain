@@ -67,10 +67,10 @@ function MyEvents({ userId, onEventClick }) {
 
   return (
     <div className="events-feed">
-      <h2>Your Upcoming Events</h2>
+      <h2 className="no-events-header">Your Upcoming Events</h2>
       {userEvents.length === 0 ? (
         <div className="no-events-message">
-          You have not added any events yet.
+          You have no upcoming events.
         </div>
       ) : (
         userEvents.map((event) => (
@@ -82,7 +82,7 @@ function MyEvents({ userId, onEventClick }) {
         ))
       )}
 
-      <h2>Expired Events</h2>
+      <h2 className="no-events-header">Expired Events</h2>
       {expiredEvents.length === 0 ? (
         <div className="no-events-message">You have no expired events.</div>
       ) : (

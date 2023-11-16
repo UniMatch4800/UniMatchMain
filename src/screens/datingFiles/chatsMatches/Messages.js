@@ -127,11 +127,11 @@ const Messages = ({ selectedUser, onSelectUser }) => {
         {selectedUser ? (
           <>
             <button onClick={handleBack} className='back-btn'><FaRegArrowAltCircleLeft /></button>
-            <h2 className='msgs-name' onClick={handleInfoButtonClick}>{name}</h2>
+            <h2 onClick={handleInfoButtonClick} className='msgs-name'>{name}</h2>
             <button onClick={handleInfoButtonClick} className='info-btn'><FaInfoCircle /></button>
           </>
         ) : (
-          <h2>Messages</h2>
+          <h2 className='msgs-name'>Messages</h2>
         )}
       </div>
       {showProfileInfo ? (

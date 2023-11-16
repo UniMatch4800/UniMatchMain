@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: calc(100vh - 88px);
-    background-color: black;
+    background-color: #111;
 }
 
 .tabs {
@@ -10,7 +10,7 @@
     justify-content: space-around;
     align-items: center;
     height: 50px;
-    background-color: black;
+    background-color: #111;
 }
 
 .tab {
@@ -34,7 +34,7 @@
 .content {
     flex: 1 1;
     padding: 20px;
-    background-color: black;
+    background-color: #111;
     overflow: scroll;
     justify-content: center;
     align-items: center;

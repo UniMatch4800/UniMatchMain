@@ -65,7 +65,7 @@
 @media (max-width: 768px) {
   .full-box {
     flex-direction: column;
-    background-color: black;
+    background-color: #111;
   }
 
   .top-buttons {

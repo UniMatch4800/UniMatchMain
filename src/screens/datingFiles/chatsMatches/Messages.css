@@ -5,7 +5,7 @@
     align-items: stretch;
     height: calc(100vh - 108px);
     padding-top: 20px;
-    background-color: black;
+    background-color: #111;
     position: relative;
 }
 
@@ -94,12 +94,13 @@
 .msgs-name {
     margin: 0;
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .msgs-header {
     position: sticky;
     top: 0;
-    background-color: black; /* Adjust the background color as needed */
+    background-color: #111; /* Adjust the background color as needed */
     z-index: 100; /* Adjust the z-index as needed */
 }
 

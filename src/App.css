@@ -4,7 +4,7 @@
 
 body {
   overflow: hidden;
-  background-color: black; /* Set body background to black */
+  background-color: #111; /* Set body background to black */
   color: white; /* Set body text color to white */
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .App-header {
-  background-color: black; /* Changed to black */
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ body {
 }
 
 header {
-  background-color: black; /* Changed to black */
+  background-color: #111; /* Changed to black */
   color: white; /* Changed to white */
   display: flex;
   justify-content: space-between;

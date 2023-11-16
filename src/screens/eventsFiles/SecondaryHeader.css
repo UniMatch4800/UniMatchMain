@@ -1,9 +1,9 @@
-.secondary-header {
+.secondary-header-events{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 30px;
-  background-color: #111; /* Dark background */
+  padding: 0;
+  background-color: #111;
   width: 100%;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for contrast */
   color: white; /* White text color */
@@ -60,4 +60,10 @@
 
 .create-event-button {
   margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .secondary-header-events {
+    padding: 7px 0;
+  }
 }

@@ -3,7 +3,7 @@
     flex-direction: column;
     max-height: calc(100vh - 80px);
     overflow-y: scroll;
-    background-color: black;
+    background-color: #111;
     color: #fff;
     align-items: center;
 }
@@ -18,6 +18,10 @@
 
 .basic-info p {
     font-size: 1.05rem;
+}
+
+.no-lynks {
+    text-align: center;
 }
 
 .profile-info {

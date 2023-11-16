@@ -6,7 +6,7 @@ import { FaCalendarPlus } from "react-icons/fa";
 function SecondaryHeader({ onCreateEventClick, onMyEventsClick }) {
   // Added onMyEventsClick here
   return (
-    <div className="secondary-header">
+    <div className="secondary-header-events">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"

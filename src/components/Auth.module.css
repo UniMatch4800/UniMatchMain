@@ -3,7 +3,7 @@
 /* Styles for the container */
 .container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black; /* changed to black */
+  background-color: #111; /* changed to black */
   color: white; /* changed to white */
   margin: 0;
   width: 100%;
