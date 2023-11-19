@@ -11,14 +11,15 @@
 .event-card-container .event-card {
   display: flex;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc;
   border-radius: 10px;
-  margin-bottom: 5px;
-  padding: 15px;
+  margin-bottom: 5px; */
+  padding: 8px;
   background-color: #2a2a2a;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-out;
   color: white; /* White text color for contrast */
+  border-bottom: 3px solid #1a1a1a;
 }
 
 .event-card-container .event-card:hover {

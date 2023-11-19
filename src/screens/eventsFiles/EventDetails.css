@@ -1,7 +1,7 @@
 .event-details-container {
   width: 100%;
   margin: 0 auto;
-  /* padding: 20px; */
+  padding-top: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -12,7 +12,6 @@
 
 .data-box {
   margin-top: 20px;
-  width: 100%;
   padding: 20px;
 }
 
@@ -87,6 +86,11 @@ p {
 }
 
 @media (max-width: 768px) {
+
+  .event-details-container {
+    padding-top: 0;
+  }
+  
   .carousel-container {
     width: 100%;
   }

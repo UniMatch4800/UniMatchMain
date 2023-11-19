@@ -14,6 +14,7 @@
   background-color: #111;
   color: white;
   flex: 0 0 30%;
+  margin-top: 20px;
 }
 
 .create-event-details-container {
@@ -36,6 +37,7 @@
 
   .events-container {
     flex: 0 0 100%;
+    margin-top: 2px;
   }
 
   .secondary-header-events {

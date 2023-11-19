@@ -13,7 +13,9 @@ function Header() {
   return (
     <header>
       <div className="header-left">
-        <img src={ULyfeLogo} alt="ULyfe Logo" className="logo" />
+        <Link to="/screens/forum">
+          <img src={ULyfeLogo} alt="ULyfe Logo" className="logo" />
+        </Link>
       </div>
 
       <nav className="desktop-menu">

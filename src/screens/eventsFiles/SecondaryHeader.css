@@ -19,7 +19,7 @@
   border-radius: 20px;
   padding: 10px 20px;
   font-size: 16px;
-  width: 80%;
+  width: 70%;
   border: 2px solid #eee; /* Lighter border for dark background */
   color: white; /* White input text */
   background-color: #333; /* Darker input background */
@@ -32,11 +32,12 @@
 
 .my-events-button,
 .create-event-button {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     #faa805,
     #d47f00
-  ); /* Using #faa805 and a darker version */
+  ); Using #faa805 and a darker version */
+  background-color: #faa805;
   color: white;
   padding: 10px 25px;
   border-radius: 25px;
@@ -51,19 +52,44 @@
 
 .create-event-button:hover,
 .my-events-button:hover {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     #d47f00,
     #faa805
-  ); /* Reversed gradient on hover */
+  ); Reversed gradient on hover */
+  background-color: #d47f00;
 }
 
 .create-event-button {
-  margin-right: 20px;
+  margin-right: 10px;
+}
+
+.filter-icon {
+  margin-left: 10px;
+  visibility: hidden;
+  display: none;
+  /* background: linear-gradient( to right, #faa805, #d47f00 ); */
+  background-color: #faa805;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  margin-right: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  grid-gap: 10px;
+  gap: 10px;
 }
 
 @media (max-width: 768px) {
   .secondary-header-events {
     padding: 7px 0;
+  }
+
+  .filter-icon {
+    visibility: visible;
+    display: block;
   }
 }
