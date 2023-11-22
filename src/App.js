@@ -12,6 +12,8 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route, useLocation } from "react-router-dom";
 
+import MyAccount from "./screens/accountFiles/MyAccount";
+
 // Create a context to share the user state across components
 export const UserContext = createContext(null);
 
@@ -21,6 +23,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="screens/*" element={<ScreensRoutes />} />
+        <Route path="/" element={<Account />} />
+        <Route path="/myaccount" element={<MyAccount />} />
       </Routes>
     </Router>
   );
@@ -43,6 +47,7 @@ function ScreensRoutes() {
         <Route path="events" element={<Events />} />
         <Route path="additional-info" element={<AdditionalInfo />} />
         <Route path="dating/chats-matches" element={<ChatsMatches />} />
+        <Route path="myaccount" element={<MyAccount />} />
       </Routes>
     </div>
   );

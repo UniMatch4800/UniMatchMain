@@ -1,9 +1,14 @@
-import React from "react";
-import { auth, signOut } from "../../firebase"; // Ensure these are exported from your firebase.js
+import React, { useState, useEffect } from "react";
+import { auth, signOut, updateProfile, db, storage } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import "./account.css";
+
 function Account() {
   const navigate = useNavigate();
+
+  const handleEditProfile = () => {
+    navigate("/myaccount");
+  };
 
   const handleLogOut = async () => {
     try {
@@ -15,9 +20,17 @@ function Account() {
   };
 
   return (
-    <div>
-      <h1>Account Page</h1>
-      <p>Welcome to your account page.</p>
+    <div className="account-page">
+      <h1 className="account-heading">Account Page</h1>
+
+      <div className="profile-section">
+        {/* Display user profile information here */}
+      </div>
+
+      <button onClick={handleEditProfile} className="account-button">
+        Edit Profile
+      </button>
+
       <button onClick={handleLogOut} className="account-button">
         Log Out
       </button>
