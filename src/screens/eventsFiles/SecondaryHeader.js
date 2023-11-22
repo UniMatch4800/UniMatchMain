@@ -3,7 +3,7 @@ import "./SecondaryHeader.css";
 import { Link } from "react-router-dom";
 import { FaCalendarPlus, FaFilter } from "react-icons/fa";
 
-function SecondaryHeader({ onCreateEventClick, onMyEventsClick }) {
+function SecondaryHeader({ onCreateEventClick, onMyEventsClick, onSideMenuClick }) {
   // Added onMyEventsClick here
   return (
     <div className="secondary-header-events">
@@ -11,7 +11,7 @@ function SecondaryHeader({ onCreateEventClick, onMyEventsClick }) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
-      <div className="filter-icon">
+      <div className="filter-icon" onClick={onSideMenuClick}>
         <FaFilter />
       </div>
       <div className="search-bar">

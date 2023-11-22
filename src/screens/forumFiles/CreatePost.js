@@ -159,10 +159,12 @@ const CreatePost = ({ onCancel }) => {
 
   return (
     <div className="create-post-container">
-      <button onClick={handleBackClick} className="back-button">
-        <FaRegArrowAltCircleLeft />
-      </button>
-      <h2>Create New Post</h2>
+      <div className="btn-title">
+        <button onClick={handleBackClick} className="back-button">
+          <FaRegArrowAltCircleLeft />
+        </button>
+        <h2>New Post</h2>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label>Forum Title:</label>

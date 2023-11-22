@@ -1,7 +1,7 @@
 import React from "react";
 import "./SecondaryHeader.css";
 import { Link } from "react-router-dom";
-import { FaPlus, FaHashtag } from "react-icons/fa";
+import { FaPlus, FaFilter } from "react-icons/fa";
 
 function SecondaryHeader({ onCreatePostClick, onToggleSideMenu, isSideMenuVisible }) {
   const handleToggleSideMenu = () => {
@@ -14,8 +14,8 @@ function SecondaryHeader({ onCreatePostClick, onToggleSideMenu, isSideMenuVisibl
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
-      <div className="mobile-menu-icon" onClick={handleToggleSideMenu}>
-        <FaHashtag />
+      <div className="mobile-menu-icon filter-icon" onClick={handleToggleSideMenu}>
+        <FaFilter />
       </div>
       <div className="search-bar">
         <input type="text" placeholder="Search Forums"></input>

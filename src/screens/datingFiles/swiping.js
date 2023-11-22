@@ -3,7 +3,7 @@ import { collection, getDocs, query, where, getDoc, setDoc, doc } from 'firebase
 import { db, auth } from '../../firebase';
 import "./swiping.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUndo, faHeart, faTimes, faStar, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faUndo, faHeart, faTimes, faStar } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -57,26 +57,26 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
             ...usersData[profile.uid],
           }));
 
-          const filteredProfiles = combinedProfiles.filter((profile) => {
-            console.log(filters)
-            if (
-              profile &&
-              (!filters.age || // No age filter, return all profiles
-                (filters.age.value === '') || // Age filter set to 'Age'
-                (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
-                (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
-              ) &&
-              (!filters.campus || filters.campus.value === "" || profile.campus === filters.campus) &&
-              (!filters.gender || filters.gender.value === "" || profile.gender === filters.gender.value) &&
-              (!filters.graduationYear || filters.graduationYear.value === "" || profile.graduationYear === filters.graduationYear.value) &&
-              (!filters.hobbies || filters.hobbies.value === "" || profile.hobbies.includes(filters.hobbies.value)) &&
-              (!filters.major || filters.major.value === "" || profile.major === filters.major.value) &&
-              (!filters.race || filters.race.value === "" || profile.race === filters.race.value)
-            ) {
-              return true;
-            }
-            return false;
-          });
+        const filteredProfiles = combinedProfiles.filter((profile) => {
+          console.log(filters)
+          if (
+            profile &&
+            (!filters.age || // No age filter, return all profiles
+              (filters.age.value === '') || // Age filter set to 'Age'
+              (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
+              (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
+            ) &&
+            (!filters.campus || filters.campus.value === "" || profile.campus === filters.campus) &&
+            (!filters.gender || filters.gender.value === "" || profile.gender === filters.gender.value) &&
+            (!filters.graduationYear || filters.graduationYear.value === "" || profile.graduationYear === filters.graduationYear.value) &&
+            (!filters.hobbies || filters.hobbies.value === "" || profile.hobbies.includes(filters.hobbies.value)) &&
+            (!filters.major || filters.major.value === "" || profile.major === filters.major.value) &&
+            (!filters.race || filters.race.value === "" || profile.race === filters.race.value)
+          ) {
+            return true;
+          }
+          return false;
+        });
 
         function ageFilter(profile, ageRange) {
           if (profile && ageRange && ageRange.value) {
@@ -249,30 +249,45 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     }
   };
 
-  const handleInstantMessage = () => {
-    console.log("IM has been clicked");
-  };
-
   const handleImageClick = (event) => {
     const clickX = event.nativeEvent.offsetX;
-    const imageWidth = event.target.clientWidth;
+    const containerWidth = event.currentTarget.clientWidth;
     const numPics = profiles[currentIndex].profileImages.length;
 
-    if (clickX < imageWidth / 2) {
+    // Determine if the click was in the left or right half of the container
+    if (clickX < containerWidth / 2) {
       if (currentImageIndex !== 0) {
         setCurrentImageIndex(currentImageIndex - 1);
       }
-    }
-    else {
+    } else {
       if (currentImageIndex < numPics - 1) {
         setCurrentImageIndex(currentImageIndex + 1);
-      }
-      else {
+      } else {
         setCurrentImageIndex(0);
       }
-    };
+    }
   };
-  
+
+  const customArrowStyles = {
+    position: 'absolute',
+    zIndex: 2,
+    top: 'calc(50% - 15px)',
+    width: 30,
+    height: 30,
+    cursor: 'pointer',
+    fontSize: '24px', 
+    background: 'none',
+    border: 'none',
+  };
+
+  const customIndicatorStyles = {
+    background: '#fff',
+    width: 8,
+    height: 8,
+    display: 'inline-block',
+    margin: '0 8px',
+  };
+
   return (
     <div className='dating-pieces'>
       {profiles.length > 0 && currentIndex < profiles.length ? (
@@ -285,6 +300,44 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
               showStatus={true}
               showThumbs={false}
               onClick={handleImageClick}
+              renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                hasPrev && (
+                  <button type="button" onClick={onClickHandler} title={label} style={{ ...customArrowStyles, left: 15 }}>
+                    {'⟨'} {/* Left arrow */}
+                  </button>
+                )
+              }
+              renderArrowNext={(onClickHandler, hasNext, label) =>
+                hasNext && (
+                  <button type="button" onClick={onClickHandler} title={label} style={{ ...customArrowStyles, right: 15 }}>
+                    {'⟩'} {/* Right arrow */}
+                  </button>
+                )
+              }
+              renderIndicator={(onClickHandler, isSelected, index, label) => {
+                if (isSelected) {
+                  return (
+                    <li
+                      style={{ ...customIndicatorStyles, background: '#000' }}
+                      aria-label={`Selected: ${label} ${index + 1}`}
+                      title={`Selected: ${label} ${index + 1}`}
+                    />
+                  );
+                }
+                return (
+                  <li
+                    style={customIndicatorStyles}
+                    onClick={onClickHandler}
+                    onKeyDown={onClickHandler}
+                    value={index}
+                    key={index}
+                    role="button"
+                    tabIndex={0}
+                    title={`${label} ${index + 1}`}
+                    aria-label={`${label} ${index + 1}`}
+                  />
+                );
+              }}
             >
               {profiles[currentIndex].profileImages.map((image, index) => (
                 <div key={index} className='profile-image-box'>
@@ -329,14 +382,11 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
             <button onClick={() => handleSwipe('left')} className='dislike'>
               <FontAwesomeIcon icon={faTimes} /> {/* Dislike */}
             </button>
-            <button onClick={() => handleSwipe('superlike')} className='superlike'>
+            <button onClick={() => handleSwipe('right')} className='superlike'>
               <FontAwesomeIcon icon={faStar} /> {/* Superlike */}
             </button>
             <button onClick={() => handleSwipe('right')} className='like'>
               <FontAwesomeIcon icon={faHeart} /> {/* Like */}
-            </button>
-            <button onClick={() => handleInstantMessage()} className='message'>
-              <FontAwesomeIcon icon={faComment} /> {/* Instant Message */}
             </button>
           </div>
         </>

@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 function EventSideMenu({ selectedFilters, setSelectedFilters }) {
-  // const currentValues = selectedFilters[category] || [];
-
   const handleFilterChange = (category, value) => {
     setSelectedFilters((prevFilters) => {
       const currentValues = prevFilters[category] || [];
@@ -44,7 +42,6 @@ function EventSideMenu({ selectedFilters, setSelectedFilters }) {
                 type="checkbox"
                 name="price"
                 value="Free"
-                
                 onChange={() => handleFilterChange("price", "Free")}
                 checked={selectedFilters.price.includes("Free")}
               />

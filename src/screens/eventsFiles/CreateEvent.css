@@ -4,9 +4,9 @@
   justify-content: center;
   align-items: center;
   padding: 40px 60px;
-  background: linear-gradient(135deg, #333, #1a1a1a); /* Dark gradient */
+  background: #111111;
   border-radius: 12px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Increased shadow intensity for depth */
+  /* box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); */
   max-height: calc(100vh - 200px);
   width: 70%;
   height: 90vh;
@@ -21,9 +21,9 @@
   max-height: 100%;
   width: 55%;
   border-radius: 8px;
-  background-color: #2a2a2a; /* Darker background */
+  /* background-color: #2a2a2a; */
   padding: 20px 40px;
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Light shadow for contrast */
+  /* box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); */
 }
 
 h2 {
@@ -74,4 +74,18 @@ h2 {
   background-color: #333; /* Slightly lighter shade on hover */
   transform: translateY(-2px);
   box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2); /* Inverse shadow color for dark theme */
+}
+
+@media (max-width: 768px){
+  .create-event-container{
+    margin: 0;
+    padding: 0 10px 20px;
+    width: 100%;
+    max-height: calc(100vh - 135px);
+    border-radius: 0;
+  }
+
+  .create-event-content {
+    width: unset;
+  }
 }

@@ -22,11 +22,17 @@ function Events() {
   const [showMyEvents, setShowMyEvents] = useState(false);
   const [userId, setUserId] = useState(null);
   const isMobile = window.innerWidth <= 768;
+  const [showSideMenu, setShowSideMenu] = useState(false)
+
 
   const myEvents = [];
   const handleMyEventsClick = () => {
     setShowMyEvents(!showMyEvents);
   };
+
+  const handleSideMenuClick = () => {
+    setShowSideMenu(!showSideMenu);
+  }
 
   const isPriceInRange = (price, range) => {
     const numPrice = parseInt(price, 10);
@@ -119,7 +125,7 @@ function Events() {
   const handleCreateEventClick = () => {
     setShowCreateEvent(!showCreateEvent);
   };
-  
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -131,54 +137,24 @@ function Events() {
     });
     return () => unsubscribe();
   }, []);
-// ...
-// ...
 
-return (
-  <div>
-    <SecondaryHeader
-      onCreateEventClick={handleCreateEventClick}
-      onMyEventsClick={handleMyEventsClick}
-    />
-    <div className="events-page">
-      <div className="side-menu-container">
-        <EventSideMenu
-          selectedFilters={selectedFilters}
-          setSelectedFilters={setSelectedFilters}
-        />
-      </div>
-      {!isMobile ? (
-        <>
-          <div className="events-container">
-            {showMyEvents ? (
-              <MyEvents userId={userId} onEventClick={handleEventClick} />
-            ) : (
-              <div className="event-list">
-                {filteredEvents.map((event) => (
-                  <EventCard
-                    key={event.id}
-                    event={event}
-                    onClick={() => handleEventClick(event)}
-                    isSelected={selectedEvent && selectedEvent.id === event.id}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="create-event-details-container">
-            {showCreateEvent ? (
-              <CreateEvent onCancel={() => setShowCreateEvent(false)} />
-            ) : (
-              <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
-            )}
-          </div>
-        </>
-      ) : (
-        <div className="events-container">
-          {selectedEvent ? (
-            <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
-          ) : (
-            <>
+  return (
+    <div>
+      <SecondaryHeader
+        onCreateEventClick={handleCreateEventClick}
+        onMyEventsClick={handleMyEventsClick}
+        onSideMenuClick={handleSideMenuClick}
+      />
+      <div className="events-page">
+        {!isMobile ? (
+          <>
+            <div className="side-menu-container">
+              <EventSideMenu
+                selectedFilters={selectedFilters}
+                setSelectedFilters={setSelectedFilters}
+              />
+            </div>
+            <div className="events-container">
               {showMyEvents ? (
                 <MyEvents userId={userId} onEventClick={handleEventClick} />
               ) : (
@@ -193,13 +169,58 @@ return (
                   ))}
                 </div>
               )}
-            </>
-          )}
-        </div>
-      )}
+            </div>
+            <div className="create-event-details-container">
+              {showCreateEvent ? (
+                <CreateEvent onCancel={() => setShowCreateEvent(false)} />
+              ) : (
+                <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            {!showCreateEvent ? (
+              <>
+                {showSideMenu && (
+                  <div className="side-menu-container">
+                    <EventSideMenu
+                      selectedFilters={selectedFilters}
+                      setSelectedFilters={setSelectedFilters}
+                    />
+                  </div>
+                )}
+                <div className="events-container">
+                  {selectedEvent ? (
+                    <EventDetails event={selectedEvent} onClose={handleCloseDetails} />
+                  ) : (
+                    <>
+                      {showMyEvents ? (
+                        <MyEvents userId={userId} onEventClick={handleEventClick} />
+                      ) : (
+                        <div className="event-list">
+                          {filteredEvents.map((event) => (
+                            <EventCard
+                              key={event.id}
+                              event={event}
+                              onClick={() => handleEventClick(event)}
+                              isSelected={selectedEvent && selectedEvent.id === event.id}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </>
+            ) : (
+              <CreateEvent onCancel={() => setShowCreateEvent(false)} />
+            )}
+          </>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default Events;

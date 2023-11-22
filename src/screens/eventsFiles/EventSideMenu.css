@@ -55,3 +55,11 @@
   margin-right: 5px;
   color: white; /* White color for the icon */
 }
+
+/* @media (max-width: 768px) {
+  .event-side-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+} */

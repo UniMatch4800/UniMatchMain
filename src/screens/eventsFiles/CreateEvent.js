@@ -90,7 +90,8 @@ const CreateEvent = ({ onCancel }) => {
 
       // Redirect to the events screen after a delay (e.g., 3 seconds)
       setTimeout(() => {
-        navigate("/screens/events");
+        // navigate("/screens/events");
+        handleBackClick();
       }, 3000); // 3000 milliseconds (3 seconds) delay
     } catch (error) {
       console.error("Error adding event: ", error);
@@ -107,10 +108,16 @@ const CreateEvent = ({ onCancel }) => {
 
   return (
     <div className="create-event-container">
-      <button onClick={handleBackClick} className="back-button">
+      {/* <button onClick={handleBackClick} className="back-button">
         <FaRegArrowAltCircleLeft />
       </button>
-      <h2>Create New Event</h2>
+      <h2>Create New Event</h2> */}
+      <div className="btn-title">
+        <button onClick={handleBackClick} className="back-button">
+          <FaRegArrowAltCircleLeft />
+        </button>
+        <h2>New Event</h2>
+      </div>
       <div className="create-event-content">
         <form onSubmit={handleSubmit} className="event-form">
           <div className="input-group">
