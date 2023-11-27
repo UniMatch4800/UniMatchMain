@@ -15,7 +15,7 @@
 
 /* Auth Container */
 .auth-container {
-  background: white; /* changed to black */
+  background: black; /* changed to black */
   color: #faa805; /* changed to white */
   padding: 3em;
   border-radius: 8px;
