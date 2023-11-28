@@ -2,17 +2,27 @@
 .my-account-page {
   font-family: Arial, sans-serif;
   color: #ffffff;
-  max-width: 400px;
-  margin: 0 auto; /* Center horizontally */
+  max-width: 800px; /* Increase max-width for more space */
+  margin: 0 auto;
   padding: 30px;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
+  flex-direction: row; /* Change to row for horizontal layout */
+  align-items: center;
+  justify-content: space-between; /* Add space between the two boxes */
+  min-height: 60vh;
+}
+
+.profile-info-box {
+  display: flex;
   flex-direction: column;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center vertically */
-  min-height: 60vh; /* Set a minimum height to center content */
+  align-items: center;
+}
+
+.profile-photo-box {
+  margin-bottom: 20px;
 }
 
 .my-account-heading {
