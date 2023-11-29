@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { auth, signOut, updateProfile, db, storage } from "../../firebase";
+import React from "react";
+import { auth, signOut } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import "./account.css";
 
@@ -7,7 +7,7 @@ function Account() {
   const navigate = useNavigate();
 
   const handleEditProfile = () => {
-    navigate("/myaccount");
+    navigate("/screens/myaccount");
   };
 
   const handleLogOut = async () => {

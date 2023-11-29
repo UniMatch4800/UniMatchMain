@@ -21,6 +21,7 @@
   font-weight: bold;
   margin-bottom: 10px;
   color: white; /* Changed to white */
+  text-align: center;
 }
 
 .trending-talks ul,

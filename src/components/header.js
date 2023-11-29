@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa"; // FaTimes is the close icon
-import ULyfeLogo from "../images/ULyfelogo-PhotoRoom.png";
+import { FaBars, FaTimes } from "react-icons/fa";
+import ULyfeLogo from "../images/ULyfe_final_logo.PNG";
 import "../App.css";
+
 function Header() {
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 

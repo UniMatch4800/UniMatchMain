@@ -23,8 +23,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="screens/*" element={<ScreensRoutes />} />
-        <Route path="/" element={<Account />} />
-        <Route path="/myaccount" element={<MyAccount />} />
+        {/* <Route path="/" element={<Account />} /> */}
+        {/* <Route path="/myaccount" element={<MyAccount />} /> */}
       </Routes>
     </Router>
   );

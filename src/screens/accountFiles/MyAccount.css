@@ -1,36 +1,13 @@
 /* MyAccount.css */
 .my-account-page {
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  max-width: 800px; /* Increase max-width for more space */
-  margin: 0 auto;
-  padding: 30px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: row; /* Change to row for horizontal layout */
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between; /* Add space between the two boxes */
-  min-height: 60vh;
-}
-
-.profile-info-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile-photo-box {
-  margin-bottom: 20px;
-}
-
-.my-account-heading {
-  position: absolute;
-  top: 0.5em;
-  left: 0;
-  margin-left: 10px;
-  margin-top: 75px;
+  gap: 5%;
+  padding: 40px;
+  overflow-y: scroll;
+  height: calc(100vh - 214px);
 }
 
 .account-button {
@@ -67,4 +44,152 @@
 
 .profile-section {
   margin-top: 30px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 16px; /* Adjust the gap as needed */
+}
+
+.image-box {
+  width: 100%;
+  aspect-ratio: 1/1; /* Maintain a 1:1 aspect ratio for each box */
+  overflow: hidden;
+  border: 1px solid #faa805;
+  position: relative;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain image aspect ratio and cover the box */
+}
+
+.profile-pics{
+  flex: 0 0 47.5%;
+  height: 100%;
+}
+
+.title-name {
+  text-align: center;
+}
+
+.editing-input {
+  background-color: black;
+  border: 1px solid #faa805;
+}
+
+.save-btn {
+  background-color: #faa805;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1em;
+  color: white;
+  border-radius: 5px;
+}
+
+.profile-fields {
+  flex: 0 0 47.5%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  right: 0;
+}
+
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.field-label {
+  color: grey;
+}
+
+/* Add this to your existing CSS or create a new CSS file */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure it appears above other elements */
+}
+
+.popup-content {
+  background: #fff; /* Popup background color */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-text {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.popup-btn {
+  background-color: #faa805;
+  color: black;
+  padding: 7px 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  color: black;
+  font-weight: 900;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+.delete-button .x-button {
+  color: white;
+  font-size: 25px;
+}
+
+.add-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border: 4px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
 }
