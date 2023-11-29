@@ -1,23 +1,15 @@
-/* General styling for the account page */
-/* account.css */
-
 .account-page {
   font-family: Arial, sans-serif;
   color: #ffffff;
-  max-width: 400px; /* Increased width for better spacing */
-  margin: 40px auto; /* More margin for better centering */
+  max-width: 400px;
+  margin: 0 auto;
   padding: 30px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
 }
 
 .account-heading {
-  position: absolute;
-  top: 0.5em; /* or '5px' if you want to use pixels */
-  left: 0;
-  margin-left: 10px; /* Add some space from the left edge of the viewport */
-  margin-top: 75px; /* Add some space from the top edge of the viewport */
+  margin-left: 10px;
+  margin-top: 75px;
+  text-align: center;
 }
 
 .account-button {
@@ -30,10 +22,11 @@
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
   margin-top: 10px;
-  margin-bottom: 20px; /* Increased bottom margin for more space */
+  margin-bottom: 20px;
   display: block;
   width: 100%;
   box-sizing: border-box;
+  font-weight: 700;
 }
 
 .account-button:hover {
@@ -43,7 +36,7 @@
 
 .account-input {
   padding: 12px;
-  margin-bottom: 20px; /* Increased spacing below input fields */
+  margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
   width: calc(100% - 24px);
@@ -54,6 +47,6 @@
 
 .form-label {
   display: block;
-  margin-top: 20px; /* Added top margin for more space above the label */
+  margin-top: 20px;
   margin-bottom: 5px;
 }

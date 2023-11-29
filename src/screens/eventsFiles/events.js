@@ -9,8 +9,10 @@ import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import MyEvents from "./MyEvents";
 import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 function Events() {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null); // Fix the initial value
   const [showCreateEvent, setShowCreateEvent] = useState(false);
@@ -28,6 +30,9 @@ function Events() {
   const myEvents = [];
   const handleMyEventsClick = () => {
     setShowMyEvents(!showMyEvents);
+
+    const url = `/screens/events?showMyEvents=${!showMyEvents}`;
+    navigate(url);
   };
 
   const handleSideMenuClick = () => {
@@ -107,6 +112,12 @@ function Events() {
       } catch (error) {
         console.error("Error fetching events: ", error);
       }
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const showMyEventsParam = urlSearchParams.get("showMyEvents");
+      const isShowMyEvents = showMyEventsParam === "true";
+
+      // Set showMyEvents state based on the query parameter
+      setShowMyEvents(isShowMyEvents);
     };
 
     fetchData();

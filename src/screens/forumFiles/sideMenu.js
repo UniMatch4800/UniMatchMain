@@ -162,7 +162,7 @@ function SideMenu({ setSelectedTag, selectedTag, closePosts, closeSideMenu, onMy
           )}
         </div>
       ))}
-      <button className="mypost-btn" onClick={onMyPostsClick}>My Posts</button>
+      {/* <button className="mypost-btn" onClick={onMyPostsClick}>My Posts</button> */}
     </div>
   );
 }

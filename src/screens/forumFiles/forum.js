@@ -6,8 +6,8 @@ import ForumFeed from "./forumFeed";
 import RightSideSection from "./rightSideSection";
 import CreatePost from "./CreatePost";
 import MyPosts from "./MyPosts";
-
 import { auth } from "../../firebase"; // Import Firebase auth
+import { useNavigate } from "react-router-dom";
 
 function Forum() {
   const [showCreatePost, setShowCreatePost] = useState(false);
@@ -26,6 +26,14 @@ function Forum() {
       if (user) {
         setUserId(user.uid); // Store the user's ID
       }
+
+      // Check query parameter in the URL
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const showMyPostsParam = urlSearchParams.get("showMyPosts");
+      const isShowMyPosts = showMyPostsParam === "true";
+
+      // Set showMyPosts state based on the query parameter
+      setShowMyPosts(isShowMyPosts);
     });
     return () => unsubscribe(); // Unsubscribe from the listener when the component unmounts
   }, []);
@@ -42,10 +50,14 @@ function Forum() {
     setShowMyPosts(false);
   };
 
+  const navigate = useNavigate();
   const handleMyPostsClick = () => {
     setShowCreatePost(false);
     setShowMyPosts(!showMyPosts);
     closeSideMenu();
+
+    const url = `/screens/forum?showMyPosts=${!showMyPosts}`;
+    navigate(url);
   };
 
   const closeSideMenu = () => {
@@ -67,8 +79,8 @@ function Forum() {
             closePosts={closePosts}
             closeSideMenu={closeSideMenu}
             onMyPostsClick={handleMyPostsClick}
-          />        
-          </div>
+          />
+        </div>
         <div className="forum-content">
           {showCreatePost ? (
             <CreatePost onCancel={() => setShowCreatePost(false)} />

@@ -131,12 +131,58 @@ const MyAccount = () => {
     }
   };
 
+  const handleImageDelete = async () => {
+    if (selectedImageIndex !== null) {
+      const updatedImages = [...datingProfileData.profileImages];
+      updatedImages.splice(selectedImageIndex, 1);
+
+      if (updatedImages.length < 3) {
+        // Show a popup indicating that the profile must have at least 3 photos
+        // and prevent deletion
+        setSelectedImageIndex(null);
+        setDeleteErrorPopup(true); // Add a state variable to control this popup
+      } else {
+        // Proceed with deletion and update Firebase
+        try {
+          const uid = auth.currentUser.uid;
+
+          // Update the datingProfiles collection in Firebase
+          const datingProfileQuery = query(collection(db, 'datingProfiles'), where('uid', '==', uid));
+          const datingProfileSnapshot = await getDocs(datingProfileQuery);
+
+          if (!datingProfileSnapshot.empty) {
+            const datingProfileDoc = datingProfileSnapshot.docs[0];
+            const datingProfileRef = doc(db, 'datingProfiles', datingProfileDoc.id);
+
+            // Update the dating profile document
+            await updateDoc(datingProfileRef, { profileImages: updatedImages });
+          }
+
+          // Update the state to reflect the changes
+          setDatingProfileData((prevData) => ({
+            ...prevData,
+            profileImages: updatedImages,
+          }));
+
+          // Reset selected image index
+          setSelectedImageIndex(null);
+        } catch (error) {
+          console.error('Error updating profile data:', error.message);
+        }
+      }
+    }
+  };
+
   const handleFieldEdit = (fieldName) => {
     setEditableFields((prevFields) => ({ ...prevFields, [fieldName]: true }));
   };
 
-  const handleFieldChange = (fieldName, value) => {
+  const handleDatingFieldChange = (fieldName, value) => {
     setDatingProfileData((prevData) => ({ ...prevData, [fieldName]: value }));
+  };
+
+  const handleUserFieldChange = (fieldName, value) => {
+    setUserData((prevData) => ({ ...prevData, [fieldName]: value })); 
   };
 
   const handleSaveChanges = async () => {
@@ -178,48 +224,6 @@ const MyAccount = () => {
 
       // Ensure saveLoading is set to false in case of an error
       setSaveLoading(false);
-    }
-  };
-
-  const handleImageDelete = async () => {
-    if (selectedImageIndex !== null) {
-      const updatedImages = [...datingProfileData.profileImages];
-      updatedImages.splice(selectedImageIndex, 1);
-
-      if (updatedImages.length < 3) {
-        // Show a popup indicating that the profile must have at least 3 photos
-        // and prevent deletion
-        setSelectedImageIndex(null);
-        setDeleteErrorPopup(true); // Add a state variable to control this popup
-      } else {
-        // Proceed with deletion and update Firebase
-        try {
-          const uid = auth.currentUser.uid;
-
-          // Update the datingProfiles collection in Firebase
-          const datingProfileQuery = query(collection(db, 'datingProfiles'), where('uid', '==', uid));
-          const datingProfileSnapshot = await getDocs(datingProfileQuery);
-
-          if (!datingProfileSnapshot.empty) {
-            const datingProfileDoc = datingProfileSnapshot.docs[0];
-            const datingProfileRef = doc(db, 'datingProfiles', datingProfileDoc.id);
-
-            // Update the dating profile document
-            await updateDoc(datingProfileRef, { profileImages: updatedImages });
-          }
-
-          // Update the state to reflect the changes
-          setDatingProfileData((prevData) => ({
-            ...prevData,
-            profileImages: updatedImages,
-          }));
-
-          // Reset selected image index
-          setSelectedImageIndex(null);
-        } catch (error) {
-          console.error('Error updating profile data:', error.message);
-        }
-      }
     }
   };
 
@@ -267,7 +271,6 @@ const MyAccount = () => {
 
           {!saveLoading ? (
             <div className='profile-fields'>
-
               <div className="profile-field" onClick={() => handleFieldEdit('name')}>
                 <span>
                   <label className='field-label'>Name: </label>
@@ -276,7 +279,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={userData.name}
-                      onChange={(e) => handleFieldChange('name', e.target.value)}
+                      onChange={(e) => handleUserFieldChange('name', e.target.value)}
                     />
                   ) : (
                     <span>{userData.name}</span>
@@ -293,7 +296,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={userData.major}
-                      onChange={(e) => handleFieldChange('major', e.target.value)}
+                      onChange={(e) => handleUserFieldChange('major', e.target.value)}
                     />
                   ) : (
                     <span>{userData.major}</span>
@@ -310,7 +313,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={userData.graduationYear}
-                      onChange={(e) => handleFieldChange('graduationYear', e.target.value)}
+                      onChange={(e) => handleUserFieldChange('graduationYear', e.target.value)}
                     />
                   ) : (
                     <span>{userData.graduationYear}</span>
@@ -327,7 +330,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={userData.campus}
-                      onChange={(e) => handleFieldChange('campus', e.target.value)}
+                      onChange={(e) => handleUserFieldChange('campus', e.target.value)}
                     />
                   ) : (
                     <span>{userData.campus}</span>
@@ -344,7 +347,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={datingProfileData.age}
-                      onChange={(e) => handleFieldChange('age', e.target.value)}
+                      onChange={(e) => handleDatingFieldChange('age', e.target.value)}
                     />
                   ) : (
                     <span>{datingProfileData.age}</span>
@@ -360,7 +363,7 @@ const MyAccount = () => {
                     <textarea
                       className='editing-input'
                       value={datingProfileData.bio}
-                      onChange={(e) => handleFieldChange('bio', e.target.value)}
+                      onChange={(e) => handleDatingFieldChange('bio', e.target.value)}
                     />
                   ) : (
                     <span>{datingProfileData.bio}</span>
@@ -377,7 +380,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={datingProfileData.gender}
-                      onChange={(e) => handleFieldChange('gender', e.target.value)}
+                      onChange={(e) => handleDatingFieldChange('gender', e.target.value)}
                     />
                   ) : (
                     <span>{datingProfileData.gender}</span>
@@ -394,7 +397,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={datingProfileData.hobbies}
-                      onChange={(e) => handleFieldChange('hobbies', e.target.value)}
+                      onChange={(e) => handleDatingFieldChange('hobbies', e.target.value)}
                     />
                   ) : (
                     <span>{datingProfileData.hobbies}</span>
@@ -411,7 +414,7 @@ const MyAccount = () => {
                       className='editing-input'
                       type="text"
                       value={datingProfileData.race}
-                      onChange={(e) => handleFieldChange('race', e.target.value)}
+                      onChange={(e) => handleDatingFieldChange('race', e.target.value)}
                     />
                   ) : (
                     <span>{datingProfileData.race}</span>

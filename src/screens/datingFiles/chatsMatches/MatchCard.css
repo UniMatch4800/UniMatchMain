@@ -64,6 +64,7 @@
 
     .messages-component {
         padding: 20px;
+        width: unset;
     }
 
     .time-ago-message {

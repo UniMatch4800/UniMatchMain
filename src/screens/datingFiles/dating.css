@@ -5,7 +5,7 @@
   align-items: center;
   background: rgb(42, 42, 42);
   overflow: scroll;
-  height: calc(100vh - 60px);
+  height: 100%;
 }
 
 .top-buttons {
@@ -45,7 +45,7 @@
   align-items: center;
   justify-content: center;
   background: rgb(42, 42, 42); 
-  height: calc(100vh - 60px);
+  height: calc(100vh - 95px);
 }
 
 .filters {
@@ -66,6 +66,7 @@
   .full-box {
     flex-direction: column;
     background-color: #111;
+    height: calc(100vh - 60px);
   }
 
   .top-buttons {

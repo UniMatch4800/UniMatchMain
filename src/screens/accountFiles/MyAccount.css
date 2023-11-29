@@ -193,3 +193,21 @@
   cursor: pointer;
   padding: 10px;
 }
+
+@media (max-width: 768px) {
+  .my-account-page {
+    flex-direction: column;
+    height: calc(100vh - 150px);
+    display: block;
+  }
+
+  .profile-fields {
+    position: relative;
+    height: unset;
+    margin-top: 40px;
+  }
+
+  .profile-pics {
+    height: unset;
+  }
+}

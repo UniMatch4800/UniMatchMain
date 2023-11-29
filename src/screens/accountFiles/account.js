@@ -1,6 +1,7 @@
 import React from "react";
 import { auth, signOut } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+
 import "./account.css";
 
 function Account() {
@@ -8,6 +9,15 @@ function Account() {
 
   const handleEditProfile = () => {
     navigate("/screens/myaccount");
+  };
+
+  const handleMyPosts = () => {
+    // Other logic you might want to perform
+    navigate("/screens/forum?showMyPosts=true");
+  };
+  
+  const handleMyEvents = () => {
+    navigate("/screens/events?showMyEvents=true")
   };
 
   const handleLogOut = async () => {
@@ -21,14 +31,18 @@ function Account() {
 
   return (
     <div className="account-page">
-      <h1 className="account-heading">Account Page</h1>
-
-      <div className="profile-section">
-        {/* Display user profile information here */}
-      </div>
+      <h1 className="account-heading">Profile Settings</h1>
 
       <button onClick={handleEditProfile} className="account-button">
-        Edit Profile
+        Edit Dating Profile
+      </button>
+
+      <button onClick={handleMyPosts} className="account-button">
+        Your Forum Posts
+      </button>
+
+      <button onClick={handleMyEvents} className="account-button">
+        Your Event Posts
       </button>
 
       <button onClick={handleLogOut} className="account-button">

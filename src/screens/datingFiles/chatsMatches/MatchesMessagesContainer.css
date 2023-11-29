@@ -36,9 +36,6 @@
     padding: 20px;
     background-color: #111;
     overflow: scroll;
-    justify-content: center;
-    align-items: center;
-    display: flex;
 }
 
 .tab.active:after {
