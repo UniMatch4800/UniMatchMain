@@ -19,7 +19,6 @@
   box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Form elements */
 h1,
 input,
 button {
@@ -50,12 +49,21 @@ h1 {
   border-radius: 5px;
   transition: border 0.2s;
   color: black;
+  box-sizing: border-box;
+
 }
 
 .inputBox:focus {
-  border: 1px solid #faa805; /* changed to #faa805 */
+  border: 1px solid #faa805;
   outline: none;
 }
+
+.auth-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 250px;
+}
+
 
 .login {
   width: 100%;
@@ -63,8 +71,9 @@ h1 {
     to right,
     #faa805,
     #d47f00
-  ); /* Gradient using #faa805 and a darker version */
-  color: white; /* changed to white */
+  );
+  background-color: black;
+  color: white; 
   border: none;
   padding: 12px 0;
   border-radius: 5px;
@@ -92,4 +101,8 @@ h1 {
 
 .error {
   border: 2px solid red;
+}
+
+.login-signup-title{
+  color: black;
 }
