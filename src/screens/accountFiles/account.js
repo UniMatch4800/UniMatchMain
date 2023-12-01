@@ -20,6 +20,10 @@ function Account() {
     navigate("/screens/events?showMyEvents=true")
   };
 
+  const handleChangePass =() => {
+    navigate("/screens/password-reset")
+  };
+
   const handleLogOut = async () => {
     try {
       await signOut(auth);
@@ -43,6 +47,10 @@ function Account() {
 
       <button onClick={handleMyEvents} className="account-button">
         Your Event Posts
+      </button>
+
+      <button onClick={handleChangePass} className="account-button">
+        Change Password
       </button>
 
       <button onClick={handleLogOut} className="account-button">

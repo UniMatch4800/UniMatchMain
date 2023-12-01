@@ -7,6 +7,7 @@ import Forum from "./screens/forumFiles/forum";
 import Header from "./components/header";
 import AdditionalInfo from "./components/additional-info";
 import ChatsMatches from "./screens/datingFiles/chatsMatches/ChatsMatches";
+import PasswordReset from "./components/passwordReset";
 
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -23,8 +24,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="screens/*" element={<ScreensRoutes />} />
-        {/* <Route path="/" element={<Account />} /> */}
-        {/* <Route path="/myaccount" element={<MyAccount />} /> */}
       </Routes>
     </Router>
   );
@@ -48,6 +47,7 @@ function ScreensRoutes() {
         <Route path="additional-info" element={<AdditionalInfo />} />
         <Route path="dating/chats-matches" element={<ChatsMatches />} />
         <Route path="myaccount" element={<MyAccount />} />
+        <Route path="password-reset" element={<PasswordReset />} />
       </Routes>
     </div>
   );

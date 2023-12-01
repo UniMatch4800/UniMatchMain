@@ -7,6 +7,8 @@ import {
   onAuthStateChanged,
   signOut,
   updateProfile,
+  updatePassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -36,5 +38,7 @@ export {
   sendEmailVerification,
   onAuthStateChanged,
   signOut,
+  updatePassword,
+  sendPasswordResetEmail,
   updateProfile, // Add this line to your exports
 };

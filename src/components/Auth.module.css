@@ -1,10 +1,7 @@
-/* Auth.module.css */
-
-/* Styles for the container */
 .container {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #111; /* changed to black */
-  color: white; /* changed to white */
+  background-color: #111;
+  color: white;
   margin: 0;
   width: 100%;
   height: 100vh;
@@ -13,14 +10,13 @@
   align-items: center;
 }
 
-/* Auth Container */
 .auth-container {
-  background: white; /* changed to black */
-  color: #faa805; /* changed to white */
+  background: white;
+  color: #faa805;
   padding: 3em;
   border-radius: 8px;
   width: 350px;
-  box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.1); /* Adjusted for black theme */
+  box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 /* Form elements */
