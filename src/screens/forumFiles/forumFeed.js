@@ -22,17 +22,33 @@ import { increment } from "firebase/firestore";
 import { auth } from "../../firebase";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useLocation } from 'react-router-dom';
 
 function ForumFeed({ selectedTag }) {
   const [forumPosts, setForumPosts] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const location = useLocation();
+  const [urlVariable, setUrlVariable] = useState('');
+
+  useEffect(() => {
+    // Extract the variable from the URL
+    const urlParams = new URLSearchParams(location.search);
+    const variableFromUrl = urlParams.get('selectedTag');
+
+    // Assign the variable to the state
+    setUrlVariable(variableFromUrl);
+    document.querySelector('.forum-feed').scrollTo(0, 0);
+
+  }, [location.search]);
+
+  selectedTag = urlVariable;
 
   useEffect(() => {
     const fetchData = () => {
       const forumPostsCollection = collection(db, "forumPosts");
 
       let q;
-      if (selectedTag) {
+      if ((selectedTag !== "null") && (selectedTag)) {
         q = query(
           forumPostsCollection,
           where("tags", "array-contains", selectedTag),
