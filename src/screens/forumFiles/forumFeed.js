@@ -22,10 +22,13 @@ import { increment } from "firebase/firestore";
 import { auth } from "../../firebase";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useParams } from 'react-router-dom';
+
 
 function ForumFeed({ selectedTag }) {
   const [forumPosts, setForumPosts] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  selectedTag = useParams();
 
 
   useEffect(() => {

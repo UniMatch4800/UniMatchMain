@@ -10,11 +10,13 @@ import {
 } from "firebase/firestore";
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 
-function RightSideSection() {
+function RightSideSection({ setSelectedTag }) {
   const [trendingTalks, setTrendingTalks] = useState([]);
   const [trendingTags, setTrendingTags] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch the top 5 trending posts (based on vote count)
@@ -82,13 +84,13 @@ function RightSideSection() {
   function formatTag(tag) {
     // Split the tag into words based on "-"
     const words = tag.split('-');
-  
+
     // Capitalize the first letter of each word
     const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
-  
+
     // Join the words back together with spaces
     const formattedTag = capitalizedWords.join(' ');
-  
+
     return formattedTag;
   }
 
@@ -98,12 +100,12 @@ function RightSideSection() {
         <h2>Trending Posts</h2>
         <ul>
           {trendingTalks.map((talk, index) => (
-            <li key={index}>
+            <li key={index} className="tag-talk-link">
               <strong>
                 {talk.title.length > 20 ? talk.title.slice(0, 25) + "..." : talk.title}
               </strong>
               <strong>
-                {talk.votesCount} <FontAwesomeIcon icon={faHeart} className="heart-icon"/>
+                {talk.votesCount} <FontAwesomeIcon icon={faHeart} className="heart-icon" />
               </strong>
             </li>
           ))}
@@ -113,12 +115,12 @@ function RightSideSection() {
         <h2>Trending Tags</h2>
         <ul>
           {trendingTags.map((tagData, index) => (
-            <li key={index}>
+            <li key={index} className="tag-talk-link" onClick={() => navigate(`/screens/forum?selectedTag=${tagData.tag}`)}>
               <strong>
                 {formatTag(tagData.tag)}
               </strong>
               <strong>
-                 {tagData.count} #
+                {tagData.count} #
               </strong>
             </li>
           ))}

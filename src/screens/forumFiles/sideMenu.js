@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./sideMenu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +14,7 @@ import {
   faCaretDown,
   faCaretLeft,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function SideMenu({ setSelectedTag, selectedTag, closePosts, closeSideMenu, onMyPostsClick }) {
   const [categories] = useState([
@@ -102,6 +103,7 @@ function SideMenu({ setSelectedTag, selectedTag, closePosts, closeSideMenu, onMy
   ]);
 
   const [openCategory, setOpenCategory] = useState(null);
+  const navigate = useNavigate();
 
   const handleCategoryClick = (categoryName) => {
     if (openCategory === categoryName) {
@@ -115,7 +117,19 @@ function SideMenu({ setSelectedTag, selectedTag, closePosts, closeSideMenu, onMy
     setSelectedTag(tag);
     closePosts();
     closeSideMenu();
+
+    const url = `/screens/forum?selectedTag=${tag}`;
+    navigate(url);
   };
+
+  useEffect(() => {
+    // Parse the current URL to get the selectedTag parameter
+    const searchParams = new URLSearchParams(window.location.search);
+    const selectedTagParam = searchParams.get("selectedTag");
+
+    // Set the selectedTag state based on the URL parameter
+    setSelectedTag(selectedTagParam);
+  }, [navigate, setSelectedTag]);
 
   return (
     <div className="side-menu-box">

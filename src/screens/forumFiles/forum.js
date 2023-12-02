@@ -42,7 +42,6 @@ function Forum() {
     setShowCreatePost(!showCreatePost);
     setShowMyPosts(false);
     closeSideMenu();
-
   };
 
   const closePosts = () => {
