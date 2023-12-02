@@ -139,13 +139,13 @@ function ForumFeed({ selectedTag }) {
     height: 30,
     cursor: 'pointer',
     fontSize: '24px',
-    background: 'rgba(0, 0, 0, 0.5)', // Black semi-transparent background
-    borderRadius: '50%', // Make it circular
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
-    color: '#fff', // Arrow color
-    lineHeight: '30px', // Center the arrow vertically
+    color: '#fff',
+    lineHeight: '30px',
+    border: 'none',
+    background: 'none',
   };
   
   

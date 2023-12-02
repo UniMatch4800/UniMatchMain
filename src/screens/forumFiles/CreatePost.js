@@ -13,6 +13,8 @@ const CreatePost = ({ onCancel }) => {
     tags: [],
   });
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
@@ -116,8 +118,9 @@ const CreatePost = ({ onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.tags) {
+    if (!formData.tags || formData.tags.length === 0) {
       console.error("Tags are required.");
+      setErrorMessage("At least one tag is required");
       return;
     }
 
@@ -130,6 +133,7 @@ const CreatePost = ({ onCancel }) => {
       // Ensure required fields are filled out
       if (!formData.forumTitle || !formData.description) {
         console.error("Forum Title and Description are required.");
+        setErrorMessage("Forum Title and Description are required.")
         return;
       }
 
@@ -165,7 +169,7 @@ const CreatePost = ({ onCancel }) => {
         </button>
         <h2>New Post</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="create-post-form">
         <div className="input-group">
           <label>Forum Title:</label>
           <input
@@ -223,6 +227,11 @@ const CreatePost = ({ onCancel }) => {
       {showSuccessNotification && (
         <div className="success-notification">
           Post created successfully. Redirecting...
+        </div>
+      )}
+      {errorMessage && (
+        <div className="success-notification error">
+          {errorMessage}
         </div>
       )}
     </div>

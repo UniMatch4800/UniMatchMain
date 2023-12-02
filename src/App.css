@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+input, textarea, select {
+  font-size: 16px; /* Set a base font size for the page */
+  max-width: 100%; /* Ensure inputs don't extend beyond the viewport */
+  -ms-text-size-adjust: 100%; /* IE 10+ */
+  -webkit-text-size-adjust: 100%; /* Chrome, Safari, Edge */
+  user-select: auto; /* Enable user selection */
+}
+
+body {
+  touch-action: manipulation;
+}
+
+body {
+  zoom: 1;
+  max-zoom: 1;
+  min-zoom: 1;
+  user-zoom: fixed;
+}
+
 body {
   overflow: hidden;
   background-color: #111; /* Set body background to black */
@@ -17,12 +36,6 @@ body {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: black;
   min-height: 100vh;
@@ -32,10 +45,6 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white; /* Ensure text remains white */
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
