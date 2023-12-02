@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ClipLoader } from 'react-spinners';
 import { collection, getDocs, query, where, doc, getDoc, orderBy, limit } from 'firebase/firestore';
 import { db, auth } from '../../../firebase';
 import "./MatchCard.css";
+import LoadingIndicator from "../../../images/loadingGif.gif";
+
 
 const MessagesComponent = ({ onSelectUser }) => {
   const [chats, setChats] = useState([]);
@@ -171,7 +172,9 @@ const MessagesComponent = ({ onSelectUser }) => {
   return (
     <div className='messages-component'>
       {loading ? (
-        <div className='loading-indicator'><ClipLoader color="#ffffff" loading={loading} size={100} /></div>
+        <div className='loading-indicator'>
+          <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+        </div>
       ) : (
         chats.map((chat) => (
           <div key={chat.uid}>

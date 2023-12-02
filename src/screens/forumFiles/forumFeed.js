@@ -147,8 +147,8 @@ function ForumFeed({ selectedTag }) {
     border: 'none',
     background: 'none',
   };
-  
-  
+
+
   const customIndicatorContainerStyles = {
     position: 'absolute',
     top: 5,
@@ -169,6 +169,7 @@ function ForumFeed({ selectedTag }) {
   const [imageIndexes, setImageIndexes] = useState(
     forumPosts.map(() => ({ currentIndex: 0 }))
   );
+  
 
   const setCurrentImageIndexForPost = (postIndex, index) => {
     setImageIndexes((prevIndexes) => {
@@ -204,7 +205,10 @@ function ForumFeed({ selectedTag }) {
               <div className="images-container" style={{ position: 'relative' }}>
                 <div style={{ ...customIndicatorContainerStyles, top: '0', background: 'none' }}>
                   {post.images.map((_, index) => {
-                    const isSelected = index === (imageIndexes[postIndex] ? imageIndexes[postIndex].currentIndex : 0);
+                    const isSelected =
+                      index === (imageIndexes[postIndex] && imageIndexes[postIndex].currentIndex !== undefined
+                        ? imageIndexes[postIndex].currentIndex
+                        : 0);
                     const backgroundColor = isSelected ? '#faa805' : '#fff';
                     return (
                       <div

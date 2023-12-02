@@ -4,32 +4,32 @@ import Select from 'react-select';
 
 const Filters = ({ applyFilters }) => {
   const [ageFilter, setAgeFilter] = useState('');
-  const [campusFilter, setCampusFilter] = useState('');
+  // const [campusFilter, setCampusFilter] = useState('');
   const [genderFilter, setGenderFilter] = useState('');
   const [graduationYearFilter, setGraduationYearFilter] = useState('');
-  const [hobbiesFilter, setHobbiesFilter] = useState('');
-  const [majorFilter, setMajorFilter] = useState('');
-  const [raceFilter, setRaceFilter] = useState('');
+  // const [hobbiesFilter, setHobbiesFilter] = useState('');
+  // const [majorFilter, setMajorFilter] = useState('');
+  // const [raceFilter, setRaceFilter] = useState([]);
 
   useEffect(() => {
     // Apply filters when any of the filter options change
     applyFilters({
       age: ageFilter,
-      campus: campusFilter,
+      // campus: campusFilter,
       gender: genderFilter,
       graduationYear: graduationYearFilter,
-      hobbies: hobbiesFilter,
-      major: majorFilter,
-      race: raceFilter,
+      // hobbies: hobbiesFilter,
+      // major: majorFilter,
+      // race: raceFilter,
     });
   }, [
     ageFilter,
-    campusFilter,
+    // campusFilter,
     genderFilter,
     graduationYearFilter,
-    hobbiesFilter,
-    majorFilter,
-    raceFilter,
+    // hobbiesFilter,
+    // majorFilter,
+    // raceFilter,
   ]);
 
   const customStyles = {
@@ -43,6 +43,7 @@ const Filters = ({ applyFilters }) => {
       "&:hover": {
         borderColor: "1px solid #faa805",
       },
+      width: '180px',
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -69,7 +70,7 @@ const Filters = ({ applyFilters }) => {
         value={ageFilter}
         onChange={(selectedOption) => setAgeFilter(selectedOption)}
         options={[
-          { value: '', label: 'Age' },
+          { value: '', label: 'Any' },
           { value: '18-20', label: '18-20' },
           { value: '21-23', label: '21-23' },
           { value: '24-26', label: '24-26' },
@@ -81,27 +82,26 @@ const Filters = ({ applyFilters }) => {
         styles={customStyles}
       />
 
-      <Select
+      {/* <Select
         className="select-box"
         value={campusFilter}
         onChange={(selectedOption) => setCampusFilter(selectedOption)}
         options={[
-          { value: '', label: 'Campus' },
+          { value: '', label: 'Any' },
           { value: 'CPP', label: 'CPP' },
           { value: 'Other Campus', label: 'Other Campus' },
-          // Add more options as needed
         ]}
         placeholder="Campus"
         menuPortalTarget={document.body}
         styles={customStyles}
-      />
+      /> */}
 
       <Select
         className="select-box"
         value={genderFilter}
         onChange={(selectedOption) => setGenderFilter(selectedOption)}
         options={[
-          { value: '', label: 'Gender' },
+          { value: '', label: 'Any' },
           { value: 'Male', label: 'Male' },
           { value: 'Female', label: 'Female' },
           { value: 'Other', label: 'Other' },
@@ -116,18 +116,21 @@ const Filters = ({ applyFilters }) => {
         value={graduationYearFilter}
         onChange={(selectedOption) => setGraduationYearFilter(selectedOption)}
         options={[
-          { value: '', label: 'Graduation Year' },
-          { value: '2022', label: '2022' },
+          { value: '', label: 'Any' },
           { value: '2023', label: '2023' },
           { value: '2024', label: '2024' },
-          // Add more options as needed
+          { value: '2025', label: '2025' },
+          { value: '2026', label: '2026' },
+          { value: '2027', label: '2027' },
+          { value: '2028', label: '2028' },
+
         ]}
         placeholder="Graduation Year"
         menuPortalTarget={document.body}
         styles={customStyles}
       />
 
-      <Select
+      {/* <Select
         className="select-box"
         value={hobbiesFilter}
         onChange={(selectedOption) => setHobbiesFilter(selectedOption)}
@@ -140,9 +143,9 @@ const Filters = ({ applyFilters }) => {
         placeholder="Hobbies"
         menuPortalTarget={document.body}
         styles={customStyles}
-      />
+      /> */}
 
-      <Select
+      {/* <Select
         className="select-box"
         value={majorFilter}
         onChange={(selectedOption) => setMajorFilter(selectedOption)}
@@ -155,14 +158,14 @@ const Filters = ({ applyFilters }) => {
         placeholder="Major"
         menuPortalTarget={document.body}
         styles={customStyles}
-      />
+      /> */}
 
-      <Select
+      {/* <Select
         className="select-box"
         value={raceFilter}
         onChange={(selectedOption) => setRaceFilter(selectedOption)}
         options={[
-          { value: '', label: 'Race' },
+          { value: '', label: 'Any' },
           { value: 'Caucasian', label: 'Caucasian' },
           { value: 'African American', label: 'African American' },
           { value: 'Hispanic', label: 'Hispanic' },
@@ -171,7 +174,8 @@ const Filters = ({ applyFilters }) => {
         placeholder="Race"
         menuPortalTarget={document.body}
         styles={customStyles}
-      />
+        isMulti
+      /> */}
     </div>
   );
 };

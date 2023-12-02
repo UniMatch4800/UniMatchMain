@@ -13,7 +13,6 @@ const MatchesMessagesContainer = ({ onSelectUser }) => {
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
     setSelectedUser(null);
-    console.log(selectedUser)
   };
 
   const handleUserSelection = (clickedProfile) => {

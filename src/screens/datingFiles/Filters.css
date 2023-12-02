@@ -9,6 +9,10 @@
   margin-top: 10px;
 }
 
+.filter-fields {
+  width: 180px;
+}
+
 /* Add this media query for smaller screens */
 @media (max-width: 768px) {
   .filter-fields {
@@ -17,6 +21,7 @@
     margin: 0;
     padding: 6px;
     z-index: 1; 
+    width: unset;
   }
 
   .select-box {

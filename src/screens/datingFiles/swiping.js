@@ -12,6 +12,8 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,12 +68,12 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
               (filters.age === "30+" && profile.age >= 30) || // Handle "30+" case
               (filters.age !== "30+" && ageFilter(profile, filters.age)) // Handle other age ranges
             ) &&
-            (!filters.campus || filters.campus.value === "" || profile.campus === filters.campus) &&
+            // (!filters.campus || filters.campus.value === "" || profile.campus === filters.campus) &&
             (!filters.gender || filters.gender.value === "" || profile.gender === filters.gender.value) &&
-            (!filters.graduationYear || filters.graduationYear.value === "" || profile.graduationYear === filters.graduationYear.value) &&
-            (!filters.hobbies || filters.hobbies.value === "" || profile.hobbies.includes(filters.hobbies.value)) &&
-            (!filters.major || filters.major.value === "" || profile.major === filters.major.value) &&
-            (!filters.race || filters.race.value === "" || profile.race === filters.race.value)
+            (!filters.graduationYear || filters.graduationYear.value === "" || profile.graduationYear === filters.graduationYear.value)
+            // (!filters.hobbies || filters.hobbies.value === "" || profile.hobbies.includes(filters.hobbies.value)) &&
+            // (!filters.major || filters.major.value === "" || profile.major === filters.major.value) &&
+            // (!filters.race || filters.race.value === "" || profile.race.includes(filters.race.value))
           ) {
             return true;
           }
@@ -280,12 +282,25 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
     border: 'none',
   };
 
-  const customIndicatorStyles = {
-    background: '#fff',
-    width: 8,
-    height: 8,
-    display: 'inline-block',
-    margin: '0 8px',
+  const customIndicatorContainerStyles = {
+    position: 'absolute',
+    top: 5,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 3,
+    zIndex: 10,
+    background: '#111',
+    padding: '2px 0',
+  };
+
+  const customIndicatorStylesSwiping = {
+    backgroundColor: "#111",
+    height: 4,
+    width: '100%', // Equal width
+    margin: 0,
+    // border: '1px solid #faa805',
   };
 
   return (
@@ -293,11 +308,29 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
       {profiles.length > 0 && currentIndex < profiles.length ? (
         <>
           <div className="carousel-container-swiping">
+            <div style={{ ...customIndicatorContainerStyles, top: '0' }}>
+              {profiles[currentIndex].profileImages.map((_, index) => {
+                const isSelected = selectedImageIndex === index;
+                const backgroundColor = isSelected ? '#faa805' : '#fff';
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      ...customIndicatorStylesSwiping,
+                      background: backgroundColor,
+                    }}
+                  />
+                );
+              })}
+            </div>
             <Carousel
               selectedItem={currentImageIndex}
-              onChange={(index) => setCurrentImageIndex(index)}
+              onChange={(index) => {
+                setCurrentImageIndex(index);
+                setSelectedImageIndex(index); // Set the selected image index
+              }}
               showArrows={true}
-              showStatus={true}
+              showStatus={false}
               showThumbs={false}
               onClick={handleImageClick}
               renderArrowPrev={(onClickHandler, hasPrev, label) =>
@@ -314,30 +347,8 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
                   </button>
                 )
               }
-              renderIndicator={(onClickHandler, isSelected, index, label) => {
-                if (isSelected) {
-                  return (
-                    <li
-                      style={{ ...customIndicatorStyles, background: '#000' }}
-                      aria-label={`Selected: ${label} ${index + 1}`}
-                      title={`Selected: ${label} ${index + 1}`}
-                    />
-                  );
-                }
-                return (
-                  <li
-                    style={customIndicatorStyles}
-                    onClick={onClickHandler}
-                    onKeyDown={onClickHandler}
-                    value={index}
-                    key={index}
-                    role="button"
-                    tabIndex={0}
-                    title={`${label} ${index + 1}`}
-                    aria-label={`${label} ${index + 1}`}
-                  />
-                );
-              }}
+              renderIndicator={() => null}
+
             >
               {profiles[currentIndex].profileImages.map((image, index) => (
                 <div key={index} className='profile-image-box'>

@@ -33,6 +33,7 @@
     height: 388px;
     overflow: hidden;
     margin: 0 auto;
+    position: relative;
 }
 
 .info-profile-image {

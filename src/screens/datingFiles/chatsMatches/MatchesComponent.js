@@ -3,7 +3,8 @@ import { collection, getDocs, getDoc, doc, where, query } from 'firebase/firesto
 import { db, auth } from '../../../firebase';
 import MatchCard from './MatchCard';
 import "./MatchCard.css"
-import { ClipLoader } from 'react-spinners';
+import LoadingIndicator from "../../../images/loadingGif.gif";
+
 
 const MatchesComponent = ({ onSelectUser }) => {
     const [matchedProfiles, setMatchedProfiles] = useState([]);
@@ -110,7 +111,9 @@ const MatchesComponent = ({ onSelectUser }) => {
     return (
         <div className="matches-component">
             {loading ? (
-                <div className='loading-indicator'><ClipLoader color="#ffffff" loading={loading} size={100} /></div>
+                <div className='loading-indicator'>
+                    <img src={LoadingIndicator} alt="Loading..." className='loading-gif'/>
+                </div>
             ) : (
                 <>
                     {matchedProfiles.length === 0 ? (

@@ -101,9 +101,10 @@
 
 .carousel-container-swiping {
   width: 400px;
-  height: 500px;
+  height: 480px;
   overflow: hidden;
   margin: 0 auto;
+  position: relative;
 }
 
 .profile-image {

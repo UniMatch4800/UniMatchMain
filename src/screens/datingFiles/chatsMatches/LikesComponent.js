@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { ClipLoader } from 'react-spinners';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../../../firebase';
 import "./LikesComponent.css";
+import LoadingIndicator from "../../../images/loadingGif.gif";
+
 
 const LikesComponent = () => {
   const [likedUserIds, setLikedUserIds] = useState([]);
@@ -77,7 +78,9 @@ const LikesComponent = () => {
   return (
     <div className='likes-container'>
       {loading ? (
-        <div className='loading-indicator'><ClipLoader color="#ffffff" loading={loading} size={100} /></div>
+        <div className='loading-indicator'>
+          <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+        </div>
       ) : (
         <div className="profiles-container">
           {datingProfiles.map((profile, index) => (
@@ -92,7 +95,7 @@ const LikesComponent = () => {
         </div>
       )}
     </div>
-  );  
+  );
 };
 
 export default LikesComponent;

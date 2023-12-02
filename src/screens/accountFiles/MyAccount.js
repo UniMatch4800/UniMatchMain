@@ -3,19 +3,16 @@ import "./MyAccount.css";
 import { auth, db } from "../../firebase";
 import { getDocs, collection, query, where, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { FaPencilAlt, FaPlus } from 'react-icons/fa';
-import { ClipLoader } from 'react-spinners';
 import { storage } from '../../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
-
-
+import LoadingIndicator from "../../images/loadingGif.gif";
 
 const MyAccount = () => {
   const [datingProfileData, setDatingProfileData] = useState(null);
   const [userData, setUserData] = useState(null);
   const [editableFields, setEditableFields] = useState({});
-  const [loading, setLoading] = useState(true);
   const [saveLoading, setSaveLoading] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [deleteErrorPopup, setDeleteErrorPopup] = useState(false);
@@ -53,8 +50,6 @@ const MyAccount = () => {
       } else {
         console.log("No user is signed in.");
       }
-      setLoading(false);
-
     });
 
     return () => unsubscribe();
@@ -426,12 +421,14 @@ const MyAccount = () => {
               <button onClick={handleSaveChanges} className='save-btn'>Save Changes</button>
             </div>
           ) : (
-            <div className='saving-indicator'><ClipLoader color="#ffffff" loading={saveLoading} size={100} /></div>
-          )}
+            <div className='loading-indicator'>
+            <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+          </div>          )}
         </>
       ) : (
-        <div className='loading-indicator'><ClipLoader color="#ffffff" loading={loading} size={100} /></div>
-      )}
+        <div className='loading-indicator'>
+          <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+        </div>      )}
     </div>
   );
 };
