@@ -79,6 +79,19 @@ function RightSideSection() {
     };
   }, []);
 
+  function formatTag(tag) {
+    // Split the tag into words based on "-"
+    const words = tag.split('-');
+  
+    // Capitalize the first letter of each word
+    const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  
+    // Join the words back together with spaces
+    const formattedTag = capitalizedWords.join(' ');
+  
+    return formattedTag;
+  }
+
   return (
     <div className="right-side-section-box">
       <div className="trending-talks">
@@ -102,7 +115,7 @@ function RightSideSection() {
           {trendingTags.map((tagData, index) => (
             <li key={index}>
               <strong>
-                {tagData.tag}
+                {formatTag(tagData.tag)}
               </strong>
               <strong>
                  {tagData.count} #
@@ -111,10 +124,10 @@ function RightSideSection() {
           ))}
         </ul>
       </div>
-      <div className="advertisement">
+      {/* <div className="advertisement">
         <img src="https://www.thefashionlaw.com/wp-content/uploads/2022/10/Screen-Shot-2022-10-24-at-1.22.33-PM.png" alt="Advertisement" />
         <p>Ad</p>
-      </div>
+      </div> */}
     </div>
   );
 }

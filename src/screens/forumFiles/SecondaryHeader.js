@@ -18,7 +18,9 @@ function SecondaryHeader({ onCreatePostClick, onToggleSideMenu, isSideMenuVisibl
         <FaFilter />
       </div>
       <div className="search-bar">
-        <input type="text" placeholder="Search Forums"></input>
+        {/* <input type="text" placeholder="Search Forums"></input> */}
+        <h2 className="page-title">Forum</h2>
+
       </div>
       <Link to="#" className="create-post-button" onClick={onCreatePostClick}>
         <FaPlus />

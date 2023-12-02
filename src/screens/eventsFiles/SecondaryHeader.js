@@ -15,7 +15,8 @@ function SecondaryHeader({ onCreateEventClick, onMyEventsClick, onSideMenuClick 
         <FaFilter />
       </div>
       <div className="search-bar">
-        <input type="text" placeholder="Search Events"></input>
+        {/* <input type="text" placeholder="Event Search Functionality Coming Soon"></input> */}
+        <h2 className="page-title">Events</h2>
       </div>
       {/* <Link to="#" className="my-events-button" onClick={onMyEventsClick}>
         My Events

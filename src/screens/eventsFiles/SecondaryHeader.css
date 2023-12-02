@@ -30,6 +30,10 @@
   border-color: #555; /* Change color on focus */
 }
 
+.page-title {
+  margin: 0;
+}
+
 .my-events-button,
 .create-event-button {
   /* background: linear-gradient(

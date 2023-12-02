@@ -7,9 +7,7 @@ import "./dating.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import Filters from "./Filters";
-import { Link } from 'react-router-dom';
-
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dating = () => {
   const [user, setUser] = useState(null);
@@ -20,6 +18,7 @@ const Dating = () => {
     race: "Any",
     gender: "Any",
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Listen for authentication state changes
@@ -33,6 +32,7 @@ const Dating = () => {
       } else {
         // User is not logged in, handle as needed
         setUser(null);
+        navigate("/");
       }
     });
 
@@ -75,17 +75,6 @@ const Dating = () => {
   // If datingProfileSetup is true, render your dating component
   return (
     <div className="full-box">
-      {/* <div className="options">
-        <div className="top-buttons">
-          <Link to="/screens/dating/chats-matches" className="button chat-icon">
-            <FontAwesomeIcon icon={faComment}/>
-          </Link>
-        </div>
-        <div className="filters">
-          <Filters applyFilters={applyFilters} />
-        </div>
-      </div> */}
-
       <div className="options">
           <Link to="/screens/dating/chats-matches" className="button chat-icon">
             <FontAwesomeIcon icon={faComment} />

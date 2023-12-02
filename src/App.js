@@ -8,7 +8,7 @@ import Header from "./components/header";
 import AdditionalInfo from "./components/additional-info";
 import ChatsMatches from "./screens/datingFiles/chatsMatches/ChatsMatches";
 import PasswordReset from "./components/passwordReset";
-
+import AuthGuard from "./AuthGuard";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -38,17 +38,19 @@ function ScreensRoutes() {
   return (
     <div>
       {shouldShowHeader && <Header />}{" "}
-      <Routes>
-        <Route index element={<Forum />} />
-        <Route path="account" element={<Account />} />
-        <Route path="dating" element={<Dating />} />
-        <Route path="forum" element={<Forum />} />
-        <Route path="events" element={<Events />} />
-        <Route path="additional-info" element={<AdditionalInfo />} />
-        <Route path="dating/chats-matches" element={<ChatsMatches />} />
-        <Route path="myaccount" element={<MyAccount />} />
-        <Route path="password-reset" element={<PasswordReset />} />
-      </Routes>
+      <AuthGuard>
+        <Routes>
+          <Route index element={<Forum />} />
+          <Route path="account" element={<Account />} />
+          <Route path="dating" element={<Dating />} />
+          <Route path="forum" element={<Forum />} />
+          <Route path="events" element={<Events />} />
+          <Route path="additional-info" element={<AdditionalInfo />} />
+          <Route path="dating/chats-matches" element={<ChatsMatches />} />
+          <Route path="myaccount" element={<MyAccount />} />
+          <Route path="password-reset" element={<PasswordReset />} />
+        </Routes>
+      </AuthGuard>
     </div>
   );
 }
