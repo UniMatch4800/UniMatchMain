@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import Filters from "./Filters";
 import { Link, useNavigate } from 'react-router-dom';
+import LoadingIndicator from "../../images/loadingGif.gif";
 
 const Dating = () => {
   const [user, setUser] = useState(null);
@@ -64,7 +65,9 @@ const Dating = () => {
   };
 
   if (!user) {
-    return <div>Loading...</div>; // You can add a loading indicator
+    return         <div className='loading-indicator'>
+      <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+  </div> ;
   }
 
   // Check the datingProfileSetup property

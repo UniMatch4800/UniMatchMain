@@ -78,6 +78,29 @@
 .editing-input {
   background-color: black;
   border: 1px solid #faa805;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.editing-input:focus {
+  border: 1px solid gold;
+  outline: none;
+}
+
+.field-box {
+  width: 100%;
+}
+
+.data-pencil {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .save-btn {
@@ -94,7 +117,6 @@
   flex: 0 0 47.5%;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   position: sticky;
   top: 0;

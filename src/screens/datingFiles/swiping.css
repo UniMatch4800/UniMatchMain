@@ -1,10 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-}
-
 .swiping-container {
   height: 100%;
 }

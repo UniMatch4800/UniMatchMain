@@ -177,7 +177,7 @@ const MyAccount = () => {
   };
 
   const handleUserFieldChange = (fieldName, value) => {
-    setUserData((prevData) => ({ ...prevData, [fieldName]: value })); 
+    setUserData((prevData) => ({ ...prevData, [fieldName]: value }));
   };
 
   const handleSaveChanges = async () => {
@@ -267,7 +267,7 @@ const MyAccount = () => {
           {!saveLoading ? (
             <div className='profile-fields'>
               <div className="profile-field" onClick={() => handleFieldEdit('name')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Name: </label>
                   {editableFields.name ? (
                     <input
@@ -277,14 +277,16 @@ const MyAccount = () => {
                       onChange={(e) => handleUserFieldChange('name', e.target.value)}
                     />
                   ) : (
-                    <span>{userData.name}</span>
+                    <div className='data-pencil'>
+                      <span>{userData.name}</span>
+                      <span><FaPencilAlt /></span>
+                    </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('major')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Major: </label>
                   {editableFields.major ? (
                     <input
@@ -294,14 +296,16 @@ const MyAccount = () => {
                       onChange={(e) => handleUserFieldChange('major', e.target.value)}
                     />
                   ) : (
-                    <span>{userData.major}</span>
+                    <div className='data-pencil'>
+                      <span>{userData.major}</span>
+                      <span><FaPencilAlt /></span>
+                    </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('graduationYear')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Graduation Year: </label>
                   {editableFields.graduationYear ? (
                     <input
@@ -311,14 +315,16 @@ const MyAccount = () => {
                       onChange={(e) => handleUserFieldChange('graduationYear', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{userData.graduationYear}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('campus')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Campus: </label>
                   {editableFields.campus ? (
                     <input
@@ -328,14 +334,16 @@ const MyAccount = () => {
                       onChange={(e) => handleUserFieldChange('campus', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{userData.campus}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('age')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Age: </label>
                   {editableFields.age ? (
                     <input
@@ -345,14 +353,16 @@ const MyAccount = () => {
                       onChange={(e) => handleDatingFieldChange('age', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{datingProfileData.age}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('bio')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Bio: </label>
                   {editableFields.bio ? (
                     <textarea
@@ -361,14 +371,16 @@ const MyAccount = () => {
                       onChange={(e) => handleDatingFieldChange('bio', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{datingProfileData.bio}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('gender')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Gender: </label>
                   {editableFields.gender ? (
                     <input
@@ -378,14 +390,16 @@ const MyAccount = () => {
                       onChange={(e) => handleDatingFieldChange('gender', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{datingProfileData.gender}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('hobbies')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Hobbies: </label>
                   {editableFields.hobbies ? (
                     <input
@@ -395,14 +409,16 @@ const MyAccount = () => {
                       onChange={(e) => handleDatingFieldChange('hobbies', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{datingProfileData.hobbies}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <div className="profile-field" onClick={() => handleFieldEdit('race')}>
-                <span>
+                <span className='field-box'>
                   <label className='field-label'>Race: </label>
                   {editableFields.race ? (
                     <input
@@ -412,23 +428,25 @@ const MyAccount = () => {
                       onChange={(e) => handleDatingFieldChange('race', e.target.value)}
                     />
                   ) : (
+                    <div className='data-pencil'>
                     <span>{datingProfileData.race}</span>
+                    <span><FaPencilAlt /></span>
+                  </div>
                   )}
                 </span>
-                <span><FaPencilAlt /></span>
               </div>
 
               <button onClick={handleSaveChanges} className='save-btn'>Save Changes</button>
             </div>
           ) : (
             <div className='loading-indicator'>
-            <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
-          </div>          )}
+              <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+            </div>)}
         </>
       ) : (
         <div className='loading-indicator'>
           <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
-        </div>      )}
+        </div>)}
     </div>
   );
 };

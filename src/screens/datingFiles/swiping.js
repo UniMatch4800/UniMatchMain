@@ -386,6 +386,7 @@ const Swiping = ({ currentProfileUid, setCurrentProfileUid, filters, profilesAva
               {profiles[currentIndex].bio}
             </p>
           </div>
+          
           <div className="button-container">
             <button onClick={handleReverse} className='reverse'>
               <FontAwesomeIcon icon={faUndo} /> {/* Reverse */}

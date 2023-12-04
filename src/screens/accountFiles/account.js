@@ -15,12 +15,12 @@ function Account() {
     // Other logic you might want to perform
     navigate("/screens/forum?showMyPosts=true");
   };
-  
+
   const handleMyEvents = () => {
     navigate("/screens/events?showMyEvents=true")
   };
 
-  const handleChangePass =() => {
+  const handleChangePass = () => {
     navigate("/screens/password-reset")
   };
 
@@ -33,9 +33,16 @@ function Account() {
     }
   };
 
+  const openExternalLink = () => {
+    window.open("https://forms.gle/3ydfRYe1mVqn5GRJA", '_blank');
+  };
+
   return (
     <div className="account-page">
       <h1 className="account-heading">Profile Settings</h1>
+      <button className="account-button feedback-button" onClick={openExternalLink}>
+        Submit Feedback
+      </button>
 
       <button onClick={handleEditProfile} className="account-button">
         Edit Dating Profile
