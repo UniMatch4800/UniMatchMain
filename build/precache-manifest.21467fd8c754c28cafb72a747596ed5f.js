@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "9fe80615e1c70ed99811",
-    "url": "/static/css/main.363fac70.chunk.css"
+    "revision": "84fda59a046a8635564b",
+    "url": "/static/css/main.3364e9b8.chunk.css"
   },
   {
-    "revision": "9fe80615e1c70ed99811",
-    "url": "/static/js/main.9fe80615.chunk.js"
+    "revision": "84fda59a046a8635564b",
+    "url": "/static/js/main.84fda59a.chunk.js"
   },
   {
     "revision": "1d0eda3aec4e5ad1f71f",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/ULyfe_final_logo.d9508e61.PNG"
   },
   {
-    "revision": "a75ea1c0fc82c81923789b8c48155620",
+    "revision": "07916e34a7c62976d953d446ede050a6",
     "url": "/index.html"
   }
 ];
