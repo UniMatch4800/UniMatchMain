@@ -121,7 +121,10 @@ const handleFileInputChange = async (e) => {
             {!showForm && (
                 <div className='pre-form'>
                     <h1 className='ready'>Ready to Start Lynking?</h1>
-                    <p className='click-below'>Click below to create a Lynking profile!</p>
+                    <p className='click-below'>
+                        Lynking on ULyfe helps users find and make connections with other students on campus. Form relationships with new friends, study buddies, romantic relationship, or casual connections. 
+                    </p>
+                    {/* <p className='click-below'>Click below to create a Lynking profile!</p> */}
                     <button className='join-btn' onClick={toggleForm}>
                         Join Now
                     </button>

@@ -79,13 +79,13 @@ h2 {
 @media (max-width: 768px){
   .create-event-container{
     margin: 0;
-    padding: 0 10px 20px;
+    padding: 0 40px;
     width: 100%;
     max-height: calc(100vh - 135px);
     border-radius: 0;
   }
 
   .create-event-content {
-    width: unset;
+    width: 100%;
   }
 }

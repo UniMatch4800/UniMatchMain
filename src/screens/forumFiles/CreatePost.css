@@ -101,7 +101,6 @@ h2 {
   }
 
   .create-post-form {
-    max-width: unset;
-    width: unset;
+    width: 100%;
   }
 }

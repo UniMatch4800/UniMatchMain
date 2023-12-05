@@ -40,8 +40,7 @@ const AdditionalInfo = () => {
     <div className={styles.container}>
       <div className={styles["auth-container"]}>
         <form onSubmit={(e) => e.preventDefault()}>
-          <h1>Additional Info</h1>
-
+          <h1 className={styles["add-info-title"]}>Additional Info</h1>
           <label>Name:</label>
           <input
             type="text"

@@ -12,7 +12,6 @@
   padding-top: 5px;
   background: rgb(0, 0, 0);
   color: white;
-  width: 340px;
 }
 
 .profile-info-box h2 {
@@ -119,4 +118,14 @@
   font-size: 14px;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .carousel-container-swiping {
+    width: 100vw;
+  }
+
+  .profile-image-box {
+    width: unset;
+  }
 }
