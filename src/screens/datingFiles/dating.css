@@ -62,6 +62,10 @@
   padding: 100px;
 }
 
+.loading-dating {
+  width: unset;
+}
+
 @media (max-width: 768px) {
   .full-box {
     flex-direction: column;
@@ -74,6 +78,10 @@
   }
   .filters {
     margin: 0;
+  }
+
+  .loading-dating {
+    width: 100%;
   }
 
   .options{

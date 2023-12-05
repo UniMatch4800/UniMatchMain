@@ -66,7 +66,7 @@ const Dating = () => {
 
   if (!user) {
     return         <div className='loading-indicator'>
-      <img src={LoadingIndicator} alt="Loading..." className='loading-gif' />
+      <img src={LoadingIndicator} alt="Loading..." className="loading-dating" />
   </div> ;
   }
 
