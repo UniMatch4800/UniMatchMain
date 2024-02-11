@@ -1,0 +1,306 @@
+.landing-page {
+    overflow: auto;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.cta-buttons {
+    display: flex;
+}
+
+.login-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right,
+            #faa805,
+            #d47f00);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.main {
+    padding: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.banner {
+    background-image: url("./banner.jpg");
+    height: 50vh;
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.banner-content {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+    padding: 20px;
+}
+
+.banner h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 2.4em;
+}
+
+.banner p {
+    margin: 10px 0;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.login-btn:hover {
+    background: linear-gradient(to right,
+            #d47f00,
+            #faa805);
+}
+
+
+/* ULYFE Offerings section styles */
+.ulife-offerings {
+    text-align: center;
+    padding: 90px 0;
+}
+
+.ulife-offerings h2 {
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+.ulife-offerings p {
+    margin-bottom: 50px;
+    font-size: 25px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-top: 2px solid #faa805;
+}
+
+.image-item {
+    text-align: center;
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-item img {
+    width: 85%;
+    height: auto;
+    margin: 20px 0;
+    background: #faa805;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.image-item h2 {
+    margin-bottom: 10px;
+}
+
+.image-item p {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: justify;
+    width: 85%;
+}
+
+@media (max-width: 500px) {
+    .image-container {
+        flex-direction: column;
+    }
+
+    .banner-content {
+        width: 100%;
+        left: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-content h2,
+    .banner-content p {
+        text-align: center;
+    }
+}
+
+/* Mission Styles */
+.mission-section {
+    position: relative;
+    padding: 50px 0;
+    background-color: #faa805;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.mission-content {
+    width: 30%;
+}
+
+.mission-content h2 {
+    margin-bottom: 20px;
+    font-size: 50px;
+
+}
+
+.mission-content p {
+    font-size: 1.3em;
+}
+
+.mission-image {
+    max-width: 550px;
+    border-radius: 20px;
+}
+
+@media (max-width: 500px) {
+    .mission-section {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .mission-content {
+        width: 100%;
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .mission-content p {
+        padding: 0 20px;
+    }
+
+    .mission-image {
+        max-width: 100%;
+        border-radius: 0;
+    }
+}
+
+/* How it works */
+.how-it-works {
+    color: white;
+    padding: 30px;
+}
+
+.how-section-content {
+    padding: 50px 0;
+    border-radius: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.how-section-content h2 {
+    margin-bottom: 20px;
+    font-size: 50px;
+    color: white;
+    font-weight: 800;
+}
+
+.how-section-content p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+ol {
+    list-style-type: none;
+    counter-reset: step-counter;
+}
+
+li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 1em;
+}
+
+.step-title {
+    font-weight: bolder;
+}
+
+.bullet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: #faa805;
+}
+
+/* Benefitss section */
+.features-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 auto;
+}
+
+.feature {
+    margin: 20px;
+    padding: 20px;
+    background-color: #faa805;
+    text-align: center;
+}
+
+.feature .icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.feature svg {
+    height: 30px;
+}
+
+@media (max-width: 500px) {
+    .features-section {
+        grid-template-columns: 1fr;
+    }
+}

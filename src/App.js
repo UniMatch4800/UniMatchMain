@@ -9,6 +9,7 @@ import AdditionalInfo from "./components/additional-info";
 import ChatsMatches from "./screens/datingFiles/chatsMatches/ChatsMatches";
 import PasswordReset from "./components/passwordReset";
 import AuthGuard from "./AuthGuard";
+import LandingPage from "./screens/LandingPage/LandingPage";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -22,7 +23,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Auth />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Auth isItLogin={true} />} />
+        <Route path="/signup" element={<Auth isItLogin={false} />} />
         <Route path="screens/*" element={<ScreensRoutes />} />
       </Routes>
     </Router>

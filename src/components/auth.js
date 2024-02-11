@@ -14,8 +14,8 @@ import { getDoc, doc } from "firebase/firestore";
 import ULyfeLogo from "../images/ULyfe_final_logo.PNG";
 
 
-const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true);
+const Auth = ({ isItLogin }) => {
+  const [isLogin, setIsLogin] = useState(isItLogin);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

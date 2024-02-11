@@ -16,15 +16,12 @@ body {
 
 body {
   zoom: 1;
-  max-zoom: 1;
-  min-zoom: 1;
-  user-zoom: fixed;
 }
 
 body {
   overflow: hidden;
-  background-color: #111; /* Set body background to black */
-  color: white; /* Set body text color to white */
+  background-color: #111;
+  color: white;
 }
 
 ::-webkit-scrollbar {
