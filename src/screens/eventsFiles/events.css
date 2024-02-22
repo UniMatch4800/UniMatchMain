@@ -10,7 +10,7 @@
 
 .events-container {
   overflow-y: auto;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 200px);
   background-color: #111;
   color: white;
   flex: 0 0 30%;
@@ -26,6 +26,10 @@
 }
 
 .no-events-header {
+  text-align: center;
+}
+
+.no-more {
   text-align: center;
 }
 

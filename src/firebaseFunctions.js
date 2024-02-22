@@ -53,6 +53,13 @@ export const addEvent = async (eventData) => {
   try {
     const eventsCollection = collection(db, "events");
 
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not authenticated");
+    }
+
+    const { email } = user;
+
     // Upload thumbnail to Firebase Storage and get its download URL
     const thumbnailStorageRef = ref(
       storage,
@@ -90,6 +97,7 @@ export const addEvent = async (eventData) => {
       images: imageUrls,
       createdAt: serverTimestamp(),
       uid: eventData.uid,
+      userEmailDomain: email.split('@')[1],
       type: eventData.type,
     });
 

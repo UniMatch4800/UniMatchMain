@@ -108,10 +108,6 @@ const CreateEvent = ({ onCancel }) => {
 
   return (
     <div className="create-event-container">
-      {/* <button onClick={handleBackClick} className="back-button">
-        <FaRegArrowAltCircleLeft />
-      </button>
-      <h2>Create New Event</h2> */}
       <div className="btn-title">
         <button onClick={handleBackClick} className="back-button">
           <FaRegArrowAltCircleLeft />

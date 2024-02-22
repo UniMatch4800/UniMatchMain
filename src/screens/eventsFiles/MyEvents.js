@@ -92,6 +92,10 @@ function MyEvents({ userId, onEventClick }) {
           </div>
         ))
       )}
+      <div className="no-more">
+        <h2>No More Events</h2>
+        <p>Create More Today</p>
+      </div>
     </div>
   );
 }

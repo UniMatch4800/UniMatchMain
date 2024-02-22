@@ -6,7 +6,7 @@ import EventDetails from "./EventDetails";
 import SecondaryHeader from "./SecondaryHeader";
 import CreateEvent from "./CreateEvent";
 import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { getDocs, collection, query, where, orderBy } from "firebase/firestore";
 import MyEvents from "./MyEvents";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -39,89 +39,100 @@ function Events() {
     setShowSideMenu(!showSideMenu);
   }
 
-  const isPriceInRange = (price, range) => {
-    const numPrice = parseInt(price, 10);
 
-    if (isNaN(numPrice)) return false;
 
-    switch (range) {
-      case "Free":
-        return numPrice === 0;
-      case "1-15":
-        return numPrice >= 1 && numPrice <= 15;
-      case "16-25":
-        return numPrice >= 16 && numPrice <= 25;
-      case "26+":
-        return numPrice >= 26;
-      default:
-        return true;
-    }
-  };
+const isPriceInRange = (price, range) => {
+  const numPrice = parseInt(price, 10);
 
-  const filteredEvents = showMyEvents
-    ? myEvents
-    : events.filter((event) => {
+  if (isNaN(numPrice)) return false;
+
+  switch (range) {
+    case "Free":
+      return numPrice === 0;
+    case "1-15":
+      return numPrice >= 1 && numPrice <= 15;
+    case "16-25":
+      return numPrice >= 16 && numPrice <= 25;
+    case "26+":
+      return numPrice >= 26;
+    default:
+      return true;
+  }
+};
+
+const filteredEvents = showMyEvents
+  ? myEvents
+  : events.filter((event) => {
       return (
-        (selectedFilters.price.length === 0 ||
-          selectedFilters.price.some((price) =>
-            isPriceInRange(event.price, price)
-          )) &&
-        (selectedFilters.location.length === 0 ||
-          selectedFilters.location.includes(event.location)) &&
-        (selectedFilters.eventType.length === 0 ||
-          selectedFilters.eventType.includes(event.type))
+        (selectedFilters.price.length === 0 || selectedFilters.price.some((price) => isPriceInRange(event.price, price))) &&
+        (selectedFilters.location.length === 0 || selectedFilters.location.includes(event.location)) &&
+        (selectedFilters.eventType.length === 0 || selectedFilters.eventType.includes(event.type))
       );
     });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "events"));
-        const eventsData = [];
-
-        // Get the current date and time
-        const currentDate = new Date();
-
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          const eventDate = new Date(data.date + " " + data.time); // Combine date and time
-
-          // Check if the event date is in the future
-          if (eventDate > currentDate) {
-            eventsData.push({
-              id: doc.id,
-              title: data.title,
-              date: eventDate, // Store as Date object
-              price: data.price,
-              location: data.location,
-              thumbnail: data.thumbnail,
-              description: data.description,
-              images: data.images,
-              time: data.time,
-              type: data.type,
-            });
-          }
-        });
-
-        eventsData.sort((a, b) => a.date - b.date); // Sort by date
-
-        setEvents(eventsData);
-        if (!isMobile && eventsData.length > 0) {
-          setSelectedEvent(eventsData[0]);
-        }
-      } catch (error) {
-        console.error("Error fetching events: ", error);
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        return; // Exit if user is not authenticated
       }
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      const showMyEventsParam = urlSearchParams.get("showMyEvents");
-      const isShowMyEvents = showMyEventsParam === "true";
 
-      // Set showMyEvents state based on the query parameter
-      setShowMyEvents(isShowMyEvents);
-    };
+      const userEmailDomain = user.email.split('@')[1]; // Extract domain from user email
 
-    fetchData();
-  }, []);
+      console.log(userEmailDomain)
+      const q = query(
+        collection(db, "events"),
+        where("userEmailDomain", "==", userEmailDomain), // Filter events by user's email domain
+        orderBy("date"),
+        orderBy("time")
+      );
+
+      const querySnapshot = await getDocs(q);
+      const eventsData = [];
+
+      // Get the current date and time
+      const currentDate = new Date();
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const eventDate = new Date(data.date + " " + data.time); // Combine date and time
+
+        // Check if the event date is in the future
+        if (eventDate > currentDate && isPriceInRange(data.price, selectedFilters.price)) {
+          eventsData.push({
+            id: doc.id,
+            title: data.title,
+            date: eventDate, // Store as Date object
+            price: data.price,
+            location: data.location,
+            thumbnail: data.thumbnail,
+            description: data.description,
+            images: data.images,
+            time: data.time,
+            type: data.type,
+          });
+        }
+      });
+
+      setEvents(eventsData);
+      if (!isMobile && eventsData.length > 0) {
+        setSelectedEvent(eventsData[0]);
+      }
+    } catch (error) {
+      console.error("Error fetching events: ", error);
+    }
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const showMyEventsParam = urlSearchParams.get("showMyEvents");
+    const isShowMyEvents = showMyEventsParam === "true";
+
+    // Set showMyEvents state based on the query parameter
+    setShowMyEvents(isShowMyEvents);
+  };
+
+  fetchData();
+}, [auth.currentUser]);
+
 
   const handleEventClick = (event) => {
     console.log("Event Clicked:", event);
