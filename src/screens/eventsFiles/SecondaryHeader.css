@@ -2,11 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0;
+  padding: 10px;
   background-color: #111;
   width: 100%;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for contrast */
-  color: white; /* White text color */
 }
 
 .search-bar {
@@ -36,12 +34,7 @@
 
 .my-events-button,
 .create-event-button {
-  /* background: linear-gradient(
-    to right,
-    #faa805,
-    #d47f00
-  ); Using #faa805 and a darker version */
-  background-color: #faa805;
+  background: linear-gradient( to right, #faa805, #d47f00 );
   color: white;
   padding: 10px 25px;
   border-radius: 25px;
@@ -51,6 +44,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  grid-gap: 10px;
   gap: 10px;
 }
 
@@ -65,7 +59,7 @@
 }
 
 .create-event-button {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .filter-icon {

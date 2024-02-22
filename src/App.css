@@ -2,23 +2,24 @@
   text-align: center;
 }
 
-input, textarea, select {
-  font-size: 16px; /* Set a base font size for the page */
-  max-width: 100%; /* Ensure inputs don't extend beyond the viewport */
-  -ms-text-size-adjust: 100%; /* IE 10+ */
-  -webkit-text-size-adjust: 100%; /* Chrome, Safari, Edge */
-  user-select: auto; /* Enable user selection */
+input,
+textarea,
+select {
+  font-size: 16px;
+  /* Set a base font size for the page */
+  max-width: 100%;
+  /* Ensure inputs don't extend beyond the viewport */
+  -ms-text-size-adjust: 100%;
+  /* IE 10+ */
+  -webkit-text-size-adjust: 100%;
+  /* Chrome, Safari, Edge */
+  user-select: auto;
+  /* Enable user selection */
 }
 
 body {
   touch-action: manipulation;
-}
-
-body {
   zoom: 1;
-}
-
-body {
   overflow: hidden;
   background-color: #111;
   color: white;
@@ -28,46 +29,21 @@ body {
   display: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: black;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; /* Ensure text remains white */
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#APIResponse {
-  font-weight: bolder;
-  font-size: larger;
-  color: white; /* Set to white */
+.header-link {
+  margin: 0;
 }
 
 header {
-  background-color: #111; /* Changed to black */
-  color: white; /* Changed to white */
+  background-color: #111;
+  /* Changed to black */
+  color: white;
+  /* Changed to white */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  border-bottom: 2px solid #faa805; /* Adjusted to a visible color against black */
+  border-bottom: 2px solid #faa805;
+  /* Adjusted to a visible color against black */
 }
 
 .header-left {
@@ -93,7 +69,8 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: white; /* Changed to white */
+  color: white;
+  /* Changed to white */
   font-size: larger;
 }
 
@@ -102,7 +79,8 @@ nav ul li a {
 }
 
 .account-button {
-  background-color: #61dafb; /* Adjusted to a visible color against black */
+  background-color: #61dafb;
+  /* Adjusted to a visible color against black */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,8 +105,8 @@ nav ul li a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(-100%); /* Initially off-screen */
-  transition: transform 0.5s ease-in-out; /* Use transform for the sliding effect */
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .mobile-menu ul {
@@ -140,6 +118,8 @@ nav ul li a {
 
 .mobile-menu ul li {
   margin-bottom: 20px;
+  padding: 0;
+  text-align: center;
 }
 
 .mobile-menu a {
@@ -173,7 +153,7 @@ nav ul li a {
 
   .mobile-menu {
     display: flex;
-    transform: translateY(0); /* Slide in by changing translateY to 0 */
+    transform: translateY(0);
   }
 
   .logo {

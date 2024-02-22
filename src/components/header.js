@@ -21,16 +21,13 @@ function Header() {
 
       <nav className="desktop-menu">
         <ul>
-          <li>
+          <li className="header-link">
             <Link to="/screens/forum">Forum</Link>
           </li>
-          <li>
-            <Link to="/screens/dating">Lynk</Link>
-          </li>
-          <li>
+          <li className="header-link">
             <Link to="/screens/events">Events</Link>
           </li>
-          <li>
+          <li className="header-link">
             <Link to="/screens/account">Account</Link>
           </li>
         </ul>
@@ -53,11 +50,6 @@ function Header() {
             <li>
               <Link to="/screens/forum" onClick={toggleMobileMenu}>
                 Forum
-              </Link>
-            </li>
-            <li>
-              <Link to="/screens/dating" onClick={toggleMobileMenu}>
-                Lynk
               </Link>
             </li>
             <li>

@@ -1,12 +1,10 @@
 import React, { createContext } from "react";
 import Account from "./screens/accountFiles/account";
-import Dating from "./screens/datingFiles/dating";
 import Events from "./screens/eventsFiles/events";
 import Auth from "./components/auth";
 import Forum from "./screens/forumFiles/forum";
 import Header from "./components/header";
 import AdditionalInfo from "./components/additional-info";
-import ChatsMatches from "./screens/datingFiles/chatsMatches/ChatsMatches";
 import PasswordReset from "./components/passwordReset";
 import AuthGuard from "./AuthGuard";
 import LandingPage from "./screens/LandingPage/LandingPage";
@@ -45,11 +43,9 @@ function ScreensRoutes() {
         <Routes>
           <Route index element={<Forum />} />
           <Route path="account" element={<Account />} />
-          <Route path="dating" element={<Dating />} />
           <Route path="forum" element={<Forum />} />
           <Route path="events" element={<Events />} />
           <Route path="additional-info" element={<AdditionalInfo />} />
-          <Route path="dating/chats-matches" element={<ChatsMatches />} />
           <Route path="myaccount" element={<MyAccount />} />
           <Route path="password-reset" element={<PasswordReset />} />
         </Routes>
