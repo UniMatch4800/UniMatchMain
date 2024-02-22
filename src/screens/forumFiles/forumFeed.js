@@ -44,27 +44,39 @@ function ForumFeed({ selectedTag }) {
   selectedTag = urlVariable;
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       const forumPostsCollection = collection(db, "forumPosts");
-
+      const user = auth.currentUser;
+  
+      if (!user) {
+        return; // Exit if user is not authenticated
+      }
+  
+      const currentUserEmailDomain = user.email.split('@')[1]; // Extract domain from user email
+  
       let q;
-      if ((selectedTag !== "null") && (selectedTag)) {
+      if (selectedTag !== "null" && selectedTag) {
         q = query(
           forumPostsCollection,
           where("tags", "array-contains", selectedTag),
+          where("userEmailDomain", "==", currentUserEmailDomain),
           orderBy("createdAt", "desc")
         );
       } else {
-        q = query(forumPostsCollection, orderBy("createdAt", "desc"));
+        q = query(
+          forumPostsCollection,
+          where("userEmailDomain", "==", currentUserEmailDomain),
+          orderBy("createdAt", "desc")
+        );
       }
-
+  
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         const postsData = [];
         querySnapshot.forEach((doc) => {
           const data = doc.data();
           const createdAt = data.createdAt;
           const createdAtDate = createdAt ? createdAt.toDate() : null;
-
+  
           postsData.push({
             id: doc.id,
             title: data.forumTitle,
@@ -77,12 +89,13 @@ function ForumFeed({ selectedTag }) {
         });
         setForumPosts(postsData);
       });
-
+  
       return () => unsubscribe();
     };
-
+  
     fetchData();
-  }, [selectedTag]);
+  }, [selectedTag, auth.currentUser]); // Include auth.currentUser as a dependency
+  
 
   function timeAgo(date) {
     const now = new Date();

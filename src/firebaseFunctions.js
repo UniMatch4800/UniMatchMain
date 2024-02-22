@@ -1,22 +1,17 @@
 import { db, storage } from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-// firebaseFunctions.js
-export const getAnonymousUserID = async () => {
-  let userID = localStorage.getItem("anonymousUserID");
-
-  if (userID === null) {
-    userID = new Date().getTime().toString(); // Generating a unique ID based on current time
-    localStorage.setItem("anonymousUserID", userID);
-  }
-
-  return userID;
-};
+import { auth } from "./firebase";
 
 // Function to add a forum post to the database
 export const addForumPost = async (userId, postData) => {
   try {
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("User not authenticated");
+    }
+
+    const { uid, email } = user;
     const postsCollection = collection(db, "forumPosts");
 
     // Upload images to Firebase Storage and get their download URLs
@@ -37,7 +32,8 @@ export const addForumPost = async (userId, postData) => {
 
     // Create a new post document
     const newPostRef = await addDoc(postsCollection, {
-      userId: userId,
+      userId: uid,
+      userEmailDomain: email.split('@')[1],
       forumTitle: postData.forumTitle,
       description: postData.description,
       images: imageUrls,
